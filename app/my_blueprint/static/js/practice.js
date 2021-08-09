@@ -184,3 +184,13 @@ function logResponse(chartType, questionType, dataType) {
         }
     })
 };
+
+window.options = {
+    view: 'MAP',
+    shape: 1,
+}
+
+
+$('#nextButton').click(() => {
+    window.location.href = "/redirect_next_page";
+});

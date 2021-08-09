@@ -206,3 +206,13 @@ function balancedLatinSquare(array, participantId) {
 
     return [result, idx];
 }
+
+window.options = {
+    view: 'SCATTER',
+    shape: 1,
+}
+
+
+$('#nextButton').click(() => {
+    window.location.href = "/redirect_next_page";
+});
