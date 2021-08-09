@@ -1,0 +1,60 @@
+{
+    "title": "Visualization Preference",
+    "instructions": "Please answer the following questions.",
+    "code": "<style>.evenRow>td:nth-child(1) {width: 0.5% !important;} #q_s>.question:nth-child(1)>div {height: 500px;background-size: 500px;background-repeat: no-repeat;background-position: center;background-image: url(../my_blueprint/images/both.png);}</style>",
+    "questions": [
+        {
+            "questiontype": "textview",
+            "title": "The following questions are based on your preference between both the visualizations.",
+            "text": ""
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "With which visualization type were you able to answer the questions fastest?",
+            "id": "viz_preference_fastest",
+            "labels": [
+                "Chord Diagram",
+                "Parallel Plot"
+            ],
+            "q_text": [
+                {
+                    "id": "viz_preference_fastest0"
+                }
+            ]
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "With which visualization type were you able to answer the questions most accurately?",
+            "id": "viz_preference_accuracy",
+            "labels": [
+                "Chord Diagram",
+                "Parallel Plot"
+            ],
+            "q_text": [
+                {
+                    "id": "viz_preference_accuracy0"
+                }
+            ]
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Which visualization type did you prefer overall?",
+            "id": "viz_preference_overall",
+            "labels": [
+                "Chord Diagram",
+                "Parallel Plot"
+            ],
+            "q_text": [
+                {
+                    "id": "viz_preference_overall0"
+                }
+            ]
+        },
+        {
+            "questiontype": "multi_field",
+            "instructions": "Why did you prefer your selected choice of visualization?",
+            "id": "data_viz_preference_text",
+            "required": true
+        }
+    ]
+}

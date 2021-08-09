@@ -1,0 +1,12 @@
+{
+    "name": "chord-study",
+    "version": "1.0.0",
+    "description": "BOF study",
+    "main": "run.py",
+    "scripts": {
+        "start": "nodemon --exec python3 run_demo.py",
+        "start-public": "nodemon --exec python3 run_public.py"
+    },
+    "author": "",
+    "license": "MIT"
+}

@@ -1,0 +1,52 @@
+svg {
+    width: 650px;
+    margin: 10px auto;
+}
+
+.content {
+    width: auto !important;
+}
+
+@keyframes flash-fill {
+    0% {
+        fill: rgb(78, 121, 167);
+    }
+    50% {
+        fill: wheat;
+    }
+    100% {
+        fill: rgb(78, 121, 167);
+    }
+}
+
+@keyframes flash-stroke {
+    0% {
+        stroke: rgb(78, 121, 167);
+    }
+    50% {
+        stroke: wheat;
+    }
+    100% {
+        stroke: rgb(78, 121, 167);
+    }
+}
+
+.chord path.animate {
+    animation-name: flash-fill;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.sankey path.animate {
+    animation-name: flash-stroke;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+#question-label {
+    font-size: 17px;
+}
+
+.form-check-label {
+    font-size: 17px;
+}
