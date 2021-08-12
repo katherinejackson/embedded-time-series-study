@@ -188,6 +188,7 @@ function logResponse(chartType, questionType, dataType) {
 window.options = {
     view: 'MAP',
     shape: 1,
+    encoding: 2,
 }
 
 

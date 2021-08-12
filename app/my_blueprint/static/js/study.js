@@ -209,7 +209,8 @@ function balancedLatinSquare(array, participantId) {
 
 window.options = {
     view: 'SCATTER',
-    shape: 1,
+    shape: 2,
+    encoding: 2,
 }
 
 
