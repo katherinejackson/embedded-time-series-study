@@ -1,0 +1,56 @@
+{
+    "title": "Scatter Plot Questions",
+    "instructions": "Please answer the following questions.",
+    "code": "<style>.evenRow>td:nth-child(1) {width: 0.5% !important;} #q_s>.question:nth-child(1)>div {height: 500px;background-size: 500px;background-repeat: no-repeat;background-position: center;background-image: url(../my_blueprint/images/both.png);}</style>",
+    "questions": [
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Which country experienced the highest number of new COVID cases per day in 2020?",
+            "id": "1",
+            "labels": [
+                "USA",
+                "India",
+                "China",
+                "Brazil"
+            ],
+            "q_text": [
+                {
+                    "id": "1"
+                }
+            ]
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "Approximately how many days did USA have >100,000 new COVID cases?",
+            "id": "1",
+            "labels": [
+                "5 days",
+                "30 days",
+                "60 days",
+                "90 days"
+            ],
+            "q_text": [
+                {
+                    "id": "1"
+                }
+            ]
+        },
+        {
+            "questiontype": "radiogrid",
+            "instructions": "What month did Ethopia experience its first case of COVID",
+            "id": "1",
+            "labels": [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May"
+            ],
+            "q_text": [
+                {
+                    "id": "1"
+                }
+            ]
+        }
+    ]
+}
