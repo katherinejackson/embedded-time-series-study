@@ -1,5 +1,6 @@
 function getCond() {
-    return document.getElementById('cond').innerHTML.trim();
+    return 1
+    // return document.getElementById('cond').innerHTML.trim();
 };
 
 function getParticipant() {

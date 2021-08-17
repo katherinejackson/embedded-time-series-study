@@ -1,20 +1,19 @@
 var trialStartTime;
 // Get the list of datasets that we will be running the user through
-var data_list = ['sample'];
+var data_list = ['practice'];
 // First get the condition 
 var condition = getCond();
 // Then get the corresponding map based on the condition 
 var condition_set = condition_map[condition];
 
 // Create a question set based on the condition 
-//  for example if a user has condition ['chord-A','sankey-B'] ,
-//  then their question set becomes ['chord-A-phone','sankey-B-phone','chord-A-space','sankey-B-space','chord-A-immigration','sankey-B-immigration','chord-A-debt','sankey-B-debt'];
 var question_map = [];
-data_list.map((d) => {
-    condition_set.map((c) => {
-        question_map.push(c + '-' + d);
+condition_set.map((c) => {
+    data_list.map((d) => {
+        question_map.push(d + '-' + c);
     });
 });
+
 // Set the Chart Iterator to zero
 var currentIndex = 0;
 // Set the Question Iterator to zero
@@ -36,30 +35,24 @@ $('#study-intro button.next').click(() => {
     intializeChart();
 });
 
+// initializeQuestionSet();
+
 
 function intializeChart() {
     // Based on the chartType of the user condition show the corresponding intro 
     let value = question_map[currentIndex];
-    let [chartType, questionType, dataType] = value.split('-');
+    let [questionType, chartType] = value.split('-');
+    // window.options['view'] = chartType
     $('#' + chartType + '-intro').show();
-    // Also show the chart 
-    if (chartType == 'chord') { createChord(dataType) }
-    else { createSankey(dataType) }
-
-    // Blink the Chord A to Chord B demo link 
-    $('.Country-A-Country-B').addClass('animate');
 
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
     $('#' + chartType + '-intro button.next').click(() => {
 
-        // Hide the demo blinking 
-        $('.Country-A-Country-B').removeClass('animate');
-
         // Based on the chartType of the user condition hide the corresponding intro 
         let value = question_map[currentIndex];
-        let [chartType, questionType, dataType] = value.split('-');
+        let [questionType, chartType] = value.split('-');
         $('#' + chartType + '-intro').hide();
         // When the next button is clicked after reading the chart intro 
         // hide the chart intro and then start showing the questions
@@ -74,12 +67,11 @@ function initializeQuestionSet() {
 }
 
 
-
 function showQuestion() {
     // Based on the chartType of the user condition get the question set 
     let value = question_map[currentIndex];
-    let [chartType, questionType, dataType] = value.split('-');
-    let question_set = studyQuestions[questionType + '-' + dataType];
+    let [questionType, chartType] = value.split('-');
+    let question_set = studyQuestions[questionType + '-' + chartType];
 
     // Show the questionBox 
     $('#question-box').show();
@@ -113,15 +105,15 @@ function showQuestion() {
         if (!button_clicked) {
             // validate the answer by getting the question set
             let value = question_map[currentIndex];
-            let [chartType, questionType, dataType] = value.split('-');
-            let question_set = studyQuestions[questionType + '-' + dataType];
+            let [questionType, chartType] = value.split('-');
+            let question_set = studyQuestions[questionType + '-' + chartType];
 
             let correct_answer = question_set[question_index].answer,
                 user_answer = $('input[name="answer-radio"]:checked').val();
 
             if (correct_answer == user_answer) {
                 button_clicked = true;
-                logResponse(chartType, questionType, dataType);
+                logResponse(chartType, questionType);
             }
             else {
                 wrong_count += 1;
@@ -134,7 +126,7 @@ function showQuestion() {
 }
 
 
-function logResponse(chartType, questionType, dataType) {
+function logResponse(chartType, questionType, dataType=null) {
 
     var endTime = new Date();
 
@@ -154,13 +146,13 @@ function logResponse(chartType, questionType, dataType) {
     };
 
     $.post("#", trialResult).then(function () {
-
+        let question_set = studyQuestions[questionType + '-' + chartType]
         // reset
         wrong_count = 0;
         button_clicked = false;
 
         // then go to next question
-        if (question_index < 4) {
+        if (question_index < question_set.length - 1) {
             // increment question index
             question_index += 1;
             // increment overall question index
@@ -190,8 +182,3 @@ window.options = {
     shape: 1,
     encoding: 2,
 }
-
-
-$('#nextButton').click(() => {
-    window.location.href = "/redirect_next_page";
-});
