@@ -9,7 +9,7 @@ var condition_set_value = condition_map[condition][+block - 1];
 window.options = {
     view: condition_set_value,
     shape: study_mode_map[study_mode].shape,
-    encoding: study_mode_map[study_mode].shape,
+    encoding: study_mode_map[study_mode].encoding,
 };
 
 // Create a question set based on the condition 
