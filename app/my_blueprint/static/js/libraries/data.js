@@ -6,7 +6,7 @@
 // 5) row(yaxis)
 // 6) row(color, yaxis)
 
-var study_mode = 'spiral_color';
+var study_mode = 'spiral_color_yaxis';
 
 var study_mode_map = {
     'spiral_yaxis': { 'shape': 1, 'encoding': 1 },
