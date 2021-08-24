@@ -1,60 +1,97 @@
-var global_names = {
-    'sample': ["Country-A", "Country-B", "Country-C", "Country-D"],
-    'immigration': ["Africa", "East-Asia", "Europe", "Latin-America", "North-America", "Oceania", "South-Asia", "South-East-Asia", "Soviet-Union", "West-Asia"],
-    'phone': ["Apple", "HTC", "Huawei", "LG", "Nokia", "Samsung", "Sony", "Other"],
-    'debt': ["France", "Britain", "Greece", "Italy", "Portugal", "USA", "Germany", "Ireland", "Japan", "Spain"],
-    'space': ["Space-Angels", "Accion-Systems", "Analytical-Space", "Isotropic-Systems", "Leo-Labs", "Made-in-Space", "Planet", "SpaceX", "Hempisphere-Ventures", "Akash-Systems", "Lynk", "DCVC", "RRE-Ventures", "Lux-Capital", "Marcbell", "Founders-Fund"]
+// We have six study modes 
+// 1) spiral(color)
+// 2) spiral(yaxis)
+// 3) spiral(color,yaxis)
+// 4) row(color)
+// 5) row(yaxis)
+// 6) row(color, yaxis)
+
+var study_mode = 'spiral_yaxis';
+
+var study_mode_map = {
+    'spiral_yaxis': { 'shape': 1, 'encoding': 1 },
+    'spiral_color': { 'shape': 1, 'encoding': 2 },
+    'spiral_color_yaxis': { 'shape': 1, 'encoding': 3 },
+    'row_yaxis': { 'shape': 2, 'encoding': 1 },
+    'row_color': { 'shape': 2, 'encoding': 2 },
+    'row_color_yaxis': { 'shape': 2, 'encoding': 3 }
 };
 
-var global_data = {
-    'sample': [[0, 2, 1, 4], [1, 0, 2, 1], [2, 0.5, 0, 0.5], [1, 3, 0.25, 0]],
-    'immigration': [[3.142471, 0, 2.107883, 0, 0.540887, 0.155988, 0, 0, 0, 0.673004], [0, 1.630997, 0.601265, 0, 0.97306, 0.333608, 0, 0.380388, 0, 0.869311], [0, 0, 2.401476, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1.762587, 0.879198, 3.627847, 0, 0, 0, 0, 0], [0, 0, 1.215929, 0.276908, 0, 0, 0, 0, 0, 0], [0, 0, 0.17037, 0, 0, 0.190706, 0, 0, 0, 0], [0, 0.525881, 1.390272, 0, 1.508008, 0.34742, 1.307907, 0, 0, 4.902081], [0, 0.145264, 0.468762, 0, 1.057904, 0.278746, 0, 0.781316, 0, 0], [0, 0, 0.60923, 0, 0, 0, 0, 0, 1.870501, 0], [0, 0, 0.449623, 0, 0.169274, 0, 0, 0, 0, 0.927243]],
-    'phone': [[9.6899, 0.1107, 0.0554, 0.0554, 0.2215, 1.1628, 0.0554, 0.2215], [0.8859, 1.8272, 0.2769, 0.1107, 0.443, 2.6024, 0.4983, 0.7198], [0.0554, 0, 0.2215, 0.0554, 0, 0, 0, 0], [0.443, 0.4983, 0.2215, 1.2182, 0.2769, 1.3843, 0.3322, 0.3322], [2.5471, 1.1074, 0.3876, 1.1628, 10.4097, 8.7486, 0.443, 1.6611], [2.4363, 1.052, 0.8306, 0.6645, 1.2182, 16.8328, 0.8859, 1.495], [0.5537, 0.2215, 0.0554, 0.4983, 0.4983, 1.7165, 1.7719, 0.1107], [2.5471, 0.4983, 0.3322, 1.052, 2.8239, 5.5925, 0.443, 5.4264]],
-    'debt': [[0, 22.4, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 321, 12, 28.2, 326], [53.9, 0.55, 0, 3.22, 10.1, 3.1, 19.3, 0.34, 1.37, 0.78], [366, 26, 0, 0, 0, 3.16, 0, 0, 38.8, 9.79], [18.3, 19.4, 0, 0.87, 0, 0, 32.5, 0, 2.18, 62], [322, 345, 0, 0, 0.52, 0, 324, 0, 796, 163], [53.8, 0, 0, 111, 0, 0, 0, 0, 88.5, 0], [17.3, 0, 0, 2.83, 3.77, 11.1, 48.9, 0, 18.9, 0], [7.73, 0, 0, 0, 0, 0, 0, 0, 0, 0], [118, 0, 0, 0, 0, 0, 57.6, 6.38, 25.9, 0]],
-    'space': [[0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0]]
-};
 
 var data_intro = {
-    'immigration-chord': 'This chart shows the global bilateral flow of immigration between 1960 and 2015. The direction of the arrow in each link indicates the flow of immigration from origin to destination.',
-    'immigration-sankey': 'This chart shows the global bilateral flow of immigration between 1960 and 2015. The direction of the flow of immigration from origin to destination is from left to right.',
-    'phone-chord': 'This chart visualizes the responses of a mobile phone survey in Netherlands in 2000. Respondents gave information about the brands of their current and previous phones. The links in the chord diagram represent the share of users switching between different brands. The arrow on the link indicates the direction of switching (from previous phone brand to current brand).',
-    'phone-sankey': 'This chart visualizes the responses of a mobile phone survey in Netherlands in 2000. Respondents gave information about the brands of their current and previous phones. The previous phone brands are on the left and the current phone brands are on the right. The links from left to right represent the share of switching between the different phone brands.',
-    'debt-chord': 'This chart visualizes the debt crisis that started in 2009. The links in the chord diagram represent the debt owed between the different countries. The direction of the arrow of the link point from the country that has borrowed the money towards the country that it owes its debt to.',
-    'debt-sankey': 'This chart visualizes the debt crisis that started in 2009. The flow of links from left to right indicates the flow of debt such that the country on the left owes money to the country on the right.',
-    'space-chord': 'This chart visualizes the flow of investments among companies that are pioneering in space research. The links represent investment either received or given by a company. The direction of the arrow the of the link points from the funder company that has invested the money towards the company that it has invested in.',
-    'space-sankey': 'This chart visualizes the flow of investments among companies that are pioneering in space research. The funder companies on the left have invested in the companies on the right and the links represent their investment',
+    'MAP': 'This is a map based visualization showing temperature data.',
+    'SCATTER': 'This is a scatter plot style visualization showing COVID data.'
+};
+
+var study_map_intro = {
+    'spiral_yaxis': 'Each individual visualization here is a circular sparkline, you can hover over it to to see the name of the corresponding datapoint.',
+    'spiral_color': 'Each individual visualization here is a circular plot that uses a color map to distinugish patterns in the dataset, you can hover over it to to see the name of the corresponding datapoint.',
+    'spiral_color_yaxis': 'Each individual visualization here is a circular plot that uses both a color map and yaxis position to highlight patterns in the dataset, you can hover over it to to see the name of the corresponding datapoint.',
+    'row_yaxis': 'Each individual visualization here is a a horizontal sparkline, you can hover over it to to see the name of the corresponding datapoint.',
+    'row_color': 'Each individual visualization here is a horizontal plot that uses a color map to distinugish patterns in the dataset, you can hover over it to to see the name of the corresponding datapoint.',
+    'row_color_yaxis': 'Each individual visualization here is a horizontal plot that uses both a color map and yaxis positions to highlight patterns in the dataset, you can hover over it to to see the name of the corresponding datapoint.'
 };
 
 var condition_map = {
     '1': ['MAP', 'SCATTER'],
-    '2': ['SCATTER', 'MAP'],
+    '2': ['SCATTER', 'MAP']
 };
 
 var studyQuestions = {
     'practice-MAP': [{
-        "questionType": "existence",
+        "type": "multichoice",
+        "label": "Is this a map?",
+        "choices": ["Yes", "No"],
+        "answer": 'Yes'
+    },
+    {
+        "type": "click",
+        "label": "Click on the city that has the most extreme temperature in the summer?",
+        "answer": 'Yes'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many days below < -30 degrees C did Talkeeta experience?",
+        "choices": ["0", "<5", "<10", "10+"],
+        "answer": '0'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many  days >25 did Wasilla experience?",
+        "choices": ["0", "5", "10", "15"],
+        "answer": '0'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many  days >25 did Wasilla experience?",
+        "choices": ["0", "5", "10", "15"],
+        "answer": '0'
+    }],
+    'practice-SCATTER': [{
+        "type": "click",
+        "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
+        "answer": 'Yes'
+    }, {
+        "type": "multichoice",
+        "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
+        "choices": ["USA", "India", "China", "Brazil"],
+        "answer": 'USA'
+    },
+    {
+        "type": "multichoice",
+        "label": "Approximately how many days did USA have >100,000 new COVID cases?",
+        "choices": ["5 days", "30 days", "60 days", "90 days"],
+        "answer": '5 days'
+    }],
+    'study-MAP': [{
+        "type": "multichoice",
         "label": "Is this a map?",
         "choices": ["Yes", "No"],
         "answer": 'Yes'
     }],
-
-    'study-MAP': [{
-        "questionType": "existence",
-        "label": "Is there a link from East Asia to South Asia?",
-        "choices": ["Yes", "No"],
-        "answer": 'No'
-    }],
-
-    'practice-SCATTER': [{
-        "questionType": "existence",
-        "label": "Does the chart show any users switching from Samsung to HTC?",
-        "choices": ["Yes", "No"],
-        "answer": 'Yes'
-    }],
-
     'study-SCATTER': [{
-        "questionType": "existence",
-        "label": "Does Greece owe money to Portugal?",
+        "type": "multichoice",
+        "label": "Is this a scatter plot?",
         "choices": ["Yes", "No"],
         "answer": 'Yes'
     }],

@@ -1,2 +1,2 @@
 # embedded-time-series-study
-Study on embedded time series glyphs
+Study on time series glyphs
