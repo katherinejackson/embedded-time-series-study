@@ -29,9 +29,17 @@ var button_clicked = false;
 
 
 // Study intro is shown by default so wait for the user to click next 
-$('#study-intro button.next').click(() => {
+$('#begin-button').click(() => {
     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
     $('#study-intro').hide();
+    // intializeChart();
+    showShapeDescription();
+});
+
+// Study intro is shown by default so wait for the user to click next 
+$('#start-practice').click(() => {
+    // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
+    $('#shape-description').hide();
     intializeChart();
 });
 
@@ -39,7 +47,7 @@ $('#study-intro button.next').click(() => {
 function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html(data_intro[condition_set_value] + '\n\n' + study_map_intro[study_mode] + '\n\n' + ' You will now be asked 4 questions that you have to answer using the visualization. Please try to answer them as quickly and accurately as possible. Click the button below to start.');
+    $('#description').html(data_intro[condition_set_value] + '\n\n' + '\n\n' + ' You will now be asked 4 questions that you have to answer using the visualization. Please try to answer them as quickly and accurately as possible. Click the button below to start.');
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
@@ -50,6 +58,48 @@ function intializeChart() {
     });
 }
 
+function showShapeDescription() {
+    $('#shape-description').css({ 'visibility': 'visible' });
+    $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
+    $('#legend-description').html( getLegendDescription(condition_set_value) + ' You will be able to refer back to these legends while completing the activity.');
+    document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${study_mode}.png`
+    document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${study_mode}.png`
+}
+
+function getShapeDescription(view, glyph) {
+    const encodings = {
+            'spiral_yaxis': 'distance from the dot to the center of the spiral',
+            'spiral_color': 'color of the line',
+            'spiral_color_yaxis': 'colour of the dot and the distance from the dot from the zero line',
+            'row_yaxis': 'height of the dot',
+            'row_color': 'colour of the line',
+            'row_color_yaxis': 'colour and height of the dot'
+
+    }
+    const data = view === 'MAP' ? 'average temperature of' : 'number of new cases of COVID documented'
+    const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+
+    let string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
+
+    if (glyph.includes('spiral')) {
+        string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
+    }
+
+    if (glyph.includes('row') || glyph === 'spiral_color') {
+        string += ' Missing or no data is represented using a grey line.'
+    }
+
+
+    return string
+}
+
+function getLegendDescription(view) {
+    const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
+
+    let string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
+
+    return string
+}
 
 function showQuestion() {
     // Based on the chartType of the user condition get the question set 
