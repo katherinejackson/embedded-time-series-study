@@ -10,6 +10,7 @@ window.options = {
     view: condition_set_value,
     shape: study_mode_map[study_mode].shape,
     encoding: study_mode_map[study_mode].encoding,
+    practice: true,
 };
 
 // Create a question set based on the condition 
