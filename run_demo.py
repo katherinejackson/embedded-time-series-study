@@ -1,6 +1,7 @@
 import os
 from BOFS.create_app import create_app
 
+# testing
 path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "app")
 app = create_app(path, 'minimal.cfg')
 
