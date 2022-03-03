@@ -17,4 +17,5 @@ def create(db):
         hoverCount = db.Column(db.String)
         zoomLevel = db.Column(db.String)
         questionNumber = db.Column(db.String)
+        #color = db.Column(db.String)
     return timemap

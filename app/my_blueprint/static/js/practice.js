@@ -3,8 +3,9 @@ var trialStartTime;
 var condition = getCond();
 // Then get the block 
 var block = getBlock();
-// Then get the corresponding map based on the condition 
-var condition_set_value = condition_map[condition][+block - 1];
+// Then get the corresponding map based on the condition
+var condition_set_value = condition_map[1][2];
+//var condition_set_value = condition_map[condition][+block - 1];
 // Populate the study chart conditions
 window.options = {
     view: condition_set_value,

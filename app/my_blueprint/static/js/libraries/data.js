@@ -71,8 +71,12 @@ var study_map_intro = {
 };
 
 var condition_map = {
-    '1': ['MAP', 'SCATTER'],
-    '2': ['SCATTER', 'MAP']
+    '1': ['MAP', 'SCATTER', 'MIGRATION_GRAPH'],
+    '2': ['MAP', 'MIGRATION_GRAPH', 'SCATTER'],
+    '3': ['MIGRATION_GRAPH', 'MAP', 'SCATTER'],
+    '4': ['MIGRATION_GRAPH', 'SCATTER', 'MAP'],
+    '5': ['SCATTER', 'MIGRATION_GRAPH', 'MAP'],
+    '6': ['SCATTER', 'MAP', 'MIGRATION_GRAPH']
 };
 
 var studyQuestions = {
@@ -132,5 +136,34 @@ var studyQuestions = {
         "label": "Is this a scatter plot?",
         "choices": ["Yes", "No"],
         "answer": 'Yes'
+    }],
+    'practice-MIGRATION_GRAPH': [{
+        "type": "multichoice",
+        "label": "Is this a map?",
+        "choices": ["Yes", "No"],
+        "answer": 'Yes'
+    },
+    {
+        "type": "click",
+        "label": "Click on the city that has the most extreme temperature in the summer?",
+        "answer": 'Yes'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many days below < -30 degrees C did Talkeeta experience?",
+        "choices": ["0", "<5", "<10", "10+"],
+        "answer": '0'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many  days >25 did Wasilla experience?",
+        "choices": ["0", "5", "10", "15"],
+        "answer": '0'
+    },
+    {
+        "type": "multichoice",
+        "label": "How many  days >25 did Wasilla experience?",
+        "choices": ["0", "5", "10", "15"],
+        "answer": '0'
     }],
 };

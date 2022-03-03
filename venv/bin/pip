@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/Users/norahr/Desktop/embedded-time-series-study 2/embedded-time-series-study/venv/bin/python" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from pip._internal.cli.main import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
