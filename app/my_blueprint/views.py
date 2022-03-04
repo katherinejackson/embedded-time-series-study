@@ -61,6 +61,31 @@ def practice_2_results():
         db.session.commit()
     return render_template("practice_2.html", example="This is example text.")
 
+# practice page
+@my_blueprint.route("/practice_3", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def practice_3_results():
+    if request.method == 'POST':
+        log = db.timemap()
+        log.participantID = session['participantID']
+        log.trialStart = request.form['trialStart']
+        log.trialEnd = request.form['trialEnd']
+        log.trialTime = request.form['trialTime']
+        log.mode = 'practice'
+        log.view = request.form['view']
+        log.shape = request.form['shape']
+        log.encoding = request.form['encoding']
+        log.Condition = request.form['Condition']
+        log.QuestionType = request.form['questionType']
+        log.ErrorCount = request.form['ErrorCount']
+        log.hoverCount = request.form['hoverCount']
+        log.zoomLevel = request.form['zoomLevel']
+        log.questionNumber=request.form['questionNumber']
+        db.session.add(log)
+        db.session.commit()
+    return render_template("practice_3.html", example="This is example text.")
+
 # study page
 @my_blueprint.route("/study_1", methods=['POST', 'GET'])
 @verify_correct_page
@@ -111,6 +136,31 @@ def study_2_results():
         db.session.add(log)
         db.session.commit()
     return render_template("study_2.html", example="This is example text.")
+
+# study page
+@my_blueprint.route("/study_3", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def study_3_results():
+    if request.method == 'POST':
+        log = db.timemap()
+        log.participantID = session['participantID']
+        log.trialStart = request.form['trialStart']
+        log.trialEnd = request.form['trialEnd']
+        log.trialTime = request.form['trialTime']
+        log.mode = 'study'
+        log.view = request.form['view']
+        log.shape = request.form['shape']
+        log.encoding = request.form['encoding']
+        log.Condition = request.form['Condition']
+        log.QuestionType = request.form['questionType']
+        log.ErrorCount = request.form['ErrorCount']
+        log.hoverCount = request.form['hoverCount']
+        log.zoomLevel = request.form['zoomLevel']
+        log.questionNumber=request.form['questionNumber']
+        db.session.add(log)
+        db.session.commit()
+    return render_template("study_3.html", example="This is example text.")
 
 
 # debrief

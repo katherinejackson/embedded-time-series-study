@@ -20,7 +20,8 @@ var study_mode_map = {
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represnted on the map.  Hover to view the name of the city.',
-    'SCATTER': 'This daily cases of COVID are represented on the scatter plot.  Hover to view the name of the country.'
+    'SCATTER': 'This daily cases of COVID are represented on the scatter plot.  Hover to view the name of the country.',
+    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. Hover to view the migration path.'
 };
 
 var shape_description = {
@@ -40,6 +41,14 @@ var shape_description = {
         'row_color': 'The above image is an example of the type of visualizations you will be looking at. Every line represents a different day in the year, and the average temperature of that day is represented by the colour of the line.',
         'row_color_yaxis': ''
     },
+    MIGRATION_GRAPH: {
+        'spiral_yaxis': '',
+        'spiral_color': '',
+        'spiral_color_yaxis': '',
+        'row_yaxis': '',
+        'row_color': '',
+        'row_color_yaxis': ''
+    }
 };
 
 var legend_description = {
@@ -59,6 +68,14 @@ var legend_description = {
         'row_color': 'The above image is an example of the type of visualizations you will be looking at. Every line represents a different day in the year, and the average temperature of that day is represented by the colour of the line.',
         'row_color_yaxis': ''
     },
+    MIGRATION_GRAPH: {
+        'spiral_yaxis': '',
+        'spiral_color': '',
+        'spiral_color_yaxis': '',
+        'row_yaxis': '',
+        'row_color': '',
+        'row_color_yaxis': ''
+    }
 };
 
 var study_map_intro = {
@@ -72,11 +89,17 @@ var study_map_intro = {
 
 var condition_map = {
     '1': ['MAP', 'SCATTER', 'MIGRATION_GRAPH'],
-    '2': ['MAP', 'MIGRATION_GRAPH', 'SCATTER'],
+    '2': ['SCATTER', 'MIGRATION_GRAPH', 'MAP'],
     '3': ['MIGRATION_GRAPH', 'MAP', 'SCATTER'],
-    '4': ['MIGRATION_GRAPH', 'SCATTER', 'MAP'],
-    '5': ['SCATTER', 'MIGRATION_GRAPH', 'MAP'],
-    '6': ['SCATTER', 'MAP', 'MIGRATION_GRAPH']
+
+
+
+    // '1': ['MAP', 'SCATTER', 'MIGRATION_GRAPH'],
+    // '2': ['MAP', 'MIGRATION_GRAPH', 'SCATTER'],
+    // '3': ['MIGRATION_GRAPH', 'MAP', 'SCATTER'],
+    // '4': ['MIGRATION_GRAPH', 'SCATTER', 'MAP'],
+    // '5': ['SCATTER', 'MIGRATION_GRAPH', 'MAP'],
+    // '6': ['SCATTER', 'MAP', 'MIGRATION_GRAPH']
 };
 
 var studyQuestions = {
