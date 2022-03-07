@@ -48,6 +48,20 @@
             "min": 0,
             "max": 100,
             "id": "visTime"
+        },
+
+        {
+            "questiontype": "drop_down",
+            "instructions": "[UNDER CONSTRUCTION] What is your experience with time-series visualizations?",
+            "id": "timeSeriesExperience",
+            "dropheight": 104,
+            "items": [
+                "No experience",
+                "Some experience",
+                "Moderate experience",
+                "A lot of experience"
+            ]
+
         }
     ]
 }

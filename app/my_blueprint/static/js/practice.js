@@ -77,28 +77,52 @@ function getShapeDescription(view, glyph) {
             'row_color_yaxis': 'colour and height of the dot'
 
     }
-    const data = view === 'MAP' ? 'average temperature of' : 'number of new cases of COVID documented'
+
+    //const data = view === 'MAP' ? 'average temperature of' : 'number of new cases of COVID documented'
+    let data = ''
+    if (view === 'MAP') data = 'average temperature of'
+    else if (view === 'SCATTER') data = 'number of new cases of COVID documented'
+    else if (view === 'MIGRATION_GRAPH') data = 'number of global migrants'
+
     const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
 
-    let string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
-
-    if (glyph.includes('spiral')) {
-        string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
+    let string = ''
+    if (view === 'MIGRATION_GRAPH') {
+        string = `Every ${shape} represents a different year ranging from 1980 to 2020, and the ${data} that year is represented by the ${encodings[glyph]}.`
+        if (glyph.includes('spiral')) {
+            string += ' The progression of years reads like a clock, with 1980 beginning at the top and the year progressing clockwise.'
+        }
+    }
+    else {
+        string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
+        if (glyph.includes('spiral')) {
+            string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
+        }
     }
 
     if (glyph.includes('row') || glyph === 'spiral_color') {
         string += ' Missing or no data is represented using a grey line.'
     }
 
-
     return string
 }
 
 function getLegendDescription(view) {
-    const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
+    //const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
+    
+    let data = ''
+    if (view === 'MAP') data = 'temperature range of the city'
+    else if (view === 'SCATTER') data = 'range in number of new COVID cases documented that day in the specified country'
+    else if (view === 'MIGRATION_GRAPH') data = 'range in number of migrants moving between those specific countries'
 
-    let string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
-
+    let string = ''
+    if (view === 'MIGRATION_GRAPH') {
+        string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`
+    }
+    else {
+        string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
+    }
+    
     return string
 }
 

@@ -7,7 +7,7 @@
             "instructions": "Mental Demand<div style='font-weight: normal;'>How much mental and perceptual activity was required (e.g., thinking, deciding, calculating, remembering, looking, searching, etc.)? Was the task easy or demanding?</div>",
             "id": "mental",
             "shuffle": "true",
-            "labels": ["Easy", "", "", "", "", "", "Demanding"],
+            "labels": ["Not demanding", "", "", "", "", "", "Very demanding"],
             "q_text": [{
                 "id": "mental01",
                 "text": ""
@@ -18,7 +18,7 @@
             "instructions": "Physical Demand<div style='font-weight: normal;'>How much physical activity was required (e.g., pushing, pulling, turning, controlling, activating, etc.)? Was the task easy and restful or demanding and laborious?</div>",
             "id": "physical",
             "shuffle": "true",
-            "labels": ["Easy", "", "", "", "", "", "Demanding"],
+            "labels": ["Not demanding", "", "", "", "", "", "Very demanding"],
             "q_text": [{
                 "id": "physical01",
                 "text": ""
@@ -29,7 +29,7 @@
             "instructions": "Temporal Demand<div style='font-weight: normal;'>How much time pressure did you feel due to the rate at which the task elements occurred? Was the pace slow and leisurely or rapid and frantic?</div>",
             "id": "temporal",
             "shuffle": "true",
-            "labels": ["Slow", "", "", "", "", "", "Rapid"],
+            "labels": ["Not demanding", "", "", "", "", "", "Very demanding"],
             "q_text": [{
                 "id": "temporal01",
                 "text": ""

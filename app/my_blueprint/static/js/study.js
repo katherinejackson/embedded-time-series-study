@@ -179,8 +179,13 @@ function logResponse(question_type = '') {
                 // go to next phase on the study
                 window.location.href = "/redirect_next_page";
             }
-            else {
+            else if (block == 2) {
                 alert('The second part of the study is now complete. You will now be asked some questions about your experience during this part.');
+                // go to next phase on the study
+                window.location.href = "/redirect_next_page";
+            }
+            else {
+                alert('The third part of the study is now complete. You will now be asked some questions about your experience during this part.');
                 // go to next phase on the study
                 window.location.href = "/redirect_next_page";
             }

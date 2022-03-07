@@ -148,6 +148,23 @@ var studyQuestions = {
         "choices": ["5 days", "30 days", "60 days", "90 days"],
         "answer": '5 days'
     }],
+    'practice-MIGRATION_GRAPH': [{
+        "type": "click",
+        "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
+        "answer": 'Yes'
+    }, {
+        "type": "multichoice",
+        "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
+        "choices": ["USA", "India", "China", "Brazil"],
+        "answer": 'USA'
+    },
+    {
+        "type": "multichoice",
+        "label": "Approximately how many days did USA have >100,000 new COVID cases?",
+        "choices": ["5 days", "30 days", "60 days", "90 days"],
+        "answer": '5 days'
+    }],
+
     'study-MAP': [{
         "type": "multichoice",
         "label": "Is this a map?",
@@ -160,33 +177,11 @@ var studyQuestions = {
         "choices": ["Yes", "No"],
         "answer": 'Yes'
     }],
-    'practice-MIGRATION_GRAPH': [{
+    'study-MIGRATION_GRAPH': [{
         "type": "multichoice",
-        "label": "Is this a map?",
+        "label": "Is this a scatter plot?",
         "choices": ["Yes", "No"],
         "answer": 'Yes'
-    },
-    {
-        "type": "click",
-        "label": "Click on the city that has the most extreme temperature in the summer?",
-        "answer": 'Yes'
-    },
-    {
-        "type": "multichoice",
-        "label": "How many days below < -30 degrees C did Talkeeta experience?",
-        "choices": ["0", "<5", "<10", "10+"],
-        "answer": '0'
-    },
-    {
-        "type": "multichoice",
-        "label": "How many  days >25 did Wasilla experience?",
-        "choices": ["0", "5", "10", "15"],
-        "answer": '0'
-    },
-    {
-        "type": "multichoice",
-        "label": "How many  days >25 did Wasilla experience?",
-        "choices": ["0", "5", "10", "15"],
-        "answer": '0'
     }],
+
 };
