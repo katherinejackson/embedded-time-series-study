@@ -50,17 +50,13 @@
             "id": "visTime"
         },
         {
-            "questiontype": "drop_down",
-            "instructions": "[UNDER CONSTRUCTION] What is your experience with time-series visualizations?",
+            "questiontype": "field",
+            "instructions": "How many hours per month, in an average month, do you work with time-series visualizations (e.g., charts that show values over time)?",
             "id": "timeSeriesExperience",
-            "dropheight": 104,
-            "items": [
-                "No experience",
-                "Some experience",
-                "Moderate experience",
-                "A lot of experience"
-            ]
-
+            "decimals": 0,
+            "width": 60,
+            "min": 0,
+            "max": 100
         }
 
 

@@ -61,47 +61,130 @@ function intializeChart() {
 
 function showShapeDescription() {
     $('#shape-description').css({ 'visibility': 'visible' });
+    $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
     $('#legend-description').html( getLegendDescription(condition_set_value) + ' You will be able to refer back to these legends while completing the activity.');
     document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${study_mode}.png`
     document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${study_mode}.png`
 }
 
-function getShapeDescription(view, glyph) {
+// placeholder for when we add in the size aspect to the study and have to set img size
+function getExampleGlyphSize(size) {
+    let dim;
+    if (size === 'small') dim = 20
+    else if (size === 'medium') dim = 40
+    else dim = 60
+
+    return dim
+}
+
+function getVisualizationDescription(view, glyph) {
     const encodings = {
-            'spiral_yaxis': 'distance from the dot to the center of the spiral',
-            'spiral_color': 'color of the line',
-            'spiral_color_yaxis': 'colour of the dot and the distance from the dot from the zero line',
-            'row_yaxis': 'height of the dot',
-            'row_color': 'colour of the line',
-            'row_color_yaxis': 'colour and height of the dot'
+            'spiral_yaxis': 'spiral line',
+            'spiral_color': 'coloured spiral',
+            'spiral_color_yaxis': 'spiral coloured line',
+            'row_yaxis': 'line',
+            'row_color': 'coloured row',
+            'row_color_yaxis': 'coloured line'
 
     }
+
+    let visualization;
+    if (view === 'MAP') visualization = 'map'
+    else if (view === 'SCATTER') visualization = 'scatterplot'
+    else if (view === 'MIGRATION_GRAPH') visualization = 'graph'
+
+    let desc = ''
+    if (view === 'MAP') desc = 'temperatures over time for specific locations'
+    else if (view === 'SCATTER') desc = 'COVID cases over time for specific countries'
+    else if (view === 'MIGRATION_GRAPH') desc = 'migration data over time for specific countries'
+
+    string = `In the next screens you will see a ${visualization}. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}.`
+
+    return string
+}
+
+function getShapeDescription(view, glyph) {
+    // const encodings = {
+    //         'spiral_yaxis': 'distance from the dot to the center of the spiral',
+    //         'spiral_color': 'color of the line',
+    //         'spiral_color_yaxis': 'colour of the dot and the distance from the dot from the zero line',
+    //         'row_yaxis': 'height of the dot',
+    //         'row_color': 'colour of the line',
+    //         'row_color_yaxis': 'colour and height of the dot'
+    // }
+
+    const encodings = {
+        'spiral_yaxis': 'the distance from the dot to the center of the spiral',
+        'spiral_color': 'a color scale',
+        'spiral_color_yaxis': 'a colour scale and the distance from the dot from the zero line',
+        'row_yaxis': 'the height of the dot',
+        'row_color': 'a color scale',
+        'row_color_yaxis': 'a colour scale and height of the dot'
+}
+
+    const rowEncodings = ['row_yaxis', 'row_color', 'row_color_yaxis']
+    const spiralEncodings = ['spiral_yaxis', 'spiral_color', 'spiral_color_yaxis']
+    const colourEncodings = ['spiral_color', 'row_color']
+    const distanceEncodings = ['row_yaxis', 'spiral_yaxis']
+    const distanceAndColorEncodings = ['spiral_color_yaxis', 'row_color_yaxis']
 
     //const data = view === 'MAP' ? 'average temperature of' : 'number of new cases of COVID documented'
     let data = ''
-    if (view === 'MAP') data = 'average temperature of'
+    if (view === 'MAP') data = 'average daily temperature'
     else if (view === 'SCATTER') data = 'number of new cases of COVID documented'
     else if (view === 'MIGRATION_GRAPH') data = 'number of global migrants'
 
-    const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
-
-    let string = ''
+    let timePeriod = ''
+    let time = ''
+    let start = ''
     if (view === 'MIGRATION_GRAPH') {
-        string = `Every ${shape} represents a different year ranging from 1980 to 2020, and the ${data} that year is represented by the ${encodings[glyph]}.`
-        if (glyph.includes('spiral')) {
-            string += ' The progression of years reads like a clock, with 1980 beginning at the top and the year progressing clockwise.'
-        }
+        timePeriod = 'year ranging from 1980 to 2020'
+        time = 'year'
+        start = '1980'
     }
     else {
-        string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
-        if (glyph.includes('spiral')) {
-            string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
-        }
+        timePeriod = 'day'
+        time = 'day'
+        start = 'January'
     }
 
+    const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+
+    // let method = ''
+    // if (colourEncodings.includes(glyph)) method = 'colour'
+    // else if (distanceEncodings.includes(glyph)) method = ''
+    // else if (distanceAndColorEncodings.includes(glyph)) method = ''
+
+    let string = ''
+    if (glyph.includes('row')) {
+        string = `The chart shows a series of vertically positioned ${shape}s. `
+    }
+    else if (glyph.includes('spiral')) {
+        string = `The chart shows a series of ${shape}s extending outward from the centre. `
+    }
+
+    string += `Each ${shape} shows the ${data} for one ${timePeriod}, using ${encodings[glyph]}. `
+
+    if (glyph.includes('spiral')) string += `The progression of the ${time}s reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
+
+
+    // let string = ''
+    // if (view === 'MIGRATION_GRAPH') {
+    //     string = `Every ${shape} represents a different year ranging from 1980 to 2020, and the ${data} that year is represented by the ${encodings[glyph]}.`
+    //     if (glyph.includes('spiral')) {
+    //         string += ' The progression of years reads like a clock, with 1980 beginning at the top and the year progressing clockwise.'
+    //     }
+    // }
+    // else {
+    //     string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
+    //     if (glyph.includes('spiral')) {
+    //         string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
+    //     }
+    // }
+
     if (glyph.includes('row') || glyph === 'spiral_color') {
-        string += ' Missing or no data is represented using a grey line.'
+        string += 'Missing data is represented using a grey line. '
     }
 
     return string
