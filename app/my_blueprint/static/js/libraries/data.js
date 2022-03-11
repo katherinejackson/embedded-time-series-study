@@ -14,13 +14,37 @@ var study_mode_map = {
     'spiral_color_yaxis': { 'shape': 1, 'encoding': 3 },
     'row_yaxis': { 'shape': 2, 'encoding': 1 },
     'row_color': { 'shape': 2, 'encoding': 2 },
-    'row_color_yaxis': { 'shape': 2, 'encoding': 3 }
+    'row_color_yaxis': { 'shape': 2, 'encoding': 3 },
+
+    'spiral_yaxis_small': { 'shape': 1, 'encoding': 1, 'size': 'small' },
+    'spiral_yaxis_medium': { 'shape': 1, 'encoding': 1, 'size': 'medium' },
+    'spiral_yaxis_large': { 'shape': 1, 'encoding': 1, 'size': 'large' },
+
+    'spiral_color_small': { 'shape': 1, 'encoding': 2, 'size': 'small' },
+    'spiral_color_medium': { 'shape': 1, 'encoding': 2, 'size': 'medium' },
+    'spiral_color_large': { 'shape': 1, 'encoding': 2, 'size': 'large' },
+
+    'spiral_color_yaxis_small': { 'shape': 1, 'encoding': 3, 'size': 'small' },
+    'spiral_color_yaxis_medium': { 'shape': 1, 'encoding': 3, 'size': 'medium' },
+    'spiral_color_yaxis_large': { 'shape': 1, 'encoding': 3, 'size': 'large' },
+
+    'row_yaxis_small': { 'shape': 2, 'encoding': 1, 'size': 'small' },
+    'row_yaxis_medium': { 'shape': 2, 'encoding': 1, 'size': 'medium' },
+    'row_yaxis_large': { 'shape': 2, 'encoding': 1, 'size': 'large' },
+
+    'row_color_small': { 'shape': 2, 'encoding': 2, 'size': 'small' },
+    'row_color_medium': { 'shape': 2, 'encoding': 2, 'size': 'medium' },
+    'row_color_large': { 'shape': 2, 'encoding': 2, 'size': 'large' },
+
+    'row_color_yaxis_small': { 'shape': 2, 'encoding': 3, size: 'small' },
+    'row_color_yaxis_medium': { 'shape': 2, 'encoding': 3, size: 'medium' },
+    'row_color_yaxis_large': { 'shape': 2, 'encoding': 3, size: 'large' },
 };
 
 
 var data_intro = {
-    'MAP': 'The temperature data of different cities is represnted on the map.  Hover to view the name of the city.',
-    'SCATTER': 'This daily cases of COVID are represented on the scatter plot.  Hover to view the name of the country.',
+    'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
+    'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). Hover to view the name of the country.',
     'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. Hover to view the migration path.'
 };
 

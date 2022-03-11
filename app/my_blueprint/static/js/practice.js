@@ -63,7 +63,7 @@ function showShapeDescription() {
     $('#shape-description').css({ 'visibility': 'visible' });
     $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
-    $('#legend-description').html( getLegendDescription(condition_set_value) + ' You will be able to refer back to these legends while completing the activity.');
+    $('#legend-description').html( getLegendDescription(condition_set_value, study_mode) + ' You will be able to refer back to these legends while completing the activity.');
     document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${study_mode}.png`
     document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${study_mode}.png`
 }
@@ -133,7 +133,7 @@ function getShapeDescription(view, glyph) {
     let data = ''
     if (view === 'MAP') data = 'average daily temperature'
     else if (view === 'SCATTER') data = 'number of new cases of COVID documented'
-    else if (view === 'MIGRATION_GRAPH') data = 'number of global migrants'
+    else if (view === 'MIGRATION_GRAPH') data = 'number of people moving to the specified countries'
 
     let timePeriod = ''
     let time = ''
@@ -190,21 +190,43 @@ function getShapeDescription(view, glyph) {
     return string
 }
 
-function getLegendDescription(view) {
+function getLegendDescription(view, glyph) {
     //const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
-    
-    let data = ''
-    if (view === 'MAP') data = 'temperature range of the city'
-    else if (view === 'SCATTER') data = 'range in number of new COVID cases documented that day in the specified country'
-    else if (view === 'MIGRATION_GRAPH') data = 'range in number of migrants moving between those specific countries'
 
-    let string = ''
+    const point = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+
+    let data = ''
+    if (view === 'MAP') data = 'temperature range'
+    else if (view === 'SCATTER') data = 'range in number of new COVID cases'
+    else if (view === 'MIGRATION_GRAPH') data = 'range in number of migrants'
+
+    let timePeriod, time;
     if (view === 'MIGRATION_GRAPH') {
-        string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`
+        timePeriod = 'years'
+        time = 'yearly'
     }
     else {
-        string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
+        timePeriod = 'months'
+        time = 'daily'
     }
+
+    let shape = ''
+    if (glyph.includes('spiral')) shape = 'spiral'
+    else if (glyph.includes('row')) shape = 'row'
+
+    let method = ''
+    if (glyph.includes('color')) method = `color the ${time} ${point}s.`
+    else if (glyph.includes('yaxis')) method = `position the ${time} ${point}s`
+
+
+    let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}` 
+
+    // if (view === 'MIGRATION_GRAPH') {
+    //     string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`
+    // }
+    // else {
+    //     string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
+    // }
     
     return string
 }
