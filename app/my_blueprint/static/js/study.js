@@ -10,6 +10,7 @@ window.options = {
     view: condition_set_value,
     shape: study_mode_map[study_mode].shape,
     encoding: study_mode_map[study_mode].encoding,
+    size: study_mode_map[study_mode].size
 };
 
 // Create a question set based on the condition 
@@ -156,6 +157,7 @@ function logResponse(question_type = '') {
         view: window.options.view,
         shape: window.options.shape,
         encoding: window.options.encoding,
+        size: window.options.encoding,
         Condition: condition,
         questionType: question_type,
         ErrorCount: wrong_count,

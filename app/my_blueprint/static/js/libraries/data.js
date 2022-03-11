@@ -6,15 +6,14 @@
 // 5) row(yaxis)
 // 6) row(color, yaxis)
 
-var study_mode = 'spiral_color';
 
 var study_mode_map = {
-    'spiral_yaxis': { 'shape': 1, 'encoding': 1 },
-    'spiral_color': { 'shape': 1, 'encoding': 2 },
-    'spiral_color_yaxis': { 'shape': 1, 'encoding': 3 },
-    'row_yaxis': { 'shape': 2, 'encoding': 1 },
-    'row_color': { 'shape': 2, 'encoding': 2 },
-    'row_color_yaxis': { 'shape': 2, 'encoding': 3 },
+    // 'spiral_yaxis': { 'shape': 1, 'encoding': 1 },
+    // 'spiral_color': { 'shape': 1, 'encoding': 2 },
+    // 'spiral_color_yaxis': { 'shape': 1, 'encoding': 3 },
+    // 'row_yaxis': { 'shape': 2, 'encoding': 1 },
+    // 'row_color': { 'shape': 2, 'encoding': 2 },
+    // 'row_color_yaxis': { 'shape': 2, 'encoding': 3 },
 
     'spiral_yaxis_small': { 'shape': 1, 'encoding': 1, 'size': 'small' },
     'spiral_yaxis_medium': { 'shape': 1, 'encoding': 1, 'size': 'medium' },
@@ -40,6 +39,10 @@ var study_mode_map = {
     'row_color_yaxis_medium': { 'shape': 2, 'encoding': 3, size: 'medium' },
     'row_color_yaxis_large': { 'shape': 2, 'encoding': 3, size: 'large' },
 };
+
+var study_options = Object.keys(study_mode_map)
+var random_selection = []
+var study_mode = 'row_color_large'
 
 
 var data_intro = {

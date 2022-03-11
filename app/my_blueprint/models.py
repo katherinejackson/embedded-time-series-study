@@ -11,6 +11,7 @@ def create(db):
         view = db.Column(db.String)
         shape = db.Column(db.String)
         encoding = db.Column(db.String)
+        size = db.Column(db.String)
         Condition = db.Column(db.String)
         QuestionType = db.Column(db.String)
         ErrorCount = db.Column(db.String)

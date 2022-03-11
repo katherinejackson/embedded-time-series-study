@@ -11,6 +11,7 @@ window.options = {
     view: condition_set_value,
     shape: study_mode_map[study_mode].shape,
     encoding: study_mode_map[study_mode].encoding,
+    size: study_mode_map[study_mode].size,
     practice: true,
 };
 
@@ -60,12 +61,14 @@ function intializeChart() {
 }
 
 function showShapeDescription() {
+    var modified_study_mode = study_mode.split("_").slice(0, 2).join("_") 
+    console.log(`/my_blueprint/timemap/images/legend-${condition_set_value}-${modified_study_mode}.png`)
     $('#shape-description').css({ 'visibility': 'visible' });
     $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
     $('#legend-description').html( getLegendDescription(condition_set_value, study_mode) + ' You will be able to refer back to these legends while completing the activity.');
-    document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${study_mode}.png`
-    document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${study_mode}.png`
+    document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${modified_study_mode}.png`
+    document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${modified_study_mode}.png`
 }
 
 // placeholder for when we add in the size aspect to the study and have to set img size
@@ -78,7 +81,8 @@ function getExampleGlyphSize(size) {
     return dim
 }
 
-function getVisualizationDescription(view, glyph) {
+function getVisualizationDescription(view, originalGlyph) {
+    const glyph = originalGlyph.split("_").slice(0, 2).join("_")
     const encodings = {
             'spiral_yaxis': 'spiral line',
             'spiral_color': 'coloured spiral',
@@ -104,7 +108,7 @@ function getVisualizationDescription(view, glyph) {
     return string
 }
 
-function getShapeDescription(view, glyph) {
+function getShapeDescription(view, originalGlyph) {
     // const encodings = {
     //         'spiral_yaxis': 'distance from the dot to the center of the spiral',
     //         'spiral_color': 'color of the line',
@@ -113,6 +117,8 @@ function getShapeDescription(view, glyph) {
     //         'row_color': 'colour of the line',
     //         'row_color_yaxis': 'colour and height of the dot'
     // }
+
+    const glyph = originalGlyph.split("_").slice(0, 2).join("_")
 
     const encodings = {
         'spiral_yaxis': 'the distance from the dot to the center of the spiral',
@@ -190,8 +196,9 @@ function getShapeDescription(view, glyph) {
     return string
 }
 
-function getLegendDescription(view, glyph) {
+function getLegendDescription(view, originalGlyph) {
     //const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
+    const glyph = originalGlyph.split("_").slice(0, 2).join("_")
 
     const point = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
 
@@ -345,6 +352,7 @@ function logResponse(question_type = '') {
         view: window.options.view,
         shape: window.options.shape,
         encoding: window.options.encoding,
+        size: window.options.size,
         Condition: condition,
         questionType: question_type,
         ErrorCount: wrong_count,
