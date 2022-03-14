@@ -193,7 +193,7 @@ function getShapeDescription(view, originalGlyph) {
         string += 'Missing data is represented using a grey line. '
     }
 
-    string += `Note that the charts will be smaller in size during the task than the example chart below.`
+    string += `Note that the charts will be smaller in size during the task than the example chart.`
 
     return string
 }
