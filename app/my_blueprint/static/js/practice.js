@@ -62,7 +62,6 @@ function intializeChart() {
 
 function showShapeDescription() {
     var modified_study_mode = study_mode.split("_").slice(0, 2).join("_") 
-    console.log(`/my_blueprint/timemap/images/legend-${condition_set_value}-${modified_study_mode}.png`)
     $('#shape-description').css({ 'visibility': 'visible' });
     $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
@@ -72,13 +71,14 @@ function showShapeDescription() {
 }
 
 // placeholder for when we add in the size aspect to the study and have to set img size
-function getExampleGlyphSize(size) {
-    let dim;
-    if (size === 'small') dim = 20
-    else if (size === 'medium') dim = 40
-    else dim = 60
+function getExampleGlyphSize(glyph) {
+    let size = glyph.split("_")[2]
+    let width;
+    if (size === 'small') width = 20
+    else if (size === 'medium') width = 40
+    else width = 60
 
-    return dim
+    return width
 }
 
 function getVisualizationDescription(view, originalGlyph) {
@@ -103,7 +103,7 @@ function getVisualizationDescription(view, originalGlyph) {
     else if (view === 'SCATTER') desc = 'COVID cases over time for specific countries'
     else if (view === 'MIGRATION_GRAPH') desc = 'migration data over time for specific countries'
 
-    string = `In the next screens you will see a ${visualization}. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}.`
+    string = `In the next screens you will see a ${visualization}. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}. `
 
     return string
 }
@@ -192,6 +192,8 @@ function getShapeDescription(view, originalGlyph) {
     if (glyph.includes('row') || glyph === 'spiral_color') {
         string += 'Missing data is represented using a grey line. '
     }
+
+    string += `Note that the charts will be smaller in size during the task than the example chart below.`
 
     return string
 }

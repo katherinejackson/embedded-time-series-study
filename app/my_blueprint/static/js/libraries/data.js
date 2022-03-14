@@ -42,7 +42,7 @@ var study_mode_map = {
 
 var study_options = Object.keys(study_mode_map)
 var random_selection = []
-var study_mode = 'row_color_large'
+var study_mode = 'spiral_color_large'
 
 
 var data_intro = {
