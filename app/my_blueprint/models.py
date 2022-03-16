@@ -16,7 +16,20 @@ def create(db):
         QuestionType = db.Column(db.String)
         ErrorCount = db.Column(db.String)
         hoverCount = db.Column(db.String)
+        hoverItems = db.Column(db.String)
         zoomLevel = db.Column(db.String)
         questionNumber = db.Column(db.String)
         #color = db.Column(db.String)
-    return timemap
+
+    class visionTest(db.Model):
+        __tablename__ = "visionTestLog"
+        ID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+        participantID = db.Column(db.Integer, db.ForeignKey('participant.participantID'))
+        answeredOn = db.Column(db.DateTime, nullable=False, default=db.func.now())
+        vissioncomment = db.Column(db.String)
+        deficiency = db.Column(db.String)
+        deficiencyText = db.Column(db.String)
+    
+    return timemap, visionTest
+
+    

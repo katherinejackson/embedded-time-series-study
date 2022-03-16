@@ -10,6 +10,41 @@ my_blueprint = Blueprint('my_blueprint', __name__,
                          template_folder='templates',
                          static_folder='static')
 
+@my_blueprint.route("/ishihara", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def color_test():
+    incorrect = None
+
+    if request.method == 'POST':
+        log = db.visionTest()
+        log.participantID = session['participantID']
+        log.vision = request.form['vision']
+        log.vissioncomment = request.form['vissioncomment']
+        log.deficiency = request.form['deficiency']
+        log.deficiencyText = request.form['deficiencyText']
+        log.response07 = request.form['response07']
+        log.response01 = request.form['response01']
+        log.response08 = request.form['response08']
+        log.response06 = request.form['response06']
+        log.response10 = request.form['response10']
+
+
+        db.session.add(log)
+        db.session.commit()
+
+        if log.response01.lower() != "12":
+            incorrect = True
+            return render_template("eligibility.html", example="This is example text.")
+        else:
+            return redirect("/redirect_next_page")
+
+
+    return render_template("ishihara.html", example="This is example text.", incorrect=incorrect)
+
+
+
+
 
 # practice page
 @my_blueprint.route("/practice_1", methods=['POST', 'GET'])
@@ -31,6 +66,7 @@ def practice_1_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
@@ -57,6 +93,7 @@ def practice_2_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
@@ -83,6 +120,7 @@ def practice_3_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
@@ -109,6 +147,7 @@ def study_1_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
@@ -136,6 +175,7 @@ def study_2_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
@@ -162,6 +202,7 @@ def study_3_results():
         log.QuestionType = request.form['questionType']
         log.ErrorCount = request.form['ErrorCount']
         log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)

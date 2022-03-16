@@ -24,6 +24,8 @@ var question_index = 0;
 var wrong_count = 0;
 // Count hover activity
 var hover_count = 0;
+// Items that were hovered on
+var hovered_items = [];
 // store zoom level
 var zoom_level = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
@@ -279,6 +281,7 @@ function showQuestion() {
     wrong_count = 0;
     zoom_level = 0;
     hover_count = 0;
+    hovered_items = [];
     button_clicked = false;
 
 
@@ -305,6 +308,8 @@ function showQuestion() {
     });
 
     window.itemHovered = (value) => {
+        console.log("Hovered ", value)
+        hovered_items.push(value)
         hover_count = hover_count + 1;
     }
 
@@ -359,6 +364,7 @@ function logResponse(question_type = '') {
         questionType: question_type,
         ErrorCount: wrong_count,
         hoverCount: hover_count,
+        hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
     };
 
