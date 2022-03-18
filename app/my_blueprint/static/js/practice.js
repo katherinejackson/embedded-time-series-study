@@ -98,14 +98,17 @@ function getVisualizationDescription(view, originalGlyph) {
     let visualization;
     if (view === 'MAP') visualization = 'map'
     else if (view === 'SCATTER') visualization = 'scatterplot'
-    else if (view === 'MIGRATION_GRAPH') visualization = 'graph'
+    else if (view === 'MIGRATION_GRAPH') visualization = 'diagram'
 
     let desc = ''
     if (view === 'MAP') desc = 'temperatures over time for specific locations'
     else if (view === 'SCATTER') desc = 'COVID cases over time for specific countries'
     else if (view === 'MIGRATION_GRAPH') desc = 'migration data over time for specific countries'
 
-    string = `In the next screens you will see a ${visualization}. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}. `
+    string = `In the next screens you will see a ${visualization} `
+    if (view === 'MIGRATION_GRAPH') string += `showing immigration between countries`
+    
+    string += `. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}. `
 
     return string
 }

@@ -198,12 +198,64 @@ var studyQuestions = {
         "choices": ["Yes", "No"],
         "answer": 'Yes'
     }],
-    'study-SCATTER': [{
-        "type": "multichoice",
-        "label": "Is this a scatter plot?",
-        "choices": ["Yes", "No"],
-        "answer": 'Yes'
-    }],
+    'study-SCATTER': [
+        {
+            "type": "click",
+            "label": "Which country had the highest overall number of new Covid-19 cases in [2022]? Click on your choice in the scatterplot.",
+            "answer": 'United States'
+        },
+        {
+            "type": "click",
+            "label": "Which country had the lowest overall number of new Covid-19 cases in [2022]? Click on your choice in the scatterplot.",
+            "answer": 'Cambodia' 
+        },
+        {
+            "type": "multichoice",
+            "label": "Which of the following countries had the largest decrease in new Covid-19 cases between the middle of the 2022 and the end of 2022? ",
+            "choices": ["Myanmar", "Yemen"],
+            "answer": 'Yemen'
+        },
+        {
+            "type": "multichoice",
+            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in [2022]?",
+            "choices": ["Pakistan", "Syria", "Vietnam"],
+            "answer": 'Vietnam'
+        },
+        {
+            "type": "click",
+            "label": "Which country had the highest number of new Covid-19 cases in January and February 2022? Click on your choice in the scatterplot.",
+            "answer": 'China' 
+        },
+        {
+            "type": "multichoice",
+            "label": "In what months did Vietnam see a month-long spike in cases?",
+            "choices": ["May-June", "June-July", "July-August", "August-September", "September-October"],
+            "answer": 'July-August'
+        },
+        {
+            "type": "multichoice",
+            "label": "Which of the following countries has the smallest amount of missing data?",
+            "choices": ["Kazakhstan", "Philippines", "Afghanistan"],
+            "answer": 'Philippines'
+        },
+        {
+            "type": "click",
+            "label": "Which country had the highest number of new Covid-19 cases in August? Click on your choice in the scatterplot.",
+            "answer": 'India' 
+        },
+        {
+            "type": "multichoice",
+            "label": "What was the approximate number of new Covid-19 cases per day in December for the United States?",
+            "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
+            "answer": '0.8 million'
+        },
+        {
+            "type": "multichoice",
+            "label": "What was the approximate number of new Covid-19 cases per day in July for Bangladesh?",
+            "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
+            "answer": '0.5 million'
+        }
+    ],
     'study-MIGRATION_GRAPH': [{
         "type": "multichoice",
         "label": "Is this a scatter plot?",
