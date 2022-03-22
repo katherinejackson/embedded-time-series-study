@@ -3,6 +3,14 @@ var trialStartTime;
 var condition = getCond();
 // Then get the block 
 var block = getBlock();
+
+var study_options = Object.keys(study_mode_map)
+// shift id back so ID starts at 1
+var sel = (getParticipant() - 1) % study_options.length
+var study_mode = study_options[sel]
+
+console.log("study mode: ", study_mode)
+
 // Then get the corresponding map based on the condition
 //var condition_set_value = condition_map[1][2];
 var condition_set_value = condition_map[condition][+block - 1];
@@ -14,6 +22,7 @@ window.options = {
     size: study_mode_map[study_mode].size,
     practice: true,
 };
+
 
 // Create a question set based on the condition 
 var question_map = studyQuestions['practice-' + condition_set_value];
@@ -63,7 +72,8 @@ function intializeChart() {
 }
 
 function showShapeDescription() {
-    var modified_study_mode = study_mode.split("_").slice(0, 2).join("_") 
+    let temp = study_mode.split("_")
+    var modified_study_mode = temp.slice(0, temp.length-1).join("_") 
     $('#shape-description').css({ 'visibility': 'visible' });
     $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
@@ -84,7 +94,8 @@ function getExampleGlyphSize(glyph) {
 }
 
 function getVisualizationDescription(view, originalGlyph) {
-    const glyph = originalGlyph.split("_").slice(0, 2).join("_")
+    let temp = originalGlyph.split("_")
+    var glyph = temp.slice(0, temp.length-1).join("_") 
     const encodings = {
             'spiral_yaxis': 'spiral line',
             'spiral_color': 'coloured spiral',
@@ -123,7 +134,8 @@ function getShapeDescription(view, originalGlyph) {
     //         'row_color_yaxis': 'colour and height of the dot'
     // }
 
-    const glyph = originalGlyph.split("_").slice(0, 2).join("_")
+    let temp = originalGlyph.split("_")
+    var glyph = temp.slice(0, temp.length-1).join("_") 
 
     const encodings = {
         'spiral_yaxis': 'the distance from the dot to the center of the spiral',

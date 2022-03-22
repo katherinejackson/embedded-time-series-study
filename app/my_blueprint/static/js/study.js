@@ -3,6 +3,12 @@ var trialStartTime;
 var condition = getCond();
 // Then get the block 
 var block = getBlock();
+
+var study_options = Object.keys(study_mode_map)
+// shift id back so ID starts at 1
+var sel = (getParticipant() - 1) % study_options.length
+var study_mode = study_options[sel]
+
 // Then get the corresponding map based on the condition 
 var condition_set_value = condition_map[condition][+block - 1];
 // Populate the study chart conditions

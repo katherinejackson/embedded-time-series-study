@@ -40,10 +40,7 @@ var study_mode_map = {
     'row_color_yaxis_large': { 'shape': 2, 'encoding': 3, size: 'large' },
 };
 
-var study_options = Object.keys(study_mode_map)
-var random_selection = []
-var study_mode = 'spiral_color_large'
-
+//var study_mode = 'spiral_color_large'
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
