@@ -40,7 +40,9 @@ var study_mode_map = {
     'row_color_yaxis_large': { 'shape': 2, 'encoding': 3, size: 'large' },
 };
 
-//var study_mode = 'spiral_color_large'
+// SET THE STUDY MODE THAT YOU WANT TO SEE HERE
+// Any of the keys from study_mode_map will work here
+// var study_mode = 'spiral_color_large'
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',

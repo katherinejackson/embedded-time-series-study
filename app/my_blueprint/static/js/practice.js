@@ -5,11 +5,11 @@ var condition = getCond();
 var block = getBlock();
 
 var study_options = Object.keys(study_mode_map)
-// shift id back so ID starts at 1
+// shift id back so ID starts at 0
 var sel = (getParticipant() - 1) % study_options.length
 var study_mode = study_options[sel]
 
-console.log("study mode: ", study_mode)
+// console.log("study mode: ", study_mode)
 
 // Then get the corresponding map based on the condition
 //var condition_set_value = condition_map[1][2];
