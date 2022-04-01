@@ -42,7 +42,7 @@ var study_mode_map = {
 
 // SET THE STUDY MODE THAT YOU WANT TO SEE HERE
 // Any of the keys from study_mode_map will work here
-// var study_mode = 'spiral_color_large'
+var study_mode = 'row_yaxis_large'
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
@@ -128,6 +128,7 @@ var condition_map = {
     // '6': ['SCATTER', 'MAP', 'MIGRATION_GRAPH']
 };
 
+// THESE ARE THE STUDY QUESTIONS
 var studyQuestions = {
     'practice-MAP': [{
         "type": "multichoice",
@@ -200,29 +201,29 @@ var studyQuestions = {
     'study-SCATTER': [
         {
             "type": "click",
-            "label": "Which country had the highest overall number of new Covid-19 cases in [2022]? Click on your choice in the scatterplot.",
+            "label": "Which country had the highest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
             "answer": 'United States'
         },
         {
             "type": "click",
-            "label": "Which country had the lowest overall number of new Covid-19 cases in [2022]? Click on your choice in the scatterplot.",
+            "label": "Which country had the lowest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
             "answer": 'Cambodia' 
         },
         {
             "type": "multichoice",
-            "label": "Which of the following countries had the largest decrease in new Covid-19 cases between the middle of the 2022 and the end of 2022? ",
+            "label": "Which of the following countries had the largest decrease in new Covid-19 cases between the middle of 2021 and the end of 2021? ",
             "choices": ["Myanmar", "Yemen"],
             "answer": 'Yemen'
         },
         {
             "type": "multichoice",
-            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in [2022]?",
+            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
             "answer": 'Vietnam'
         },
         {
             "type": "click",
-            "label": "Which country had the highest number of new Covid-19 cases in January and February 2022? Click on your choice in the scatterplot.",
+            "label": "Which country had the highest number of new Covid-19 cases in January and February 2021? Click on your choice in the scatterplot.",
             "answer": 'China' 
         },
         {
