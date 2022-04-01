@@ -41,12 +41,14 @@ function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#description').html('You will now begin the study round. You will be asked 10 questions. Please try to answer them as quickly and accurately as possible. Click the button below to start.');
+    $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
     $('#chart-container button.next').click(() => {
         //    hide the trigger button
         $('#chart-container button.next').hide();
+        $('#prompt').hide();
         showQuestion();
     });
 }
