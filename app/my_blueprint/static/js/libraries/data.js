@@ -172,7 +172,7 @@ var studyQuestions = {
         "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
         "choices": ["United States", "India", "China", "Brazil"],
         "answer": 'United States',
-        "highlightOptions": ["Unites States", "India", "China", "Brazil"]
+        "highlightOptions": ["United States", "India", "China", "Brazil"]
     },
     {
         "type": "multichoice",
@@ -190,7 +190,7 @@ var studyQuestions = {
         "type": "multichoice",
         "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
         "choices": ["United States", "India", "China", "Brazil"],
-        "answer": 'USA',
+        "answer": 'United States',
         "highlightOptions": ["United States", "India", "China", "Brazil"]
     },
     {
