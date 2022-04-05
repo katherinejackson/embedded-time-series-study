@@ -42,7 +42,7 @@ var study_mode_map = {
 
 // SET THE STUDY MODE THAT YOU WANT TO SEE HERE
 // Any of the keys from study_mode_map will work here
-var study_mode = 'row_yaxis_large'
+//var study_mode = 'row_yaxis_medium'
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
@@ -145,122 +145,143 @@ var studyQuestions = {
         "type": "multichoice",
         "label": "How many days below < -30 degrees C did Talkeeta experience?",
         "choices": ["0", "<5", "<10", "10+"],
-        "answer": '0'
+        "answer": '0',
+        "highlightOptions": ["Talkeeta"]
     },
     {
         "type": "multichoice",
         "label": "How many  days >25 did Wasilla experience?",
         "choices": ["0", "5", "10", "15"],
-        "answer": '0'
+        "answer": '0',
+        "highlightOptions": ["Wasilla"]
     },
     {
         "type": "multichoice",
         "label": "How many  days >25 did Wasilla experience?",
         "choices": ["0", "5", "10", "15"],
-        "answer": '0'
+        "answer": '0',
+        "highlightOptions": ["Wasilla"]
     }],
     'practice-SCATTER': [{
         "type": "click",
         "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
-        "answer": 'Yes'
+        "answer": 'Yes',
+        "highlightOptions": []
     }, {
         "type": "multichoice",
         "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
-        "choices": ["USA", "India", "China", "Brazil"],
-        "answer": 'USA'
+        "choices": ["United States", "India", "China", "Brazil"],
+        "answer": 'United States',
+        "highlightOptions": ["Unites States", "India", "China", "Brazil"]
     },
     {
         "type": "multichoice",
         "label": "Approximately how many days did USA have >100,000 new COVID cases?",
         "choices": ["5 days", "30 days", "60 days", "90 days"],
-        "answer": '5 days'
+        "answer": '5 days',
+        "highlightOptions": ["Unites States"]
     }],
     'practice-MIGRATION_GRAPH': [{
         "type": "click",
         "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
-        "answer": 'Yes'
+        "answer": 'Yes',
+        "highlightOptions": []
     }, {
         "type": "multichoice",
         "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
-        "choices": ["USA", "India", "China", "Brazil"],
-        "answer": 'USA'
+        "choices": ["United States", "India", "China", "Brazil"],
+        "answer": 'USA',
+        "highlightOptions": ["United States", "India", "China", "Brazil"]
     },
     {
         "type": "multichoice",
-        "label": "Approximately how many days did USA have >100,000 new COVID cases?",
+        "label": "Approximately how many days did the United States have >100,000 new COVID cases?",
         "choices": ["5 days", "30 days", "60 days", "90 days"],
-        "answer": '5 days'
+        "answer": '5 days',
+        "highlightOptions": ["United States"]
     }],
 
     'study-MAP': [{
         "type": "multichoice",
         "label": "Is this a map?",
         "choices": ["Yes", "No"],
-        "answer": 'Yes'
+        "answer": 'Yes',
+        "highlightOptions": []
     }],
     'study-SCATTER': [
         {
             "type": "click",
             "label": "Which country had the highest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
-            "answer": 'United States'
+            "answer": 'United States',
+            "highlightOptions": []
         },
         {
             "type": "click",
             "label": "Which country had the lowest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
-            "answer": 'Cambodia' 
+            "answer": 'Cambodia',
+            "highlightOptions": []
         },
         {
             "type": "multichoice",
             "label": "Which of the following countries had the largest decrease in new Covid-19 cases between the middle of 2021 and the end of 2021? ",
             "choices": ["Myanmar", "Yemen"],
-            "answer": 'Yemen'
+            "answer": 'Yemen',
+            "highlightOptions": ["Myanmar", "Yemen"]
         },
         {
             "type": "multichoice",
             "label": "Which of the following countries had a lower overall number of new Covid-19 cases in 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
-            "answer": 'Vietnam'
+            "answer": 'Vietnam',
+            "highlightOptions": ["Pakistan", "Syria", "Vietnam"]
         },
         {
             "type": "click",
             "label": "Which country had the highest number of new Covid-19 cases in January and February 2021? Click on your choice in the scatterplot.",
-            "answer": 'China' 
+            "answer": 'China',
+            "highlightOptions": []
         },
         {
             "type": "multichoice",
             "label": "In what months did Vietnam see a month-long spike in cases?",
             "choices": ["May-June", "June-July", "July-August", "August-September", "September-October"],
-            "answer": 'July-August'
+            "answer": 'July-August',
+            "highlightOptions": ["Vietnam"]
         },
         {
             "type": "multichoice",
             "label": "Which of the following countries has the smallest amount of missing data?",
             "choices": ["Kazakhstan", "Philippines", "Afghanistan"],
-            "answer": 'Philippines'
+            "answer": 'Philippines',
+            "highlightOptions": ["Kazakhstan", "Philippines", "Afghanistan"]
         },
         {
             "type": "click",
             "label": "Which country had the highest number of new Covid-19 cases in August? Click on your choice in the scatterplot.",
-            "answer": 'India' 
+            "answer": 'India',
+            "highlightOptions": []
         },
         {
             "type": "multichoice",
             "label": "What was the approximate number of new Covid-19 cases per day in December for the United States?",
             "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
-            "answer": '0.8 million'
+            "answer": '0.8 million',
+            "highlightOptions": ["United States"]
         },
         {
             "type": "multichoice",
             "label": "What was the approximate number of new Covid-19 cases per day in July for Bangladesh?",
             "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
-            "answer": '0.5 million'
+            "answer": '0.5 million',
+            "highlightOptions": ["Bangladesh"]
         }
     ],
     'study-MIGRATION_GRAPH': [{
         "type": "multichoice",
         "label": "Is this a scatter plot?",
         "choices": ["Yes", "No"],
-        "answer": 'Yes'
+        "answer": 'Yes',
+        "highlightOptions": []
     }],
 
 };

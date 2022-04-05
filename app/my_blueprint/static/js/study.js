@@ -4,10 +4,10 @@ var condition = getCond();
 // Then get the block 
 var block = getBlock();
 
-// var study_options = Object.keys(study_mode_map)
-// // shift id back so ID starts at 0
-// var sel = (getParticipant() - 1) % study_options.length
-// var study_mode = study_options[sel]
+var study_options = Object.keys(study_mode_map)
+// shift id back so ID starts at 0
+var sel = (getParticipant() - 1) % study_options.length
+var study_mode = study_options[sel]
 
 // Then get the corresponding map based on the condition 
 var condition_set_value = condition_map[condition][+block - 1];
@@ -40,7 +40,7 @@ intializeChart();
 function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html('You will now begin the study round. You will be asked 10 questions. Please try to answer them as quickly and accurately as possible. Click the button below to start.');
+    $('#description').html('You will now begin the study round. You will be asked 10 questions. Please try to answer them as quickly and accurately as possible.');
     $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
@@ -60,6 +60,11 @@ function showQuestion() {
 
     // Show the questionBox 
     $('#question-box').show();
+
+    // highlight the pins specified in the question
+    let highlightOptions = question.highlightOptions || []
+    window.triggerHighlight && window.triggerHighlight(highlightOptions);
+
     // Set the question in the label 
     $('#question-label').text('Question: ' + question.label);
     // Get the choices for the question 
