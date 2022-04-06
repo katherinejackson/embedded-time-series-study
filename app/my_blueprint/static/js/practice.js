@@ -4,10 +4,10 @@ var condition = getCond();
 // Then get the block 
 var block = getBlock();
 
-var study_options = Object.keys(study_mode_map)
-// shift id back so ID starts at 0
-var sel = (getParticipant() - 1) % study_options.length
-var study_mode = study_options[sel]
+// var study_options = Object.keys(study_mode_map)
+// // shift id back so ID starts at 0
+// var sel = (getParticipant() - 1) % study_options.length
+// var study_mode = study_options[sel]
 
 // console.log("study mode: ", study_mode)
 
@@ -100,12 +100,12 @@ function getVisualizationDescription(view, originalGlyph) {
     let temp = originalGlyph.split("_")
     var glyph = temp.slice(0, temp.length-1).join("_") 
     const encodings = {
-            'spiral_yaxis': 'spiral line',
+            'spiral_yaxis': 'spiral dot',
             'spiral_color': 'coloured spiral',
-            'spiral_color_yaxis': 'spiral coloured line',
-            'row_yaxis': 'line',
+            'spiral_color_yaxis': 'spiral coloured dot',
+            'row_yaxis': 'dot',
             'row_color': 'coloured row',
-            'row_color_yaxis': 'coloured line'
+            'row_color_yaxis': 'coloured dot'
 
     }
 
@@ -141,12 +141,12 @@ function getShapeDescription(view, originalGlyph) {
     var glyph = temp.slice(0, temp.length-1).join("_") 
 
     const encodings = {
-        'spiral_yaxis': 'the distance from the dot to the center of the spiral',
-        'spiral_color': 'a color scale',
-        'spiral_color_yaxis': 'a colour scale and the distance from the dot from the zero line',
-        'row_yaxis': 'the height of the dot',
-        'row_color': 'a color scale',
-        'row_color_yaxis': 'a colour scale and height of the dot'
+        'spiral_yaxis': 'distance between the dot to the center of the spiral',
+        'spiral_color': 'color scale',
+        'spiral_color_yaxis': 'colour scale and the distance between the dot and the zero line',
+        'row_yaxis': 'distance between the dot and the bottom of the chart',
+        'row_color': 'color scale',
+        'row_color_yaxis': 'colour scale and the distance between the dot and the bottom of the chart'
 }
 
     const rowEncodings = ['row_yaxis', 'row_color', 'row_color_yaxis']
@@ -157,7 +157,7 @@ function getShapeDescription(view, originalGlyph) {
 
     //const data = view === 'MAP' ? 'average temperature of' : 'number of new cases of COVID documented'
     let data = ''
-    if (view === 'MAP') data = 'average daily temperature'
+    if (view === 'MAP') data = 'average temperature'
     else if (view === 'SCATTER') data = 'number of new cases of COVID documented'
     else if (view === 'MIGRATION_GRAPH') data = 'number of people moving to the specified countries'
 
@@ -174,8 +174,15 @@ function getShapeDescription(view, originalGlyph) {
         time = 'day'
         start = 'January'
     }
+    let shape;
+    if (glyph.includes("yaxis")) shape = "dot"
+    else shape = "line"
+    //const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
 
-    const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+    let missingDataColour= ''
+    if (glyph.includes("color_yaxis")) missingDataColour = "white"
+    else if (glyph.includes("color")) missingDataColour = "grey"
+    else if (glyph.includes("yaxis")) missingDataColour = "blue"
 
     // let method = ''
     // if (colourEncodings.includes(glyph)) method = 'colour'
@@ -190,7 +197,8 @@ function getShapeDescription(view, originalGlyph) {
         string = `The chart shows a series of ${shape}s extending outward from the centre. `
     }
 
-    string += `Each ${shape} shows the ${data} for one ${timePeriod}, using ${encodings[glyph]}. `
+    //string += `Each ${shape} shows the ${data} for one ${timePeriod}, using ${encodings[glyph]}. `
+    string += `The ${encodings[glyph]} shows the ${data} for one ${timePeriod}. `
 
     if (glyph.includes('spiral')) string += `The progression of the ${time}s reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
 
@@ -210,7 +218,7 @@ function getShapeDescription(view, originalGlyph) {
     // }
 
     if (glyph.includes('row') || glyph === 'spiral_color') {
-        string += 'Missing data is represented using a grey line. '
+        string += `Missing data is represented using a ${missingDataColour} ${shape}. `
     }
 
     string += `Note that the charts will be smaller in size during the task than the example chart.`
@@ -222,7 +230,11 @@ function getLegendDescription(view, originalGlyph) {
     //const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
     const glyph = originalGlyph.split("_").slice(0, 2).join("_")
 
-    const point = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+    // const point = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
+
+    let point;
+    if (glyph.includes("yaxis")) point = "dot"
+    else point = "line"
 
     let data = ''
     if (view === 'MAP') data = 'temperature range'
@@ -244,11 +256,11 @@ function getLegendDescription(view, originalGlyph) {
     else if (glyph.includes('row')) shape = 'row'
 
     let method = ''
-    if (glyph.includes('color')) method = `color the ${time} ${point}s.`
+    if (glyph.includes('color')) method = `color the ${time} ${point}s`
     else if (glyph.includes('yaxis')) method = `position the ${time} ${point}s`
 
 
-    let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}` 
+    let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}. ` 
 
     // if (view === 'MIGRATION_GRAPH') {
     //     string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`

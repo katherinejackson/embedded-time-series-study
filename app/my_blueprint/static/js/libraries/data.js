@@ -42,12 +42,12 @@ var study_mode_map = {
 
 // SET THE STUDY MODE THAT YOU WANT TO SEE HERE
 // Any of the keys from study_mode_map will work here
-//var study_mode = 'row_yaxis_medium'
+var study_mode = 'row_color_medium'
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
     'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). Hover to view the name of the country.',
-    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. Hover to view the migration path.'
+    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. Hover to view the migration data.'
 };
 
 var shape_description = {
