@@ -217,9 +217,10 @@ function getShapeDescription(view, originalGlyph) {
     //     }
     // }
 
-    if (glyph.includes('row') || glyph === 'spiral_color') {
-        string += `Missing data is represented using a ${missingDataColour} ${shape}. `
-    }
+    // if (glyph.includes('row') || glyph === 'spiral_color') {
+    //     string += `Missing data is represented using a ${missingDataColour} ${shape}. `
+    // }
+    string += `Missing data is represented using a ${missingDataColour} ${shape}. `
 
     string += `Note that the charts will be smaller in size during the task than the example chart.`
 
