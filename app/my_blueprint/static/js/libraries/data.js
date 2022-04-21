@@ -40,9 +40,15 @@ var study_mode_map = {
     'row_color_yaxis_large': { 'shape': 2, 'encoding': 3, size: 'large' },
 };
 
+// **********************************************************************************************************
+// **********************************************************************************************************
+// **********************************************************************************************************
 // SET THE STUDY MODE THAT YOU WANT TO SEE HERE
 // Any of the keys from study_mode_map will work here
-var study_mode = 'row_color_medium'
+//var study_mode = 'spiral_color_medium'
+// **********************************************************************************************************
+// **********************************************************************************************************
+// **********************************************************************************************************
 
 var data_intro = {
     'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
@@ -130,158 +136,249 @@ var condition_map = {
 
 // THESE ARE THE STUDY QUESTIONS
 var studyQuestions = {
-    'practice-MAP': [{
-        "type": "multichoice",
-        "label": "Is this a map?",
-        "choices": ["Yes", "No"],
-        "answer": 'Yes'
-    },
-    {
-        "type": "click",
-        "label": "Click on the city that has the most extreme temperature in the summer?",
-        "answer": 'Yes'
-    },
-    {
-        "type": "multichoice",
-        "label": "How many days below < -30 degrees C did Talkeeta experience?",
-        "choices": ["0", "<5", "<10", "10+"],
-        "answer": '0',
-        "highlightOptions": ["Talkeeta"]
-    },
-    {
-        "type": "multichoice",
-        "label": "How many  days >25 did Wasilla experience?",
-        "choices": ["0", "5", "10", "15"],
-        "answer": '0',
-        "highlightOptions": ["Wasilla"]
-    },
-    {
-        "type": "multichoice",
-        "label": "How many  days >25 did Wasilla experience?",
-        "choices": ["0", "5", "10", "15"],
-        "answer": '0',
-        "highlightOptions": ["Wasilla"]
-    }],
-    'practice-SCATTER': [{
-        "type": "click",
-        "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
-        "answer": 'Yes',
-        "highlightOptions": []
-    }, {
-        "type": "multichoice",
-        "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
-        "choices": ["United States", "India", "China", "Brazil"],
-        "answer": 'United States',
-        "highlightOptions": ["United States", "India", "China", "Brazil"]
-    },
-    {
-        "type": "multichoice",
-        "label": "Approximately how many days did USA have >100,000 new COVID cases?",
-        "choices": ["5 days", "30 days", "60 days", "90 days"],
-        "answer": '5 days',
-        "highlightOptions": ["Unites States"]
-    }],
-    'practice-MIGRATION_GRAPH': [{
-        "type": "click",
-        "label": "Click on the country that has the lowest number of new covid cases per day in 2020?",
-        "answer": 'Yes',
-        "highlightOptions": []
-    }, {
-        "type": "multichoice",
-        "label": "Which country experienced the highest number of new COVID cases per day in 2020?",
-        "choices": ["United States", "India", "China", "Brazil"],
-        "answer": 'United States',
-        "highlightOptions": ["United States", "India", "China", "Brazil"]
-    },
-    {
-        "type": "multichoice",
-        "label": "Approximately how many days did the United States have >100,000 new COVID cases?",
-        "choices": ["5 days", "30 days", "60 days", "90 days"],
-        "answer": '5 days',
-        "highlightOptions": ["United States"]
-    }],
-
-    'study-MAP': [{
-        "type": "multichoice",
-        "label": "Is this a map?",
-        "choices": ["Yes", "No"],
-        "answer": 'Yes',
-        "highlightOptions": []
-    }],
-    'study-SCATTER': [
-        {
-            "type": "click",
-            "label": "Which country had the highest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
-            "answer": 'United States',
-            "highlightOptions": []
-        },
-        {
-            "type": "click",
-            "label": "Which country had the lowest overall number of new Covid-19 cases in 2021? Click on your choice in the scatterplot.",
-            "answer": 'Cambodia',
-            "highlightOptions": []
-        },
-        {
+    'practice-MAP': [
+	{
             "type": "multichoice",
-            "label": "Which of the following countries had the largest decrease in new Covid-19 cases between the middle of 2021 and the end of 2021? ",
-            "choices": ["Myanmar", "Yemen"],
-            "answer": 'Yemen',
-            "highlightOptions": ["Myanmar", "Yemen"]
-        },
+            "label": "What was the approximate average temperature for Whitehorse in February 2020?",
+            "choices": ["-25", "-15", "0", "+10"],
+            "answer": '-15',
+            "highlightOptions": ["Whitehorse"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which city (Faro or Dawson City) had more days above +25 in 2020?",
+            "choices": ["Faro", "Dawson City"],
+            "answer": 'Dawson City',
+            "highlightOptions": ["Faro", "Dawson City"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Approximately how many days were below -15 in Whitehorse in 2020?",
+            "choices": ["0", "10", "20", "30"],
+            "answer": '10',
+            "highlightOptions": ["Whitehorse"]
+	}],
+    'practice-SCATTER': [
+	{
+            "type": "multichoice",
+            "label": "What was the approximate average daily case rate for France in December 2021, in thousands?",
+            "choices": ["150", "250", "325", "400", "450"],
+            "answer": '400',
+            "highlightOptions": ["France"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which country (Italy or United Kingdom) had a higher Covid rate in July 2021?",
+            "choices": ["Italy", "United Kingdom"],
+            "answer": 'United Kingdom',
+            "highlightOptions": ["Italy", "United Kingdom"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Was Germany's Covid rate higher in March 2020 or March 2021?",
+            "choices": ["March 2020", "March 2021"],
+            "answer": 'March 2021',
+            "highlightOptions": ["Germany"]
+	}],
+    'practice-MIGRATION_GRAPH': [
+	{
+            "type": "multichoice",
+            "label": "Which had higher overall movement from 2013-2020: Italy to France, or Romania to Germany?",
+            "choices": ["Italy to France", "Romania to Germany"],
+            "answer": 'Romania to Germany',
+            "highlightOptions": ["Italy>France", "Romania>Germany"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the approximate immigration level for Romania to Germany in 1996, in millions?",
+            "choices": ["1.0M", "1.9M", "2.6M", "3.1M"],
+            "answer": '2.6M',
+            "highlightOptions": ["Romania>Germany"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which connection has the most missing data?",
+            "choices": ["Romania to Germany", "Italy to France", "Bulgaria to Turkey"],
+            "answer": 'Bulgaria to Turkey',
+            "highlightOptions": ["Romania>Germany", "Italy>France", "Bulgaria>Turkey"]
+	}],
+    'study-MAP': [
+	{
+            "type": "multichoice",
+            "label": "For the city of Kodiak, in what year were the months January-March colder: 2020 or 2021?",
+            "choices": ["2020", "2021"],
+            "answer": '2021',
+            "highlightOptions": ["Kodiak"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the approximate average temperature for Fairbanks in July 2021?",
+            "choices": ["22", "18", "14", "10", "6"],
+            "answer": '14',
+            "highlightOptions": ["Fairbanks"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which city (Haines, Healy, Kodiak, or Homer) had the most consistent temperature between September and December 2020?",
+            "choices": ["Haines", "Healy", "Kodiak", "Homer"],
+            "answer": 'Healy',
+            "highlightOptions": ["Haines", "Healy", "Kodiak", "Homer"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which city (Bethel, Talkeetna, Barrow, or Juneau) had a 2020 summer that was substantially colder than in 2021?",
+            "choices": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
+            "answer": 'Talkeetna',
+            "highlightOptions": ["Bethel", "Talkeetna", "Barrow", "Juneau"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the approximate minimum temperature in 2021 for Kotzebue?",
+            "choices": ["-34", "-27", "-22", "-17"],
+            "answer": '-34',
+            "highlightOptions": ["Kotzebue"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Rank cities Bethel, Nome, and Healy from warmest to coldest for August 2021",
+            "choices": ["Bethel, Nome, Healy", "Healy, Nome, Bethel", "Nome, Bethel, Healy",
+			"Bethel, Healy, Nome"],
+            "answer": 'Healy, Nome, Bethel',
+            "highlightOptions": ["Healy", "Nome", "Bethel"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What range of temperatures were seen in Fairbanks in 2021?",
+            "choices": ["-25 to +5", "-15 to +10", "-25 to +15", "-20 to +20", "-25 to +25"],
+            "answer": '-25 to +15',
+            "highlightOptions": ["Fairbanks"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which city had a higher temperature in March 2020, Unalaska or Bethel?",
+            "choices": ["Unalaska", "Bethel"],
+            "answer": 'Unalaska',
+            "highlightOptions": ["Unalaska", "Bethel"]
+	}],
+    'study-SCATTER': [
+	{
+            "type": "multichoice",
+            "label": "In the United States, in what year did the months August-September have more Covid cases: 2020 or 2021?",
+            "choices": ["2020", "2021"],
+            "answer": '2021',
+            "highlightOptions": ["United States"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the approximate average Covid case rate for Uzbekistan in April 2020?",
+            "choices": ["200", "2000", "10000"],
+            "answer": '200',
+            "highlightOptions": ["Uzbekistan"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which country (Sri Lanka, Cambodia, or India) had the most consistent case rate September-December 2021?",
+            "choices": ["Sri Lanka", "Cambodia", "India"],
+            "answer": 'Sri Lanka',
+            "highlightOptions": ["Sri Lanka", "Cambodia", "India"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which country (Philippines, Yemen, or Nepal) had more cases in June-August of 2021?",
+            "choices": ["Philippines", "Yemen", "Nepal"],
+            "answer": 'Philippines',
+            "highlightOptions": ["Philippines", "Yemen", "Nepal"]
+	},
         {
             "type": "multichoice",
             "label": "Which of the following countries had a lower overall number of new Covid-19 cases in 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
-            "answer": 'Vietnam',
+            "answer": 'Syria',
             "highlightOptions": ["Pakistan", "Syria", "Vietnam"]
         },
         {
-            "type": "click",
-            "label": "Which country had the highest number of new Covid-19 cases in January and February 2021? Click on your choice in the scatterplot.",
-            "answer": 'China',
-            "highlightOptions": []
-        },
-        {
             "type": "multichoice",
-            "label": "In what months did Vietnam see a month-long spike in cases?",
-            "choices": ["May-June", "June-July", "July-August", "August-September", "September-October"],
-            "answer": 'July-August',
-            "highlightOptions": ["Vietnam"]
-        },
-        {
-            "type": "multichoice",
-            "label": "Which of the following countries has the smallest amount of missing data?",
-            "choices": ["Kazakhstan", "Philippines", "Afghanistan"],
-            "answer": 'Philippines',
-            "highlightOptions": ["Kazakhstan", "Philippines", "Afghanistan"]
-        },
-        {
-            "type": "click",
-            "label": "Which country had the highest number of new Covid-19 cases in August? Click on your choice in the scatterplot.",
-            "answer": 'India',
-            "highlightOptions": []
-        },
-        {
-            "type": "multichoice",
-            "label": "What was the approximate number of new Covid-19 cases per day in December for the United States?",
-            "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
-            "answer": '0.8 million',
+            "label": "What was the approximate number of new Covid-19 cases per day in December 2020 for the United States?",
+            "choices": ["10K", "100K", "1M"],
+            "answer": '1M',
             "highlightOptions": ["United States"]
         },
-        {
+	{
             "type": "multichoice",
-            "label": "What was the approximate number of new Covid-19 cases per day in July for Bangladesh?",
-            "choices": ["0.3 million", "0.4 million", "0.5 million", "0.6 million", "0.7 million", "0.8 million", "0.9 million", "1.0 million"],
-            "answer": '0.5 million',
-            "highlightOptions": ["Bangladesh"]
-        }
-    ],
-    'study-MIGRATION_GRAPH': [{
-        "type": "multichoice",
-        "label": "Is this a scatter plot?",
-        "choices": ["Yes", "No"],
-        "answer": 'Yes',
-        "highlightOptions": []
-    }],
-
-};
+            "label": "What was the approximate minimum case rate in 2021 for Azerbaijan?",
+            "choices": ["10", "100", "1000"],
+            "answer": '10',
+            "highlightOptions": ["Azerbaijan"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Rank countries Syria, India, and Vietnam in terms of case rate, from lowest to highest, for July 2021",
+            "choices": ["India, Syria, Vietnam", "Vietnam, Syria, India", "Syria, Vietnam, India"],
+            "answer": 'Syria, Vietnam, India',
+            "highlightOptions": ["Vietnam", "Syria", "India"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What range of case rates were seen in Cambodia in 2021?",
+            "choices": ["10 to 1M", "100 to 100K", "10 to 10K", "10K to 100K"],
+            "answer": '10 to 10K',
+            "highlightOptions": ["Cambodia"]
+	}],
+    'study-MIGRATION_GRAPH': [
+	{
+            "type": "multichoice",
+            "label": "For immigration from France to Spain, was the level higher in 1994 or 2008?",
+            "choices": ["1994", "2008"],
+            "answer": '2008',
+            "highlightOptions": ["France>Spain"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the approximate level of immigration from Germany to Austria in 2003, in millions?",
+            "choices": ["1.0M", "1.5M", "2.0M", "2.9M", "3.6M"],
+            "answer": '2.9M',
+            "highlightOptions": ["Germany>Austria"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which connection saw the largest increase in immigration from 1995 to 2005?",
+            "choices": ["Germany to France", "Bulgaria to Germany", "India to Canada", "Romania to Spain"],
+            "answer": 'Romania to Spain',
+            "highlightOptions": ["Germany>France", "Bulgaria>Germany", "India>Canada", "Romania>Spain"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which connection has the lowest overall level of immigration across the entire time period 1980-2020?",
+            "choices": ["New Zealand to Australia", "Romania to Italy", "France to Spain", "Germany to Italy"],
+            "answer": 'New Zealand to Australia',
+            "highlightOptions": ["New_Zealand>Australia", "Romania>Italy", "France>Spain", "Germany>Italy"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What was the maximum immigration level from Colombia to Spain in any year before 2005, in millions?",
+            "choices": ["1.5M", "2.0M", "2.5M", "3.0M"],
+            "answer": '3.0M',
+            "highlightOptions": ["Colombia>Spain"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Rank the connections (Tajikistan to Russia, Germany to Poland, Romania to Italy) from most to least immigration, for year 2000",
+            "choices": ["Tajikistan to Russia; Germany to Poland; Romania to Italy", "Germany to Poland; Tajikistan to Russia; Romania to Italy", "Romania to Italy; Germany to Poland; Tajikistan to Russia"],
+            "answer": "Germany to Poland; Tajikistan to Russia; Romania to Italy",
+            "highlightOptions": ["Germany>Poland", "Tajikistan>Russia", "Romania>Italy"]
+	},
+	{
+            "type": "multichoice",
+            "label": "What range of immigration levels were seen for China to Canada from 1980 to 2020?",
+            "choices": ["0.5M to 2.0M", "1.1M to 2.8M", "1.8M to 3.3M", "2.5M to 3.6M"],
+            "answer": '1.8M to 3.3M',
+            "highlightOptions": ["China>Canada"]
+	},
+	{
+            "type": "multichoice",
+            "label": "Which connection had a higher immigration level in 1987?",
+            "choices": ["Philippines to Australia", "Pakistan to Canada"],
+            "answer": 'Philippines to Australia',
+            "highlightOptions": ["Philippines>Australia", "Pakistan>Canada"]
+	}],
+    };

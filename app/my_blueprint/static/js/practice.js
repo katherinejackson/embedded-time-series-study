@@ -4,12 +4,12 @@ var condition = getCond();
 // Then get the block 
 var block = getBlock();
 
-// var study_options = Object.keys(study_mode_map)
-// // shift id back so ID starts at 0
-// var sel = (getParticipant() - 1) % study_options.length
-// var study_mode = study_options[sel]
+var study_options = Object.keys(study_mode_map)
+// shift id back so ID starts at 0
+var sel = (getParticipant() - 1) % study_options.length
+var study_mode = study_options[sel]
 
-// console.log("study mode: ", study_mode)
+console.log("study mode (practice): ", study_mode)
 
 // Then get the corresponding map based on the condition
 //var condition_set_value = condition_map[1][2];
@@ -362,6 +362,8 @@ function showQuestion() {
                 let question = question_map[question_index];
 
                 if (value) {
+                    console.log(value)
+                    console.log(question)
                     button_clicked = true;
                     logResponse(question.type);
                 }
