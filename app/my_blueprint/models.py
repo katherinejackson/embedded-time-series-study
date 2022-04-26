@@ -15,6 +15,7 @@ def create(db):
         Condition = db.Column(db.String)
         QuestionType = db.Column(db.String)
         ErrorCount = db.Column(db.String)
+        selectItems = db.Column(db.String)
         hoverCount = db.Column(db.String)
         hoverItems = db.Column(db.String)
         zoomLevel = db.Column(db.String)

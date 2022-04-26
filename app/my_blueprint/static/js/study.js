@@ -28,6 +28,8 @@ var question_map = studyQuestions['study-' + condition_set_value];
 var question_index = 0;
 // Count wrong answer attempts
 var wrong_count = 0;
+// Items that were selected
+var selectedItems = [];
 // Count hover activity
 var hover_count = 0;
 // Items that were hovered on
@@ -101,6 +103,7 @@ function showQuestion() {
     zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
+    selectedItems = [];
     button_clicked = false;
 
 
@@ -115,6 +118,8 @@ function showQuestion() {
             let correct_answer = question.answer,
                 user_answer = $('input[name="answer-radio"]:checked').val();
 
+            selectedItems.push(user_answer);
+
             if (correct_answer == user_answer) {
                 button_clicked = true;
                 logResponse(question.type);
@@ -128,10 +133,8 @@ function showQuestion() {
     });
 
     window.itemHovered = (value) => {
-        console.log("val ", value)
         hover_count = hover_count + 1;
         hovered_items.push(value);
-        console.log("h ", hovered_items)
     }
 
     window.onZoom = (value) => {
@@ -183,6 +186,7 @@ function logResponse(question_type = '') {
         Condition: condition,
         questionType: question_type,
         ErrorCount: wrong_count,
+        selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,

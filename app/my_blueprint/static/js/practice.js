@@ -32,6 +32,8 @@ var question_map = studyQuestions['practice-' + condition_set_value];
 var question_index = 0;
 // Count wrong answer attempts
 var wrong_count = 0;
+// Items that were selected
+var selectedItems = [];
 // Count hover activity
 var hover_count = 0;
 // Items that were hovered on
@@ -61,7 +63,7 @@ $('#start-practice').click(() => {
 function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html(data_intro[condition_set_value] + '\n\n' + '\n\n' + ' You will now be asked 4 questions that you have to answer using the visualization. Please try to answer them as quickly and accurately as possible.');
+    $('#description').html(data_intro[condition_set_value] + '\n\n' + '\n\n' + ' You will now be asked 3 questions that you have to answer using the visualization. Please try to answer them as quickly and accurately as possible.');
     $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
@@ -318,6 +320,7 @@ function showQuestion() {
     zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
+    selectedItems = [];
     button_clicked = false;
 
 
@@ -331,6 +334,8 @@ function showQuestion() {
 
             let correct_answer = question.answer,
                 user_answer = $('input[name="answer-radio"]:checked').val();
+
+            selectedItems.push(user_answer);
 
             if (correct_answer == user_answer) {
                 button_clicked = true;
@@ -401,6 +406,7 @@ function logResponse(question_type = '') {
         Condition: condition,
         questionType: question_type,
         ErrorCount: wrong_count,
+        selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
