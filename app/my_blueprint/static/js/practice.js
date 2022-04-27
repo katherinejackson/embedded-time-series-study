@@ -202,8 +202,9 @@ function getShapeDescription(view, originalGlyph) {
     //string += `Each ${shape} shows the ${data} for one ${timePeriod}, using ${encodings[glyph]}. `
     string += `The ${encodings[glyph]} shows the ${data} for one ${timePeriod}. `
 
-    if (glyph.includes('spiral')) string += `The progression of the ${time}s reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
+    if (glyph.includes('spiral')) string += `The progression of the ${time}s begins at the centre and then reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
 
+    
 
     // let string = ''
     // if (view === 'MIGRATION_GRAPH') {
@@ -264,6 +265,8 @@ function getLegendDescription(view, originalGlyph) {
 
 
     let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}. ` 
+
+    if (view === 'SCATTER') string += `Note that this visualization uses a log scale to show a wider range of values.`
 
     // if (view === 'MIGRATION_GRAPH') {
     //     string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`
