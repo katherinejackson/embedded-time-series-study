@@ -45,7 +45,7 @@ var study_mode_map = {
 // **********************************************************************************************************
 // SET THE STUDY MODE THAT YOU WANT TO SEE HERE
 // Any of the keys from study_mode_map will work here
-//var study_mode = 'spiral_color_medium'
+var study_mode = 'row_color_large'
 // **********************************************************************************************************
 // **********************************************************************************************************
 // **********************************************************************************************************
@@ -183,9 +183,9 @@ var studyQuestions = {
     'practice-MIGRATION_GRAPH': [
 	{
             "type": "multichoice",
-            "label": "Which had higher overall movement from 2013-2020: Italy to France, or Romania to Germany?",
+            "label": "Which had higher overall movement 2000-2015: Italy to France, or Romania to Germany?",
             "choices": ["Italy to France", "Romania to Germany"],
-            "answer": 'Romania to Germany',
+            "answer": 'Italy to France',
             "highlightOptions": ["Italy>France", "Romania>Germany"]
 	},
 	{
@@ -226,7 +226,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Which city (Bethel, Talkeetna, Barrow, or Juneau) had a 2020 summer that was substantially colder than in 2021?",
+            "label": "Which city (Bethel, Talkeetna, Barrow, or Juneau) had a 2020 summer (June-August) that was substantially colder than in 2021?",
             "choices": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
             "answer": 'Talkeetna',
             "highlightOptions": ["Bethel", "Talkeetna", "Barrow", "Juneau"]
@@ -334,28 +334,28 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "What was the approximate level of immigration from Germany to Austria in 2003, in millions?",
-            "choices": ["1.0M", "1.5M", "2.0M", "2.9M", "3.6M"],
+            "label": "What was the approximate level of immigration from Germany to Austria in 2003?",
+            "choices": ["0.7M", "1.0M", "1.5M", "2.0M", "2.9M", "3.6M"],
             "answer": '2.9M',
             "highlightOptions": ["Germany>Austria"]
 	},
 	{
             "type": "multichoice",
-            "label": "Which connection saw the largest increase in immigration from 1995 to 2005?",
+            "label": "Which of the following pairs saw the largest increase in immigration from 1995 to 2005?",
             "choices": ["Germany to France", "Bulgaria to Germany", "India to Canada", "Romania to Spain"],
             "answer": 'Romania to Spain',
             "highlightOptions": ["Germany>France", "Bulgaria>Germany", "India>Canada", "Romania>Spain"]
 	},
 	{
             "type": "multichoice",
-            "label": "Which connection has the lowest overall level of immigration across the entire time period 1980-2020?",
+            "label": "Which connection has the lowest overall level of immigration across the years 1980-2010?",
             "choices": ["New Zealand to Australia", "Romania to Italy", "France to Spain", "Germany to Italy"],
-            "answer": 'New Zealand to Australia',
+            "answer": 'Romania to Italy',
             "highlightOptions": ["New_Zealand>Australia", "Romania>Italy", "France>Spain", "Germany>Italy"]
 	},
 	{
             "type": "multichoice",
-            "label": "What was the maximum immigration level from Colombia to Spain in any year before 2005, in millions?",
+            "label": "What was the maximum immigration level from Colombia to Spain in any year before 2005?",
             "choices": ["1.5M", "2.0M", "2.5M", "3.0M"],
             "answer": '3.0M',
             "highlightOptions": ["Colombia>Spain"]
