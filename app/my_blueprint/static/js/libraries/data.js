@@ -142,21 +142,24 @@ var studyQuestions = {
             "label": "What was the approximate average temperature for Whitehorse in February 2020?",
             "choices": ["-25", "-15", "0", "+10"],
             "answer": '-15',
-            "highlightOptions": ["Whitehorse"]
+            "highlightOptions": ["Whitehorse"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which city (Faro or Dawson City) had more days above +25 in 2020?",
             "choices": ["Faro", "Dawson City"],
             "answer": 'Dawson City',
-            "highlightOptions": ["Faro", "Dawson City"]
+            "highlightOptions": ["Faro", "Dawson City"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Approximately how many days were below -15 in Whitehorse in 2020?",
             "choices": ["0", "10", "20", "30"],
             "answer": '10',
-            "highlightOptions": ["Whitehorse"]
+            "highlightOptions": ["Whitehorse"],
+            "indicator_type": "xxx"
 	}],
     'practice-SCATTER': [
 	{
@@ -164,21 +167,24 @@ var studyQuestions = {
             "label": "What was the approximate average daily case rate for France in December 2021, in thousands?",
             "choices": ["150", "250", "325", "400", "450"],
             "answer": '400',
-            "highlightOptions": ["France"]
+            "highlightOptions": ["France"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which country (Italy or United Kingdom) had a higher Covid rate in July 2021?",
             "choices": ["Italy", "United Kingdom"],
             "answer": 'United Kingdom',
-            "highlightOptions": ["Italy", "United Kingdom"]
+            "highlightOptions": ["Italy", "United Kingdom"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Was Germany's Covid rate higher in March 2020 or March 2021?",
             "choices": ["March 2020", "March 2021"],
             "answer": 'March 2021',
-            "highlightOptions": ["Germany"]
+            "highlightOptions": ["Germany"],
+            "indicator_type": "xxx"
 	}],
     'practice-MIGRATION_GRAPH': [
 	{
@@ -186,21 +192,24 @@ var studyQuestions = {
             "label": "Which had higher overall movement 2000-2015: Italy to France, or Romania to Germany?",
             "choices": ["Italy to France", "Romania to Germany"],
             "answer": 'Italy to France',
-            "highlightOptions": ["Italy>France", "Romania>Germany"]
+            "highlightOptions": ["Italy>France", "Romania>Germany"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate immigration level for Romania to Germany in 1996, in millions?",
             "choices": ["1.0M", "1.9M", "2.6M", "3.1M"],
             "answer": '2.6M',
-            "highlightOptions": ["Romania>Germany"]
+            "highlightOptions": ["Romania>Germany"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which connection has the most missing data?",
             "choices": ["Romania to Germany", "Italy to France", "Bulgaria to Turkey"],
             "answer": 'Bulgaria to Turkey',
-            "highlightOptions": ["Romania>Germany", "Italy>France", "Bulgaria>Turkey"]
+            "highlightOptions": ["Romania>Germany", "Italy>France", "Bulgaria>Turkey"],
+            "indicator_type": "xxx"
 	}],
     'study-MAP': [
 	{
@@ -208,35 +217,40 @@ var studyQuestions = {
             "label": "For the city of Kodiak, in what year were the months January-March colder: 2020 or 2021?",
             "choices": ["2020", "2021"],
             "answer": '2021',
-            "highlightOptions": ["Kodiak"]
+            "highlightOptions": ["Kodiak"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate average temperature for Fairbanks in July 2021?",
             "choices": ["22", "18", "14", "10", "6"],
             "answer": '14',
-            "highlightOptions": ["Fairbanks"]
+            "highlightOptions": ["Fairbanks"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which city (Haines, Healy, Kodiak, or Homer) had the most consistent temperature between September and December 2020?",
             "choices": ["Haines", "Healy", "Kodiak", "Homer"],
             "answer": 'Healy',
-            "highlightOptions": ["Haines", "Healy", "Kodiak", "Homer"]
+            "highlightOptions": ["Haines", "Healy", "Kodiak", "Homer"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which city (Bethel, Talkeetna, Barrow, or Juneau) had a 2020 summer (June-August) that was substantially colder than in 2021?",
             "choices": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
             "answer": 'Talkeetna',
-            "highlightOptions": ["Bethel", "Talkeetna", "Barrow", "Juneau"]
+            "highlightOptions": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate minimum temperature in 2021 for Kotzebue?",
             "choices": ["-34", "-27", "-22", "-17"],
             "answer": '-34',
-            "highlightOptions": ["Kotzebue"]
+            "highlightOptions": ["Kotzebue"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
@@ -244,21 +258,24 @@ var studyQuestions = {
             "choices": ["Bethel, Nome, Healy", "Healy, Nome, Bethel", "Nome, Bethel, Healy",
 			"Bethel, Healy, Nome"],
             "answer": 'Healy, Nome, Bethel',
-            "highlightOptions": ["Healy", "Nome", "Bethel"]
+            "highlightOptions": ["Healy", "Nome", "Bethel"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What range of temperatures were seen in Fairbanks in 2021?",
             "choices": ["-25 to +5", "-15 to +10", "-25 to +15", "-20 to +20", "-25 to +25"],
             "answer": '-25 to +15',
-            "highlightOptions": ["Fairbanks"]
+            "highlightOptions": ["Fairbanks"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which city had a higher temperature in March 2020, Unalaska or Bethel?",
             "choices": ["Unalaska", "Bethel"],
             "answer": 'Unalaska',
-            "highlightOptions": ["Unalaska", "Bethel"]
+            "highlightOptions": ["Unalaska", "Bethel"],
+            "indicator_type": "xxx"
 	}],
     'study-SCATTER': [
 	{
@@ -266,63 +283,72 @@ var studyQuestions = {
             "label": "In the United States, in what year did the months August-September have more Covid cases: 2020 or 2021?",
             "choices": ["2020", "2021"],
             "answer": '2021',
-            "highlightOptions": ["United States"]
+            "highlightOptions": ["United States"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate average Covid case rate for Uzbekistan in April 2020?",
             "choices": ["200", "2000", "10000"],
             "answer": '200',
-            "highlightOptions": ["Uzbekistan"]
+            "highlightOptions": ["Uzbekistan"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which country (Sri Lanka, Cambodia, or India) had the most consistent case rate September-December 2021?",
             "choices": ["Sri Lanka", "Cambodia", "India"],
             "answer": 'Sri Lanka',
-            "highlightOptions": ["Sri Lanka", "Cambodia", "India"]
+            "highlightOptions": ["Sri Lanka", "Cambodia", "India"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which country (Philippines, Yemen, or Nepal) had more cases in June-August of 2021?",
             "choices": ["Philippines", "Yemen", "Nepal"],
             "answer": 'Philippines',
-            "highlightOptions": ["Philippines", "Yemen", "Nepal"]
+            "highlightOptions": ["Philippines", "Yemen", "Nepal"],
+            "indicator_type": "xxx"
 	},
         {
             "type": "multichoice",
             "label": "Which of the following countries had a lower overall number of new Covid-19 cases in 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
             "answer": 'Syria',
-            "highlightOptions": ["Pakistan", "Syria", "Vietnam"]
+            "highlightOptions": ["Pakistan", "Syria", "Vietnam"],
+            "indicator_type": "xxx"
         },
         {
             "type": "multichoice",
             "label": "What was the approximate number of new Covid-19 cases per day in December 2020 for the United States?",
             "choices": ["10K", "100K", "1M"],
             "answer": '1M',
-            "highlightOptions": ["United States"]
+            "highlightOptions": ["United States"],
+            "indicator_type": "xxx"
         },
 	{
             "type": "multichoice",
             "label": "What was the approximate minimum case rate in 2021 for Azerbaijan?",
             "choices": ["10", "100", "1000"],
             "answer": '10',
-            "highlightOptions": ["Azerbaijan"]
+            "highlightOptions": ["Azerbaijan"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Rank countries Syria, India, and Vietnam in terms of case rate, from lowest to highest, for July 2021",
             "choices": ["India, Syria, Vietnam", "Vietnam, Syria, India", "Syria, Vietnam, India"],
             "answer": 'Syria, Vietnam, India',
-            "highlightOptions": ["Vietnam", "Syria", "India"]
+            "highlightOptions": ["Vietnam", "Syria", "India"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What range of case rates were seen in Cambodia in 2021?",
             "choices": ["10 to 1M", "100 to 100K", "10 to 10K", "10K to 100K"],
             "answer": '10 to 10K',
-            "highlightOptions": ["Cambodia"]
+            "highlightOptions": ["Cambodia"],
+            "indicator_type": "xxx"
 	}],
     'study-MIGRATION_GRAPH': [
 	{
@@ -330,55 +356,63 @@ var studyQuestions = {
             "label": "For immigration from France to Spain, was the level higher in 1994 or 2008?",
             "choices": ["1994", "2008"],
             "answer": '2008',
-            "highlightOptions": ["France>Spain"]
+            "highlightOptions": ["France>Spain"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate level of immigration from Germany to Austria in 2003?",
             "choices": ["0.7M", "1.0M", "1.5M", "2.0M", "2.9M", "3.6M"],
             "answer": '2.9M',
-            "highlightOptions": ["Germany>Austria"]
+            "highlightOptions": ["Germany>Austria"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which of the following pairs saw the largest increase in immigration from 1995 to 2005?",
             "choices": ["Germany to France", "Bulgaria to Germany", "India to Canada", "Romania to Spain"],
             "answer": 'Romania to Spain',
-            "highlightOptions": ["Germany>France", "Bulgaria>Germany", "India>Canada", "Romania>Spain"]
+            "highlightOptions": ["Germany>France", "Bulgaria>Germany", "India>Canada", "Romania>Spain"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which connection has the lowest overall level of immigration across the years 1980-2010?",
             "choices": ["New Zealand to Australia", "Romania to Italy", "France to Spain", "Germany to Italy"],
             "answer": 'Romania to Italy',
-            "highlightOptions": ["New_Zealand>Australia", "Romania>Italy", "France>Spain", "Germany>Italy"]
+            "highlightOptions": ["New_Zealand>Australia", "Romania>Italy", "France>Spain", "Germany>Italy"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What was the maximum immigration level from Colombia to Spain in any year before 2005?",
             "choices": ["1.5M", "2.0M", "2.5M", "3.0M"],
             "answer": '3.0M',
-            "highlightOptions": ["Colombia>Spain"]
+            "highlightOptions": ["Colombia>Spain"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Rank the connections (Tajikistan to Russia, Germany to Poland, Romania to Italy) from most to least immigration, for year 2000",
             "choices": ["Tajikistan to Russia; Germany to Poland; Romania to Italy", "Germany to Poland; Tajikistan to Russia; Romania to Italy", "Romania to Italy; Germany to Poland; Tajikistan to Russia"],
             "answer": "Germany to Poland; Tajikistan to Russia; Romania to Italy",
-            "highlightOptions": ["Germany>Poland", "Tajikistan>Russia", "Romania>Italy"]
+            "highlightOptions": ["Germany>Poland", "Tajikistan>Russia", "Romania>Italy"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "What range of immigration levels were seen for China to Canada from 1980 to 2020?",
             "choices": ["0.5M to 2.0M", "1.1M to 2.8M", "1.8M to 3.3M", "2.5M to 3.6M"],
             "answer": '1.8M to 3.3M',
-            "highlightOptions": ["China>Canada"]
+            "highlightOptions": ["China>Canada"],
+            "indicator_type": "xxx"
 	},
 	{
             "type": "multichoice",
             "label": "Which connection had a higher immigration level in 1987?",
             "choices": ["Philippines to Australia", "Pakistan to Canada"],
             "answer": 'Philippines to Australia',
-            "highlightOptions": ["Philippines>Australia", "Pakistan>Canada"]
+            "highlightOptions": ["Philippines>Australia", "Pakistan>Canada"],
+            "indicator_type": "xxx"
 	}],
     };

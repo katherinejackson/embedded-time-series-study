@@ -42,6 +42,8 @@ var hovered_items = [];
 var zoom_level = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
+// Record the question type from Carl's criteria
+var indicator_type = "";
 
 
 // Study intro is shown by default so wait for the user to click next 
@@ -223,6 +225,14 @@ function getShapeDescription(view, originalGlyph) {
     // if (glyph.includes('row') || glyph === 'spiral_color') {
     //     string += `Missing data is represented using a ${missingDataColour} ${shape}. `
     // }
+
+    if (glyph.includes('row')) {
+        string += `Each chart has light grey guide lines to show the positions of the interval values. `
+    }
+    else if (glyph.includes('spiral')) {
+        string += `Each chart has a light grey guide line to show the mid point position of the data. `
+    }
+
     string += `Missing data is represented using a ${missingDataColour} ${shape}. `
 
     string += `Note that the charts will be smaller in size during the task than the example chart.`
@@ -325,6 +335,7 @@ function showQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
+    indicator_type = "";
 
 
     $('#question-box button.next').unbind('click').click((event) => {
@@ -337,6 +348,9 @@ function showQuestion() {
 
             let correct_answer = question.answer,
                 user_answer = $('input[name="answer-radio"]:checked').val();
+
+            indicator_type = question.indicator_type;
+            console.log(indicator_type)
 
             selectedItems.push(user_answer);
 
@@ -413,6 +427,7 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
+        indicatorType: indicator_type
     };
 
     $.post("#", trialResult).then(function () {

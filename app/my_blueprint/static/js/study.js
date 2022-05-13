@@ -38,6 +38,8 @@ var hovered_items = [];
 var zoom_level = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
+// Record the question type from Carl's criteria
+var indicator_type = "";
 
 intializeChart();
 
@@ -107,7 +109,7 @@ function showQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
-
+    indicator_type = "";
 
     $('#question-box button.next').unbind('click').click((event) => {
         // prevent form from submitting
@@ -121,6 +123,8 @@ function showQuestion() {
                 user_answer = $('input[name="answer-radio"]:checked').val();
 
             selectedItems.push(user_answer);
+
+            indicator_type = question.indicator_type;
 
             if (correct_answer == user_answer) {
                 button_clicked = true;
@@ -192,6 +196,7 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
+        indicatorType: indicator_type,
     };
 
     $.post("#", trialResult).then(function () {

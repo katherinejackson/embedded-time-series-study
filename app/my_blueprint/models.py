@@ -20,6 +20,7 @@ def create(db):
         hoverItems = db.Column(db.String)
         zoomLevel = db.Column(db.String)
         questionNumber = db.Column(db.String)
+        indicatorType = db.Column(db.String)
         #color = db.Column(db.String)
 
     class visionTest(db.Model):
