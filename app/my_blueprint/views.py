@@ -69,7 +69,9 @@ def practice_1_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()
@@ -98,7 +100,9 @@ def practice_2_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()
@@ -127,7 +131,9 @@ def practice_3_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()
@@ -156,7 +162,9 @@ def study_1_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()
@@ -186,7 +194,9 @@ def study_2_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()
@@ -215,7 +225,9 @@ def study_3_results():
         log.hoverCount = request.form['hoverCount']
         log.hoverItems = request.form['hoverItems']
         log.zoomLevel = request.form['zoomLevel']
-        log.indicatorType = request.form['indicatorType']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
         db.session.add(log)
         db.session.commit()

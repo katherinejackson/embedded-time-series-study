@@ -43,7 +43,9 @@ var zoom_level = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
-var indicator_type = "";
+var perceptual_task = "";
+var decision_task = "";
+var comparison_basis = "";
 
 
 // Study intro is shown by default so wait for the user to click next 
@@ -335,7 +337,9 @@ function showQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
-    indicator_type = "";
+    perceptual_task = "";
+    decision_task = "";
+    comparison_basis = "";
 
 
     $('#question-box button.next').unbind('click').click((event) => {
@@ -349,8 +353,10 @@ function showQuestion() {
             let correct_answer = question.answer,
                 user_answer = $('input[name="answer-radio"]:checked').val();
 
-            indicator_type = question.indicator_type;
-            console.log(indicator_type)
+            perceptual_task = question.perceptual_task;
+            decision_task = question.decision_task;
+            comparison_basis = question.comparison_basis;
+            
 
             selectedItems.push(user_answer);
 
@@ -410,6 +416,8 @@ function logResponse(question_type = '') {
 
     var endTime = new Date();
 
+    console.log("test ", perceptual_task, decision_task, comparison_basis)
+
     // formulate json to store in DB.
     var trialResult = {
         trialStart: trialStartTime,
@@ -427,7 +435,9 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
-        indicatorType: indicator_type
+        perceptualTask: perceptual_task,
+        decisionTask: decision_task, 
+        comparisonBasis: comparison_basis
     };
 
     $.post("#", trialResult).then(function () {

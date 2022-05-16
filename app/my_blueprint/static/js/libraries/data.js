@@ -143,7 +143,9 @@ var studyQuestions = {
             "choices": ["-25", "-15", "0", "+10"],
             "answer": '-15',
             "highlightOptions": ["Whitehorse"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -151,7 +153,9 @@ var studyQuestions = {
             "choices": ["Faro", "Dawson City"],
             "answer": 'Dawson City',
             "highlightOptions": ["Faro", "Dawson City"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -159,16 +163,20 @@ var studyQuestions = {
             "choices": ["0", "10", "20", "30"],
             "answer": '10',
             "highlightOptions": ["Whitehorse"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	}],
     'practice-SCATTER': [
 	{
             "type": "multichoice",
-            "label": "What was the approximate average daily case rate for France in December 2021, in thousands?",
-            "choices": ["150", "250", "325", "400", "450"],
-            "answer": '400',
+            "label": "What was the approximate average daily case rate for France in December 2021?",
+            "choices": ["10K", "75K", "150K", "400K", "450K"],
+            "answer": '75K',
             "highlightOptions": ["France"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -176,7 +184,9 @@ var studyQuestions = {
             "choices": ["Italy", "United Kingdom"],
             "answer": 'United Kingdom',
             "highlightOptions": ["Italy", "United Kingdom"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -184,7 +194,9 @@ var studyQuestions = {
             "choices": ["March 2020", "March 2021"],
             "answer": 'March 2021',
             "highlightOptions": ["Germany"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Within"
 	}],
     'practice-MIGRATION_GRAPH': [
 	{
@@ -193,7 +205,9 @@ var studyQuestions = {
             "choices": ["Italy to France", "Romania to Germany"],
             "answer": 'Italy to France',
             "highlightOptions": ["Italy>France", "Romania>Germany"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -201,7 +215,9 @@ var studyQuestions = {
             "choices": ["1.0M", "1.9M", "2.6M", "3.1M"],
             "answer": '2.6M',
             "highlightOptions": ["Romania>Germany"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -209,7 +225,9 @@ var studyQuestions = {
             "choices": ["Romania to Germany", "Italy to France", "Bulgaria to Turkey"],
             "answer": 'Bulgaria to Turkey',
             "highlightOptions": ["Romania>Germany", "Italy>France", "Bulgaria>Turkey"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	}],
     'study-MAP': [
 	{
@@ -218,7 +236,9 @@ var studyQuestions = {
             "choices": ["2020", "2021"],
             "answer": '2021',
             "highlightOptions": ["Kodiak"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Within"
 	},
 	{
             "type": "multichoice",
@@ -226,7 +246,9 @@ var studyQuestions = {
             "choices": ["22", "18", "14", "10", "6"],
             "answer": '14',
             "highlightOptions": ["Fairbanks"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -234,7 +256,9 @@ var studyQuestions = {
             "choices": ["Haines", "Healy", "Kodiak", "Homer"],
             "answer": 'Healy',
             "highlightOptions": ["Haines", "Healy", "Kodiak", "Homer"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -242,7 +266,9 @@ var studyQuestions = {
             "choices": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
             "answer": 'Talkeetna',
             "highlightOptions": ["Bethel", "Talkeetna", "Barrow", "Juneau"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -250,7 +276,9 @@ var studyQuestions = {
             "choices": ["-34", "-27", "-22", "-17"],
             "answer": '-34',
             "highlightOptions": ["Kotzebue"],
-            "indicator_type": "xxx"
+            "perceptual_task": "FindExtremum",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -259,7 +287,9 @@ var studyQuestions = {
 			"Bethel, Healy, Nome"],
             "answer": 'Healy, Nome, Bethel',
             "highlightOptions": ["Healy", "Nome", "Bethel"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Sort",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -267,7 +297,9 @@ var studyQuestions = {
             "choices": ["-25 to +5", "-15 to +10", "-25 to +15", "-20 to +20", "-25 to +25"],
             "answer": '-25 to +15',
             "highlightOptions": ["Fairbanks"],
-            "indicator_type": "xxx"
+            "perceptual_task": "DetermineRange",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -275,7 +307,9 @@ var studyQuestions = {
             "choices": ["Unalaska", "Bethel"],
             "answer": 'Unalaska',
             "highlightOptions": ["Unalaska", "Bethel"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	}],
     'study-SCATTER': [
 	{
@@ -284,23 +318,29 @@ var studyQuestions = {
             "choices": ["2020", "2021"],
             "answer": '2021',
             "highlightOptions": ["United States"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Within"
 	},
 	{
             "type": "multichoice",
             "label": "What was the approximate average Covid case rate for Uzbekistan in April 2020?",
-            "choices": ["200", "2000", "10000"],
-            "answer": '200',
+            "choices": ["5", "50", "500"],
+            "answer": '50',
             "highlightOptions": ["Uzbekistan"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
-            "label": "Which country (Sri Lanka, Cambodia, or India) had the most consistent case rate September-December 2021?",
-            "choices": ["Sri Lanka", "Cambodia", "India"],
-            "answer": 'Sri Lanka',
-            "highlightOptions": ["Sri Lanka", "Cambodia", "India"],
-            "indicator_type": "xxx"
+            "label": "Which country (India, the United States, or Yemen) had the most consistent case rate September-December 2021?",
+            "choices": ["United States", "Yemen", "India"],
+            "answer": 'India',
+            "highlightOptions": ["United States", "Yemen", "India"],
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -308,23 +348,19 @@ var studyQuestions = {
             "choices": ["Philippines", "Yemen", "Nepal"],
             "answer": 'Philippines',
             "highlightOptions": ["Philippines", "Yemen", "Nepal"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
         {
             "type": "multichoice",
-            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in 2021?",
+            "label": "Which of the following countries had a overall number of new Covid-19 cases in December 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
             "answer": 'Syria',
             "highlightOptions": ["Pakistan", "Syria", "Vietnam"],
-            "indicator_type": "xxx"
-        },
-        {
-            "type": "multichoice",
-            "label": "What was the approximate number of new Covid-19 cases per day in December 2020 for the United States?",
-            "choices": ["10K", "100K", "1M"],
-            "answer": '1M',
-            "highlightOptions": ["United States"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
         },
 	{
             "type": "multichoice",
@@ -332,23 +368,29 @@ var studyQuestions = {
             "choices": ["10", "100", "1000"],
             "answer": '10',
             "highlightOptions": ["Azerbaijan"],
-            "indicator_type": "xxx"
+            "perceptual_task": "FindExtremum",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
-            "label": "Rank countries Syria, India, and Vietnam in terms of case rate, from lowest to highest, for July 2021",
+            "label": "Rank countries Syria, India, and Vietnam in terms of average case rate, from lowest to highest, for July 2021",
             "choices": ["India, Syria, Vietnam", "Vietnam, Syria, India", "Syria, Vietnam, India"],
             "answer": 'Syria, Vietnam, India',
             "highlightOptions": ["Vietnam", "Syria", "India"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Sort",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
             "label": "What range of case rates were seen in Cambodia in 2021?",
-            "choices": ["10 to 1M", "100 to 100K", "10 to 10K", "10K to 100K"],
-            "answer": '10 to 10K',
+            "choices": ["1 to 10K", "10K to 100K", "100 to 100K", "1 to 1M"],
+            "answer": '1 to 10K',
             "highlightOptions": ["Cambodia"],
-            "indicator_type": "xxx"
+            "perceptual_task": "DetermineRange",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	}],
     'study-MIGRATION_GRAPH': [
 	{
@@ -357,7 +399,9 @@ var studyQuestions = {
             "choices": ["1994", "2008"],
             "answer": '2008',
             "highlightOptions": ["France>Spain"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Within"
 	},
 	{
             "type": "multichoice",
@@ -365,7 +409,9 @@ var studyQuestions = {
             "choices": ["0.7M", "1.0M", "1.5M", "2.0M", "2.9M", "3.6M"],
             "answer": '2.9M',
             "highlightOptions": ["Germany>Austria"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -373,7 +419,9 @@ var studyQuestions = {
             "choices": ["Germany to France", "Bulgaria to Germany", "India to Canada", "Romania to Spain"],
             "answer": 'Romania to Spain',
             "highlightOptions": ["Germany>France", "Bulgaria>Germany", "India>Canada", "Romania>Spain"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -381,7 +429,9 @@ var studyQuestions = {
             "choices": ["New Zealand to Australia", "Romania to Italy", "France to Spain", "Germany to Italy"],
             "answer": 'Romania to Italy',
             "highlightOptions": ["New_Zealand>Australia", "Romania>Italy", "France>Spain", "Germany>Italy"],
-            "indicator_type": "xxx"
+            "perceptual_task": "ComputeDerivedValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -389,7 +439,9 @@ var studyQuestions = {
             "choices": ["1.5M", "2.0M", "2.5M", "3.0M"],
             "answer": '3.0M',
             "highlightOptions": ["Colombia>Spain"],
-            "indicator_type": "xxx"
+            "perceptual_task": "FindExtremum",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -397,7 +449,9 @@ var studyQuestions = {
             "choices": ["Tajikistan to Russia; Germany to Poland; Romania to Italy", "Germany to Poland; Tajikistan to Russia; Romania to Italy", "Romania to Italy; Germany to Poland; Tajikistan to Russia"],
             "answer": "Germany to Poland; Tajikistan to Russia; Romania to Italy",
             "highlightOptions": ["Germany>Poland", "Tajikistan>Russia", "Romania>Italy"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Sort",
+            "comparison_basis": "Between"
 	},
 	{
             "type": "multichoice",
@@ -405,7 +459,9 @@ var studyQuestions = {
             "choices": ["0.5M to 2.0M", "1.1M to 2.8M", "1.8M to 3.3M", "2.5M to 3.6M"],
             "answer": '1.8M to 3.3M',
             "highlightOptions": ["China>Canada"],
-            "indicator_type": "xxx"
+            "perceptual_task": "DetermineRange",
+            "decision_task": "None",
+            "comparison_basis": "None"
 	},
 	{
             "type": "multichoice",
@@ -413,6 +469,8 @@ var studyQuestions = {
             "choices": ["Philippines to Australia", "Pakistan to Canada"],
             "answer": 'Philippines to Australia',
             "highlightOptions": ["Philippines>Australia", "Pakistan>Canada"],
-            "indicator_type": "xxx"
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "Compare",
+            "comparison_basis": "Between"
 	}],
     };

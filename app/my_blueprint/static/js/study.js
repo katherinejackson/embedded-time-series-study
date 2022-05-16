@@ -39,7 +39,9 @@ var zoom_level = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
-var indicator_type = "";
+var perceptual_task = "";
+var decision_task = "";
+var comparison_basis = "";
 
 intializeChart();
 
@@ -109,7 +111,9 @@ function showQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
-    indicator_type = "";
+    perceptual_task = "";
+    decision_task = "";
+    comparison_basis = "";
 
     $('#question-box button.next').unbind('click').click((event) => {
         // prevent form from submitting
@@ -124,7 +128,9 @@ function showQuestion() {
 
             selectedItems.push(user_answer);
 
-            indicator_type = question.indicator_type;
+            perceptual_task = question.perceptual_task;
+            decision_task = question.decision_task;
+            comparison_basis = question.comparison_basis;
 
             if (correct_answer == user_answer) {
                 button_clicked = true;
@@ -196,7 +202,9 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
-        indicatorType: indicator_type,
+        perceptualTask: perceptual_task,
+        decisionTask: decision_task, 
+        comparisonBasis: comparison_basis
     };
 
     $.post("#", trialResult).then(function () {
