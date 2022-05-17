@@ -354,7 +354,7 @@ var studyQuestions = {
 	},
         {
             "type": "multichoice",
-            "label": "Which of the following countries had a overall number of new Covid-19 cases in December 2021?",
+            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in December 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
             "answer": 'Syria',
             "highlightOptions": ["Pakistan", "Syria", "Vietnam"],
