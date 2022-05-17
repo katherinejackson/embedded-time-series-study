@@ -125,7 +125,7 @@ function getVisualizationDescription(view, originalGlyph) {
     else if (view === 'SCATTER') desc = 'COVID cases over time for specific countries'
     else if (view === 'MIGRATION_GRAPH') desc = 'migration data over time for specific countries'
 
-    string = `In the next screens you will see a ${visualization} `
+    string = `In the next screens you will see a ${visualization}`
     if (view === 'MIGRATION_GRAPH') string += `showing immigration between countries`
     
     string += `. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}. `
