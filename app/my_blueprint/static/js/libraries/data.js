@@ -161,7 +161,7 @@ var studyQuestions = {
             "type": "multichoice",
             "label": "Approximately how many days were below -20 in Whitehorse in 2020?",
             "choices": ["0", "10", "20", "30"],
-            "answer": '12',
+            "answer": '20',
             "highlightOptions": ["Whitehorse"],
             "perceptual_task": "ComputeDerivedValue",
             "decision_task": "None",
