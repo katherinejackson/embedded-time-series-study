@@ -9,7 +9,7 @@ var study_options = Object.keys(study_mode_map)
 var sel = (getParticipant() - 1) % study_options.length
 var study_mode = study_options[sel]
 
-console.log("study mode (study): ", study_mode)
+console.log("study mode (study) -- ", study_mode)
 
 // Then get the corresponding map based on the condition 
 var condition_set_value = condition_map[condition][+block - 1];
