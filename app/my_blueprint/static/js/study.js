@@ -70,6 +70,30 @@ function showQuestion() {
 
     // Show the questionBox 
     $('#question-box').show();
+    $('#start-question').show();
+
+    $('#answer-box').hide();
+    $('#root').css({ 'visibility': 'hidden' });
+
+    // Set the question in the label 
+    $('#question-label').text('Question: ' + question.label);
+    // Get the choices for the question 
+
+    $('#start-question').unbind('click').click((event) => {
+        // prevent form from submitting
+        event.preventDefault();
+        startQuestion();
+    });
+}
+
+function startQuestion() {
+    // Based on the chartType of the user condition get the question set 
+    let question = question_map[question_index];
+
+    $('#answer-box').show();
+    $('#root').css({ 'visibility': 'visible' });
+    $('#start-question').hide();
+    $('#question-submit').show();
 
     // highlight the pins specified in the question
     let highlightOptions = question.highlightOptions || []
@@ -99,7 +123,6 @@ function showQuestion() {
             </div>`
             );
         });
-        $('#question-box .btn').show();
     }
 
 
@@ -183,7 +206,6 @@ function showQuestion() {
 function logResponse(question_type = '') {
 
     var endTime = new Date();
-    console.log("hovered items ", hovered_items)
 
     // formulate json to store in DB.
     var trialResult = {
@@ -203,7 +225,7 @@ function logResponse(question_type = '') {
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
         perceptualTask: perceptual_task,
-        decisionTask: decision_task, 
+        decisionTask: decision_task,
         comparisonBasis: comparison_basis
     };
 

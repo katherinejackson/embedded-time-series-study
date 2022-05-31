@@ -39,24 +39,27 @@
             <p class="text-center mt-4"> <button class="btn btn-primary next" id="start-practice">Start Practice Round</button></p>
         </div>
 
-      
-
         <div style="visibility:hidden" id="chart-container" class="text-left">
-            <p>Please answer the question appearing below the picture.</p>
             <p id='description'> Please wait for the visualization to load...</p>
-            <div id='root'></div>
+            <form style="display:none" id='question-box' class="text-left">
+                <div class="form-group">
+                    <label id='question-label'></label>
+                </div>
+                <p id='start-question' class="text-center mt-2"> <button class="btn btn-primary">Start</button></p>
+                <div id="answer-box" style="display:none">
+                    <div id='choice-box' class="form-group">
+                    </div>
+                    <p class="text-center mt-2"> 
+                        <button id='question-submit' style="display:none" class="btn btn-primary next">Submit</button>
+                    </p>
+                </div>
+            </form>
             <p id='prompt'></p>
             <p class="text-center mt-2"> <button class="btn btn-primary next">Start</button></p>
+            <div id='root'></div>
         </div>
 
-        <form style="display:none" id='question-box' class="text-left">
-            <div class="form-group">
-                <label id='question-label'></label>
-            </div>
-            <div id='choice-box' class="form-group">
-            </div>
-            <p class="text-center mt-2"> <button class="btn btn-primary next">Submit</button></p>
-        </form>
+
     </div>
     <script src="{{ url_for('my_blueprint.static', filename='js/practice.js') }}"></script>
     <script src="{{ url_for('my_blueprint.static', filename='timemap/js/timemap.js') }}"></script>

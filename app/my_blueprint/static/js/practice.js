@@ -82,11 +82,11 @@ function intializeChart() {
 
 function showShapeDescription() {
     let temp = study_mode.split("_")
-    var modified_study_mode = temp.slice(0, temp.length-1).join("_") 
+    var modified_study_mode = temp.slice(0, temp.length - 1).join("_")
     $('#shape-description').css({ 'visibility': 'visible' });
     $('#visualization-description').html(getVisualizationDescription(condition_set_value, study_mode))
     $('#example-description').html('The above image is an example of the type of visualizations you will be looking at. ' + getShapeDescription(condition_set_value, study_mode));
-    $('#legend-description').html( getLegendDescription(condition_set_value, study_mode) + ' You will be able to refer back to these legends while completing the activity.');
+    $('#legend-description').html(getLegendDescription(condition_set_value, study_mode) + ' You will be able to refer back to these legends while completing the activity.');
     document.getElementById('example-image').src = `/my_blueprint/timemap/images/example-${condition_set_value}-${modified_study_mode}.png`
     document.getElementById('legend-image').src = `/my_blueprint/timemap/images/legend-${condition_set_value}-${modified_study_mode}.png`
 }
@@ -104,14 +104,14 @@ function getExampleGlyphSize(glyph) {
 
 function getVisualizationDescription(view, originalGlyph) {
     let temp = originalGlyph.split("_")
-    var glyph = temp.slice(0, temp.length-1).join("_") 
+    var glyph = temp.slice(0, temp.length - 1).join("_")
     const encodings = {
-            'spiral_yaxis': 'spiral dot',
-            'spiral_color': 'coloured spiral',
-            'spiral_color_yaxis': 'spiral coloured dot',
-            'row_yaxis': 'dot',
-            'row_color': 'coloured row',
-            'row_color_yaxis': 'coloured dot'
+        'spiral_yaxis': 'spiral dot',
+        'spiral_color': 'coloured spiral',
+        'spiral_color_yaxis': 'spiral coloured dot',
+        'row_yaxis': 'dot',
+        'row_color': 'coloured row',
+        'row_color_yaxis': 'coloured dot'
 
     }
 
@@ -127,7 +127,7 @@ function getVisualizationDescription(view, originalGlyph) {
 
     string = `In the next screens you will see a ${visualization}`
     if (view === 'MIGRATION_GRAPH') string += `showing immigration between countries`
-    
+
     string += `. On the ${visualization}, there are small ${encodings[glyph]} charts like the one below that show a series of ${desc}. `
 
     return string
@@ -144,7 +144,7 @@ function getShapeDescription(view, originalGlyph) {
     // }
 
     let temp = originalGlyph.split("_")
-    var glyph = temp.slice(0, temp.length-1).join("_") 
+    var glyph = temp.slice(0, temp.length - 1).join("_")
 
     const encodings = {
         'spiral_yaxis': 'distance between the dot to the center of the spiral',
@@ -153,7 +153,7 @@ function getShapeDescription(view, originalGlyph) {
         'row_yaxis': 'distance between the dot and the bottom of the chart',
         'row_color': 'color scale',
         'row_color_yaxis': 'colour scale and the distance between the dot and the bottom of the chart'
-}
+    }
 
     const rowEncodings = ['row_yaxis', 'row_color', 'row_color_yaxis']
     const spiralEncodings = ['spiral_yaxis', 'spiral_color', 'spiral_color_yaxis']
@@ -185,7 +185,7 @@ function getShapeDescription(view, originalGlyph) {
     else shape = "line"
     //const shape = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
 
-    let missingDataColour= ''
+    let missingDataColour = ''
     if (glyph.includes("color_yaxis")) missingDataColour = "white"
     else if (glyph.includes("color")) missingDataColour = "grey"
     else if (glyph.includes("yaxis")) missingDataColour = "blue"
@@ -208,7 +208,7 @@ function getShapeDescription(view, originalGlyph) {
 
     if (glyph.includes('spiral')) string += `The progression of the ${time}s begins at the centre and then reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
 
-    
+
 
     // let string = ''
     // if (view === 'MIGRATION_GRAPH') {
@@ -276,7 +276,7 @@ function getLegendDescription(view, originalGlyph) {
     else if (glyph.includes('yaxis')) method = `position the ${time} ${point}s`
 
 
-    let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}. ` 
+    let string = `The legend shows the arrangement of ${timePeriod} on the ${shape}, and the ${data} that is used to ${method}. `
 
     if (view === 'SCATTER') string += `Note that this visualization uses a log scale to show a wider range of values.`
 
@@ -286,7 +286,7 @@ function getLegendDescription(view, originalGlyph) {
     // else {
     //     string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
     // }
-    
+
     return string
 }
 
@@ -296,14 +296,35 @@ function showQuestion() {
 
     // Show the questionBox 
     $('#question-box').show();
+    $('#start-question').show();
+
+    $('#answer-box').hide();
+    $('#root').css({ 'visibility': 'hidden' });
+
+    // Set the question in the label 
+    $('#question-label').text('Question: ' + question.label);
+    // Get the choices for the question 
+
+    $('#start-question').unbind('click').click((event) => {
+        // prevent form from submitting
+        event.preventDefault();
+        startQuestion();
+    });
+}
+
+function startQuestion() {
+    // Based on the chartType of the user condition get the question set 
+    let question = question_map[question_index];
+
+    $('#answer-box').show();
+    $('#root').css({ 'visibility': 'visible' });
+    $('#start-question').hide();
+    $('#question-submit').show();
 
     // highlight the pins specified in the question
     let highlightOptions = question.highlightOptions || []
     window.triggerHighlight && window.triggerHighlight(highlightOptions);
 
-    // Set the question in the label 
-    $('#question-label').text('Question: ' + question.label);
-    // Get the choices for the question 
     let answer_choices = question.choices;
     // Clear answer choice box 
     $('#choice-box').empty();
@@ -325,7 +346,6 @@ function showQuestion() {
             </div>`
             );
         });
-        $('#question-box .btn').show();
     }
 
 
@@ -356,7 +376,6 @@ function showQuestion() {
             perceptual_task = question.perceptual_task;
             decision_task = question.decision_task;
             comparison_basis = question.comparison_basis;
-            
 
             selectedItems.push(user_answer);
 
@@ -416,8 +435,6 @@ function logResponse(question_type = '') {
 
     var endTime = new Date();
 
-    console.log("test ", perceptual_task, decision_task, comparison_basis)
-
     // formulate json to store in DB.
     var trialResult = {
         trialStart: trialStartTime,
@@ -436,7 +453,7 @@ function logResponse(question_type = '') {
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
         perceptualTask: perceptual_task,
-        decisionTask: decision_task, 
+        decisionTask: decision_task,
         comparisonBasis: comparison_basis
     };
 

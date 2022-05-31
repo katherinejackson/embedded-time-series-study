@@ -19,24 +19,25 @@
     <span id="participant" style="color:white"> {{ session['participantID'] }} </span>
     <span id="block" style="color:white">3</span>
 
-    <div class="text-center my-5">
-        <div style="visibility:hidden" id="chart-container" class="text-left">
-            <p>Please answer the question appearing below the picture.</p>
-            <p id='explanation'></p>
-            <p id='description'> Please wait for the visualization to load...</p>
-            <div id='root'></div>
-            <p id='prompt'></p>
-            <p class="text-center mt-2"> <button class="btn btn-primary next">Start</button></p>
-        </div>
-
+    <div style="visibility:hidden" id="chart-container" class="text-left">
+        <p id='explanation'></p>
+        <p id='description'> Please wait for the visualization to load...</p>
         <form style="display:none" id='question-box' class="text-left">
             <div class="form-group">
                 <label id='question-label'></label>
             </div>
-            <div id='choice-box' class="form-group">
+            <p id='start-question' class="text-center mt-2"> <button class="btn btn-primary">Start</button></p>
+            <div id="answer-box" style="display:none">
+                <div id='choice-box' class="form-group">
+                </div>
+                <p class="text-center mt-2"> 
+                    <button id='question-submit' style="display:none" class="btn btn-primary next">Submit</button>
+                </p>
             </div>
-            <p class="text-center mt-2"> <button class="btn btn-primary next">Submit</button></p>
         </form>
+        <p id='prompt'></p>
+        <p class="text-center mt-2"> <button class="btn btn-primary next">Start</button></p>
+        <div id='root'></div>
     </div>
     <script src="{{ url_for('my_blueprint.static', filename='js/study.js') }}"></script>
     <script src="{{ url_for('my_blueprint.static', filename='timemap/js/timemap.js') }}"></script>
