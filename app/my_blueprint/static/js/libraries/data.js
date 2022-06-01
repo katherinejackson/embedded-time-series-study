@@ -314,10 +314,10 @@ var studyQuestions = {
     'study-SCATTER': [
 	{
             "type": "multichoice",
-            "label": "In the United States, in what year did the months August-September have more Covid cases: 2020 or 2021?",
+            "label": "In India, in what year did the months August-September have more Covid cases: 2020 or 2021?",
             "choices": ["2020", "2021"],
-            "answer": '2021',
-            "highlightOptions": ["United States"],
+            "answer": '2020',
+            "highlightOptions": ["India"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "Compare",
             "comparison_basis": "Within"
