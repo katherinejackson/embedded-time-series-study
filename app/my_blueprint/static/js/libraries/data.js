@@ -136,6 +136,18 @@ var condition_map = {
 
 // THESE ARE THE STUDY QUESTIONS
 var studyQuestions = {
+    'intro-MAP': [
+        {
+            "type": "multichoice",
+            "label": "Is this an intro question?",
+            "choices": ["Yes", "No"],
+            "answer": "Yes",
+            "highlightOptions": ["Whitehorse"],
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
+	    },
+    ],
     'practice-MAP': [
 	{
             "type": "multichoice",

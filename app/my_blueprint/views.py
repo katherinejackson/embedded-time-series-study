@@ -43,7 +43,12 @@ def color_test():
     return render_template("ishihara.html", example="This is example text.", incorrect=incorrect)
 
 
-
+# debrief
+@my_blueprint.route("/intro", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def intro():
+    return render_template("intro.html", example="This is example text.")
 
 
 # practice page
