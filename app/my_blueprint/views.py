@@ -43,11 +43,34 @@ def color_test():
     return render_template("ishihara.html", example="This is example text.", incorrect=incorrect)
 
 
-# debrief
 @my_blueprint.route("/intro", methods=['POST', 'GET'])
 @verify_correct_page
 @verify_session_valid
 def intro():
+    if request.method == 'POST':
+        log = db.timemap()
+        log.participantID = session['participantID']
+        log.trialStart = request.form['trialStart']
+        log.trialEnd = request.form['trialEnd']
+        log.trialTime = request.form['trialTime']
+        log.mode = 'example'
+        log.view = request.form['view']
+        log.shape = request.form['shape']
+        log.encoding = request.form['encoding']
+        log.size = request.form['size']
+        log.Condition = request.form['Condition']
+        log.QuestionType = request.form['questionType']
+        log.ErrorCount = request.form['ErrorCount']
+        log.selectItems = request.form['selectItems']
+        log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
+        log.zoomLevel = request.form['zoomLevel']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
+        log.questionNumber=request.form['questionNumber']
+        db.session.add(log)
+        db.session.commit()
     return render_template("intro.html", example="This is example text.")
 
 

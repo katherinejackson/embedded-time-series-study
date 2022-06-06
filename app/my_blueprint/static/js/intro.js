@@ -86,12 +86,11 @@ $('#example-button').click(() => {
 //     intializeChart();
 // });
 
-
 function intializeChart() {
     console.log("init chart")
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html('The glyphs that are mentioned in the question will be highlighted with a green border.');
+    $('#description').html('Shown below is an example of a visualization that you will see. There are multiple small charts that display data over time. The charts that are mentioned in the question will be highlighted with a green border. You can hover over a chart to increase its size and view its label.');
     $('#prompt').html('Click the button below to complete the example question.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
@@ -274,26 +273,26 @@ function logResponse(question_type = '') {
         comparisonBasis: comparison_basis
     };
 
-    alert('The example question is now complete. You will now start the practice round');
-    // go to next phase on the study
-    window.location.href = "/redirect_next_page";
+    // alert('The example question is now complete. You will now start the practice round');
+    // // go to next phase on the study
+    // window.location.href = "/redirect_next_page";
 
-    // $.post("#", trialResult).then(function () {
-    //     // reset
-    //     wrong_count = 0;
-    //     button_clicked = false;
-    //     // then go to next question
-    //     if (question_index < question_map.length - 1) {
-    //         // increment question index
-    //         question_index += 1;
-    //         showQuestion();
-    //     }
-    //     else {
-    //         alert('The practice round is now complete. You will now start the study round');
-    //         // go to next phase on the study
-    //         window.location.href = "/redirect_next_page";
-    //     }
-    // })
+    $.post("#", trialResult).then(function () {
+        // reset
+        wrong_count = 0;
+        button_clicked = false;
+        // then go to next question
+        if (question_index < question_map.length - 1) {
+            // increment question index
+            question_index += 1;
+            showQuestion();
+        }
+        else {
+            alert('The example question is now complete. You will now start the practice round');
+            // go to next phase on the study
+            window.location.href = "/redirect_next_page";
+        }
+    })
 };
 
 
