@@ -59,10 +59,6 @@ $(document).keydown(function(event) {
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
         event.preventDefault();
-        console.log("hit")
-    }
-    else {
-        console.log("test")
     }
 }, {passive: false})
 
@@ -87,7 +83,6 @@ $('#example-button').click(() => {
 // });
 
 function intializeChart() {
-    console.log("init chart")
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#description').html('Shown below is an example of a visualization that you will see. There are multiple small charts that display data over time. The charts that are mentioned in the question will be highlighted with a green border. You can hover over a chart to increase its size and view its label.');
@@ -108,8 +103,6 @@ function intializeChart() {
 function showQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
-
-    console.log("show q")
 
     // Show the questionBox 
     $('#question-box').show();
@@ -132,15 +125,12 @@ function showQuestion() {
 function startQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
-    console.log("in start q")
 
     $('#answer-box').show();
     $('#root').css({ 'visibility': 'visible' });
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#start-question').hide();
     $('#question-submit').show();
-
-    console.log($('#chart-container').is(":visible"))
 
     // highlight the pins specified in the question
     let highlightOptions = question.highlightOptions || []
@@ -212,7 +202,6 @@ function startQuestion() {
     });
 
     window.itemHovered = (value) => {
-        console.log("Hovered ", value)
         hovered_items.push(value)
         hover_count = hover_count + 1;
     }
