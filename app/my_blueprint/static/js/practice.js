@@ -47,6 +47,25 @@ var perceptual_task = "";
 var decision_task = "";
 var comparison_basis = "";
 
+// prevent changing zoom level with keys or the mouse wheel
+$(document).keydown(function(event) {
+    if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
+            event.preventDefault();
+         }
+    });
+    
+document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey == true || event.metaKey==true) {
+        event.preventDefault();
+        console.log("hit")
+    }
+    else {
+        console.log("test")
+    }
+}, {passive: false})
+
+//DOMMouseScroll
+
 
 // Study intro is shown by default so wait for the user to click next 
 $('#begin-button').click(() => {
