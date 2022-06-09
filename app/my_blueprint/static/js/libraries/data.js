@@ -139,10 +139,34 @@ var studyQuestions = {
     'intro-MAP': [
         {
             "type": "multichoice",
-            "label": "Is this an intro question?",
+            "label": "Is this a map?",
             "choices": ["Yes", "No"],
             "answer": "Yes",
             "highlightOptions": ["Whitehorse"],
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
+	    },
+    ],
+    'intro-SCATTER': [
+        {
+            "type": "multichoice",
+            "label": "Is this a scatter plot?",
+            "choices": ["Yes", "No"],
+            "answer": "Yes",
+            "highlightOptions": ["France"],
+            "perceptual_task": "RetrieveValue",
+            "decision_task": "None",
+            "comparison_basis": "None"
+	    },
+    ],
+    'intro-MIGRATION_GRAPH': [
+        {
+            "type": "multichoice",
+            "label": "Is this a chart?",
+            "choices": ["Yes", "No"],
+            "answer": "Yes",
+            "highlightOptions": ["Bulgaria>Turkey"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
             "comparison_basis": "None"

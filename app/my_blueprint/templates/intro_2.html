@@ -21,21 +21,13 @@
 
     <div class="text-center my-5">
         <div id="study-intro" class="text-left">
-            <p>You will now begin the second part of the study, click the button below to start the practice round.</p>
-            <p>Please keep your browser in fullscreen mode while answering the questions.</p>
-            <p class="text-center mt-4"> <button class="btn btn-primary next" id="begin-button">Begin</button></p>
+            <p>In this study, you will be shown visualizations of three different time series datasets, and you will be asked to answer questions related to each visualization.</p>
+            <p>Click the button below to view an example of the type of question you will be asked.</p>
+            <p class="text-center mt-4"> <button class="btn btn-primary next" id="example-button">View example question</button></p>
+            <!-- <div id='root'></div> -->
         </div>
 
-        <div style="visibility:hidden" id="shape-description">
-            <p id="visualization-description"></p>
-            <img id="example-image" width="150px" alt="Pin example"></img>
-            <!-- <img style="width:500px" id="example-image" src=""></img> -->
-            <p id="example-description"></p>
-            <img style="width:500px" id="legend-image" src=""></img>
-            <p id="legend-description"></p>
-            <p class="text-center mt-4"> <button class="btn btn-primary next" id="start-practice">Start Practice Round</button></p>
-        </div>
-        
+
         <div style="visibility:hidden" id="chart-container" class="text-left">
             <p id='description'> Please wait for the visualization to load...</p>
             <form style="display:none" id='question-box' class="text-left">
@@ -55,8 +47,10 @@
             <p class="text-center mt-2"> <button class="btn btn-primary next">Start</button></p>
             <div id='root'></div>
         </div>
+
+
     </div>
-    <script src="{{ url_for('my_blueprint.static', filename='js/practice.js') }}"></script>
+    <script src="{{ url_for('my_blueprint.static', filename='js/intro.js') }}"></script>
     <script src="{{ url_for('my_blueprint.static', filename='timemap/js/timemap.js') }}"></script>
 </body>
 

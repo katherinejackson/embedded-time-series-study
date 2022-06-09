@@ -43,10 +43,10 @@ def color_test():
     return render_template("ishihara.html", example="This is example text.", incorrect=incorrect)
 
 
-@my_blueprint.route("/intro", methods=['POST', 'GET'])
+@my_blueprint.route("/intro_1", methods=['POST', 'GET'])
 @verify_correct_page
 @verify_session_valid
-def intro():
+def intro_1():
     if request.method == 'POST':
         log = db.timemap()
         log.participantID = session['participantID']
@@ -69,9 +69,72 @@ def intro():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
-    return render_template("intro.html", example="This is example text.")
+    return render_template("intro_1.html", example="This is example text.")
+
+@my_blueprint.route("/intro_2", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def intro_2():
+    if request.method == 'POST':
+        log = db.timemap()
+        log.participantID = session['participantID']
+        log.trialStart = request.form['trialStart']
+        log.trialEnd = request.form['trialEnd']
+        log.trialTime = request.form['trialTime']
+        log.mode = 'example'
+        log.view = request.form['view']
+        log.shape = request.form['shape']
+        log.encoding = request.form['encoding']
+        log.size = request.form['size']
+        log.Condition = request.form['Condition']
+        log.QuestionType = request.form['questionType']
+        log.ErrorCount = request.form['ErrorCount']
+        log.selectItems = request.form['selectItems']
+        log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
+        log.zoomLevel = request.form['zoomLevel']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
+        log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
+        db.session.add(log)
+        db.session.commit()
+    return render_template("intro_2.html", example="This is example text.")
+
+@my_blueprint.route("/intro_3", methods=['POST', 'GET'])
+@verify_correct_page
+@verify_session_valid
+def intro_3():
+    if request.method == 'POST':
+        log = db.timemap()
+        log.participantID = session['participantID']
+        log.trialStart = request.form['trialStart']
+        log.trialEnd = request.form['trialEnd']
+        log.trialTime = request.form['trialTime']
+        log.mode = 'example'
+        log.view = request.form['view']
+        log.shape = request.form['shape']
+        log.encoding = request.form['encoding']
+        log.size = request.form['size']
+        log.Condition = request.form['Condition']
+        log.QuestionType = request.form['questionType']
+        log.ErrorCount = request.form['ErrorCount']
+        log.selectItems = request.form['selectItems']
+        log.hoverCount = request.form['hoverCount']
+        log.hoverItems = request.form['hoverItems']
+        log.zoomLevel = request.form['zoomLevel']
+        log.perceptualTask = request.form['perceptualTask']
+        log.decisionTask = request.form['decisionTask']
+        log.comparisonBasis = request.form['comparisonBasis']
+        log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
+        db.session.add(log)
+        db.session.commit()
+    return render_template("intro_3.html", example="This is example text.")
 
 
 # practice page
@@ -101,6 +164,7 @@ def practice_1_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_1.html", example="This is example text.")
@@ -132,6 +196,7 @@ def practice_2_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_2.html", example="This is example text.")
@@ -163,6 +228,7 @@ def practice_3_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_3.html", example="This is example text.")
@@ -194,6 +260,7 @@ def study_1_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("study_1.html", example="This is example text.")
@@ -226,6 +293,7 @@ def study_2_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("study_2.html", example="This is example text.")
@@ -257,6 +325,7 @@ def study_3_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
+        log.fullscreenLog = request.form['fullscreenLog']
         db.session.add(log)
         db.session.commit()
     return render_template("study_3.html", example="This is example text.")

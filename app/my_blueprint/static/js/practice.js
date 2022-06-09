@@ -40,6 +40,7 @@ var hover_count = 0;
 var hovered_items = [];
 // store zoom level
 var zoom_level = 0;
+var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -51,8 +52,22 @@ var comparison_basis = "";
 $(document).keydown(function(event) {
     if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
             event.preventDefault();
-         }
-    });
+    }
+    // else if (event.which == '27' || event.which == '122' ) {
+    //     console.log("hit")
+    //     event.preventDefault();
+    // }
+});
+
+document.addEventListener('fullscreenchange', event => {
+    if (document.fullscreenElement) {
+        fullscreen_log.push("enter fullscreen")
+    }
+    else {
+        fullscreen_log.push("exit fullscreen")
+    }
+}) 
+
     
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
@@ -66,9 +81,34 @@ document.addEventListener('wheel', function(event) {
 
 //DOMMouseScroll
 
+function activateFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();        // W3C spec
+    }
+    else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();     // Firefox
+    }
+    else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();  // Safari
+    }
+    else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();      // IE/Edge
+    }
+};
+
+function deactivateFullscreen() {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+};
 
 // Study intro is shown by default so wait for the user to click next 
 $('#begin-button').click(() => {
+    activateFullscreen(document.documentElement);
     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
     $('#study-intro').hide();
     // intializeChart();
@@ -77,6 +117,7 @@ $('#begin-button').click(() => {
 
 // Study intro is shown by default so wait for the user to click next 
 $('#start-practice').click(() => {
+
     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
     $('#shape-description').hide();
     intializeChart();
@@ -376,6 +417,7 @@ function startQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
+    fullscreen_log = [];
     perceptual_task = "";
     decision_task = "";
     comparison_basis = "";
@@ -473,7 +515,8 @@ function logResponse(question_type = '') {
         zoomLevel: zoom_level,
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
-        comparisonBasis: comparison_basis
+        comparisonBasis: comparison_basis,
+        fullscreenLog: fullscreen_log.join(", ")
     };
 
     $.post("#", trialResult).then(function () {
@@ -487,7 +530,7 @@ function logResponse(question_type = '') {
             showQuestion();
         }
         else {
-            alert('The practice round is now complete. You will now start the study round');
+            alert('The practice round is now complete. You will now start the example round');
             // go to next phase on the study
             window.location.href = "/redirect_next_page";
         }

@@ -36,6 +36,7 @@ var hover_count = 0;
 var hovered_items = [];
 // store zoom level
 var zoom_level = 0;
+var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -60,6 +61,40 @@ document.addEventListener('wheel', function(event) {
     }
 }, {passive: false})
 
+document.addEventListener('fullscreenchange', event => {
+    if (document.fullscreenElement) {
+        fullscreen_log.push("enter fullscreen")
+    }
+    else {
+        fullscreen_log.push("exit fullscreen")
+    }
+}) 
+
+function activateFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();        // W3C spec
+    }
+    else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();     // Firefox
+    }
+    else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();  // Safari
+    }
+    else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();      // IE/Edge
+    }
+};
+
+function deactivateFullscreen() {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+};
+
 intializeChart();
 
 function intializeChart() {
@@ -73,6 +108,7 @@ function intializeChart() {
     // hide the chart intro and then start showing the questions 
     $('#chart-container button.next').click(() => {
         //    hide the trigger button
+        activateFullscreen(document.documentElement);
         $('#chart-container button.next').hide();
         $('#prompt').hide();
         $('#explanation').hide();
@@ -151,6 +187,7 @@ function startQuestion() {
     hovered_items = [];
     selectedItems = [];
     button_clicked = false;
+    fullscreen_log = [];
     perceptual_task = "";
     decision_task = "";
     comparison_basis = "";
@@ -241,6 +278,7 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
+        fullscreenLog: fullscreen_log.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis

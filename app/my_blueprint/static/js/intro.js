@@ -27,8 +27,8 @@ window.options = {
 
 
 // Create a question set based on the condition 
-// var question_map = studyQuestions['practice-' + condition_set_value];
-var question_map = studyQuestions['intro-MAP'];
+var question_map = studyQuestions['intro-' + condition_set_value];
+
 
 // Set the Question Iterator to zero
 var question_index = 0;
@@ -42,6 +42,7 @@ var hover_count = 0;
 var hovered_items = [];
 // store zoom level
 var zoom_level = 0;
+var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -62,11 +63,47 @@ document.addEventListener('wheel', function(event) {
     }
 }, {passive: false})
 
+document.addEventListener('fullscreenchange', event => {
+    if (document.fullscreenElement) {
+        fullscreen_log.push("enter fullscreen")
+    }
+    else {
+        fullscreen_log.push("exit fullscreen")
+    }
+}) 
+
+function activateFullscreen(element) {
+    if(element.requestFullscreen) {
+      element.requestFullscreen();        // W3C spec
+    }
+    else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();     // Firefox
+    }
+    else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();  // Safari
+    }
+    else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();      // IE/Edge
+    }
+};
+
+function deactivateFullscreen() {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+};
+
+
 //DOMMouseScroll
 
 
 // Study intro is shown by default so wait for the user to click next 
 $('#example-button').click(() => {
+    activateFullscreen(document.documentElement);
     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
     $('#study-intro').hide();
     $('#shape-description').hide();
@@ -167,6 +204,7 @@ function startQuestion() {
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
+    //fullscreen_log = [];
     button_clicked = false;
     perceptual_task = "";
     decision_task = "";
@@ -259,7 +297,8 @@ function logResponse(question_type = '') {
         zoomLevel: zoom_level,
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
-        comparisonBasis: comparison_basis
+        comparisonBasis: comparison_basis,
+        fullscreenLog: fullscreen_log.join(", ")
     };
 
     // alert('The example question is now complete. You will now start the practice round');
@@ -277,7 +316,7 @@ function logResponse(question_type = '') {
             showQuestion();
         }
         else {
-            alert('The example question is now complete. You will now start the practice round');
+            alert('The example question is now complete. You will now start the study round');
             // go to next phase on the study
             window.location.href = "/redirect_next_page";
         }
