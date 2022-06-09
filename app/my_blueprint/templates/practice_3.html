@@ -38,16 +38,12 @@
         <div style="visibility:hidden" id="chart-container" class="text-left">
             <p id='description'> Please wait for the visualization to load...</p>
             <form style="display:none" id='question-box' class="text-left">
-                <div class="form-group">
-                    <label id='question-label'></label>
-                </div>
+                <label id='question-label'></label>
                 <p id='start-question' class="text-center mt-2"> <button class="btn btn-primary">Start</button></p>
-                <div id="answer-box" style="display:none">
-                    <div id='choice-box' class="form-group">
+                <div id="answer-box" class="d-flex align-items-center" style="visibility:hidden">
+                    <div id='choice-box'>
                     </div>
-                    <p class="text-center mt-2"> 
-                        <button id='question-submit' style="display:none" class="btn btn-primary next">Submit</button>
-                    </p>
+                    <button id='question-submit' style="display:none" class="btn btn-primary next ml-4">Submit</button>
                 </div>
             </form>
             <p id='prompt'></p>

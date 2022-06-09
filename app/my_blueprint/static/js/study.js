@@ -89,7 +89,7 @@ function showQuestion() {
     $('#question-box').show();
     $('#start-question').show();
 
-    $('#answer-box').hide();
+    $('#answer-box').css({ 'visibility': 'hidden' });
     $('#root').css({ 'visibility': 'hidden' });
 
     // Set the question in the label 
@@ -107,7 +107,7 @@ function startQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
 
-    $('#answer-box').show();
+    $('#answer-box').css({ 'visibility': 'visible' });
     $('#root').css({ 'visibility': 'visible' });
     $('#start-question').hide();
     $('#question-submit').show();
