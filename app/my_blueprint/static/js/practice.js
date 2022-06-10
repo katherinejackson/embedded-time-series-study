@@ -23,8 +23,6 @@ window.options = {
     practice: true,
 };
 
-
-
 // Create a question set based on the condition 
 var question_map = studyQuestions['practice-' + condition_set_value];
 
@@ -39,7 +37,9 @@ var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
 // store zoom level
-var zoom_level = 0;
+var zoom_level = 100;
+// store zoom actions
+var zoom_count = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -57,12 +57,14 @@ $(document).keydown(function(event) {
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
         event.preventDefault();
-        console.log("hit")
-    }
-    else {
-        console.log("test")
     }
 }, {passive: false})
+
+window.addEventListener('resize', () => {
+    const browserZoomLevel = window.devicePixelRatio;
+    zoom_level = Math.round(browserZoomLevel * 100)/100
+    zoom_count += 1
+  })
 
 //DOMMouseScroll
 
@@ -329,6 +331,8 @@ function showQuestion() {
         event.preventDefault();
         startQuestion();
     });
+
+    zoom_count = 0;
 }
 
 function startQuestion() {
@@ -371,7 +375,6 @@ function startQuestion() {
     // start loggin time , reset, wrong count and button clicked status
     trialStartTime = new Date();
     wrong_count = 0;
-    zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
@@ -471,6 +474,7 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
+        zoomCount: zoom_count,
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis

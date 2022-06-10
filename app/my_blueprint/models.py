@@ -19,6 +19,7 @@ def create(db):
         hoverCount = db.Column(db.String)
         hoverItems = db.Column(db.String)
         zoomLevel = db.Column(db.String)
+        zoomCount = db.Column(db.String)
         questionNumber = db.Column(db.String)
         perceptualTask = db.Column(db.String)
         decisionTask = db.Column(db.String)
