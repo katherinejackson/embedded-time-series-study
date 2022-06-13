@@ -49,13 +49,36 @@ var button_clicked = false;
 var perceptual_task = "";
 var decision_task = "";
 var comparison_basis = "";
+var exit_fullscreen = 0;
+var esc_key_count = 0
 
 // prevent changing zoom level with keys or the mouse wheel
 $(document).keydown(function(event) {
     if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
             event.preventDefault();
-         }
-    });
+    }
+    else if (event.which == '27' || event.which == '122' ) {
+        console.log("hit")
+        esc_key_count += 1
+        //event.preventDefault();
+    }
+});
+
+if (document.addEventListener)
+{
+ document.addEventListener('fullscreenchange', exitHandler, false);
+ document.addEventListener('mozfullscreenchange', exitHandler, false);
+ document.addEventListener('MSFullscreenChange', exitHandler, false);
+ document.addEventListener('webkitfullscreenchange', exitHandler, false);
+}
+
+function exitHandler()
+{
+ if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
+ {
+  exit_fullscreen += 1
+ }
+}
     
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
@@ -103,7 +126,7 @@ function deactivateFullscreen() {
 
 // Study intro is shown by default so wait for the user to click next 
 $('#example-button').click(() => {
-    activateFullscreen(document.documentElement);
+    //activateFullscreen(document.documentElement);
     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
     $('#study-intro').hide();
     $('#shape-description').hide();
@@ -128,6 +151,7 @@ function intializeChart() {
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
     $('#chart-container button.next').click(() => {
+        activateFullscreen(document.documentElement);
         //    hide the trigger button
         $('#chart-container button.next').hide();
         $('#prompt').hide();
@@ -153,6 +177,7 @@ function showQuestion() {
     // Get the choices for the question 
 
     $('#start-question').unbind('click').click((event) => {
+        activateFullscreen(document.documentElement);
         // prevent form from submitting
         event.preventDefault();
         startQuestion();
@@ -209,9 +234,12 @@ function startQuestion() {
     perceptual_task = "";
     decision_task = "";
     comparison_basis = "";
+    exit_fullscreen = 0;
+    esc_key_count = 0;
 
 
     $('#question-box button.next').unbind('click').click((event) => {
+        activateFullscreen(document.documentElement);
         // prevent form from submitting
         event.preventDefault();
         // debouncing button
@@ -234,7 +262,13 @@ function startQuestion() {
             }
             else {
                 wrong_count += 1;
-                alert('Sorry, that was the wrong answer. Please try again.');
+                Swal.fire({
+                    title: 'Incorrect answer',
+                    text: 'Sorry, that was the wrong answer. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+                //alert('Sorry, that was the wrong answer. Please try again.');
             }
         }
     });
@@ -252,6 +286,7 @@ function startQuestion() {
         window.itemClicked = (value) => {
             // prevent form from submitting
             event.preventDefault();
+            // activateFullscreen(document.documentElement);
             // debouncing button
             if (!button_clicked) {
                 // validate the answer by getting the question set
@@ -263,7 +298,13 @@ function startQuestion() {
                 }
                 else {
                     wrong_count += 1;
-                    alert('Sorry, that was the wrong answer. Please try again.');
+                    Swal.fire({
+                        title: 'Incorrect answer',
+                        text: 'Sorry, that was the wrong answer. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                    //alert('Sorry, that was the wrong answer. Please try again.');
                 }
             }
         }
@@ -298,7 +339,9 @@ function logResponse(question_type = '') {
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis,
-        fullscreenLog: fullscreen_log.join(", ")
+        // fullscreenLog: fullscreen_log.join(", "),
+        exitFullscreenCount: exit_fullscreen,
+        escKeyCount: esc_key_count
     };
 
     // alert('The example question is now complete. You will now start the practice round');
@@ -316,8 +359,10 @@ function logResponse(question_type = '') {
             showQuestion();
         }
         else {
+         
             alert('The example question is now complete. You will now start the study round');
             // go to next phase on the study
+            
             window.location.href = "/redirect_next_page";
         }
     })

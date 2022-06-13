@@ -43,21 +43,40 @@ var button_clicked = false;
 var perceptual_task = "";
 var decision_task = "";
 var comparison_basis = "";
+var exit_fullscreen = 0;
+var esc_key_count = 0
 
 // prevent changing zoom level with keys or the mouse wheel
 $(document).keydown(function(event) {
     if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
             event.preventDefault();
-         }
-    });
+    }
+    else if (event.which == '27' || event.which == '122' ) {
+        console.log("hit")
+        esc_key_count += 1
+        //event.preventDefault();
+    }
+});
+
+if (document.addEventListener)
+{
+ document.addEventListener('fullscreenchange', exitHandler, false);
+ document.addEventListener('mozfullscreenchange', exitHandler, false);
+ document.addEventListener('MSFullscreenChange', exitHandler, false);
+ document.addEventListener('webkitfullscreenchange', exitHandler, false);
+}
+
+function exitHandler()
+{
+ if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
+ {
+  exit_fullscreen += 1
+ }
+}
     
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
         event.preventDefault();
-        console.log("hit")
-    }
-    else {
-        console.log("test")
     }
 }, {passive: false})
 
@@ -101,14 +120,14 @@ function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#explanation').html('You will now begin the study round. You will be asked 8 questions.');
-    $('#description').html('Please try to answer the questions as quickly and accurately as possible.');
+    $('#description').html('Please try to answer the questions as quickly and accurately as possible. Your browser will enter fullscreen mode once you begin the study round. Please stay in fullscreen mode while you answer the questions.');
     $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
     $('#chart-container button.next').click(() => {
         //    hide the trigger button
-        activateFullscreen(document.documentElement);
+        //activateFullscreen(document.documentElement);
         $('#chart-container button.next').hide();
         $('#prompt').hide();
         $('#explanation').hide();
@@ -134,6 +153,7 @@ function showQuestion() {
 
     $('#start-question').unbind('click').click((event) => {
         // prevent form from submitting
+        activateFullscreen(document.documentElement);
         event.preventDefault();
         startQuestion();
     });
@@ -191,8 +211,11 @@ function startQuestion() {
     perceptual_task = "";
     decision_task = "";
     comparison_basis = "";
+    exit_fullscreen = 0;
+    esc_key_count = 0
 
     $('#question-box button.next').unbind('click').click((event) => {
+        activateFullscreen(document.documentElement);
         // prevent form from submitting
         event.preventDefault();
         // debouncing button
@@ -215,7 +238,13 @@ function startQuestion() {
             }
             else {
                 wrong_count += 1;
-                alert('Sorry, that was the wrong answer. Please try again.');
+                //alert('Sorry, that was the wrong answer. Please try again.');
+                Swal.fire({
+                    title: 'Incorrect answer',
+                    text: 'Sorry, that was the wrong answer. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
             }
         }
 
@@ -245,7 +274,13 @@ function startQuestion() {
                 }
                 else {
                     wrong_count += 1;
-                    alert('Sorry, that was the wrong answer. Please try again.');
+                    Swal.fire({
+                        title: 'Incorrect answer',
+                        text: 'Sorry, that was the wrong answer. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                    //alert('Sorry, that was the wrong answer. Please try again.');
                 }
             }
         }
@@ -278,10 +313,13 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
-        fullscreenLog: fullscreen_log.join(", "),
+        // fullscreenLog: fullscreen_log.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
-        comparisonBasis: comparison_basis
+        comparisonBasis: comparison_basis,
+        exitFullscreenCount: exit_fullscreen,
+        escKeyCount: esc_key_count
+
     };
 
     $.post("#", trialResult).then(function () {

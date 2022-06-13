@@ -69,7 +69,9 @@ def intro_1():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("intro_1.html", example="This is example text.")
@@ -100,7 +102,9 @@ def intro_2():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("intro_2.html", example="This is example text.")
@@ -131,7 +135,9 @@ def intro_3():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("intro_3.html", example="This is example text.")
@@ -164,7 +170,9 @@ def practice_1_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_1.html", example="This is example text.")
@@ -196,7 +204,9 @@ def practice_2_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_2.html", example="This is example text.")
@@ -228,7 +238,9 @@ def practice_3_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("practice_3.html", example="This is example text.")
@@ -260,7 +272,9 @@ def study_1_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("study_1.html", example="This is example text.")
@@ -293,7 +307,9 @@ def study_2_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("study_2.html", example="This is example text.")
@@ -325,7 +341,9 @@ def study_3_results():
         log.decisionTask = request.form['decisionTask']
         log.comparisonBasis = request.form['comparisonBasis']
         log.questionNumber=request.form['questionNumber']
-        log.fullscreenLog = request.form['fullscreenLog']
+        # log.fullscreenLog = request.form['fullscreenLog']
+        log.exitFullscreenCount = request.form['exitFullscreenCount']
+        log.escKeyCount = request.form['escKeyCount']
         db.session.add(log)
         db.session.commit()
     return render_template("study_3.html", example="This is example text.")

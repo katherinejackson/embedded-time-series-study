@@ -23,7 +23,9 @@ def create(db):
         perceptualTask = db.Column(db.String)
         decisionTask = db.Column(db.String)
         comparisonBasis = db.Column(db.String)
-        fullscreenLog = db.Column(db.String)
+        # fullscreenLog = db.Column(db.String)
+        exitFullscreenCount = db.Column(db.Integer)
+        escKeyCount = db.Column(db.Integer)
         #color = db.Column(db.String)
 
     class visionTest(db.Model):

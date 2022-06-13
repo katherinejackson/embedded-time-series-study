@@ -12,6 +12,7 @@
 <script src="{{ url_for('my_blueprint.static', filename='js/libraries/jquery.js') }}"></script>
 <script src="{{ url_for('my_blueprint.static', filename='js/libraries/data.js') }}"></script>
 <script src="{{ url_for('my_blueprint.static', filename='js/libraries/utils.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <body>
@@ -19,14 +20,16 @@
     <span id="participant" style="color:white"> {{ session['participantID'] }} </span>
     <span id="block" style="color:white">1</span>
 
+
+
     <div class="text-center my-5">
         <div id="study-intro" class="text-left">
             <p>In this study, you will be shown visualizations of three different time series datasets, and you will be asked to answer questions related to each visualization.</p>
+            <p>Your browser will enter fullscreen mode once you click the button below. Please stay in fullscreen mode while you answer the example question.</p>
             <p>Click the button below to view an example of the type of question you will be asked.</p>
             <p class="text-center mt-4"> <button class="btn btn-primary next" id="example-button">View example question</button></p>
             <!-- <div id='root'></div> -->
         </div>
-
 
         <div style="visibility:hidden" id="chart-container" class="text-left">
             <p id='description'> Please wait for the visualization to load...</p>
@@ -47,6 +50,7 @@
             <p class="text-center mt-2"> <button class="btn btn-primary next">Start</button></p>
             <div id='root'></div>
         </div>
+
 
 
     </div>
