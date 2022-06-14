@@ -41,7 +41,9 @@ var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
 // store zoom level
-var zoom_level = 0;
+var zoom_level = 100;
+// store zoom actions
+var zoom_count = 0;
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -50,20 +52,23 @@ var decision_task = "";
 var comparison_basis = "";
 
 // prevent changing zoom level with keys or the mouse wheel
-$(document).keydown(function(event) {
-    if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
-            event.preventDefault();
-         }
-    });
-    
-document.addEventListener('wheel', function(event) {
-    if (event.ctrlKey == true || event.metaKey==true) {
+$(document).keydown(function (event) {
+    if ((event.ctrlKey == true || event.metaKey == true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109' || event.which == '187' || event.which == '189')) {
         event.preventDefault();
     }
-}, {passive: false})
+});
 
-//DOMMouseScroll
+document.addEventListener('wheel', function (event) {
+    if (event.ctrlKey == true || event.metaKey == true) {
+        event.preventDefault();
+    }
+}, { passive: false })
 
+window.addEventListener('resize', () => {
+    const browserZoomLevel = window.devicePixelRatio;
+    zoom_level = Math.round(browserZoomLevel * 100) / 100
+    zoom_count += 1
+})
 
 // Study intro is shown by default so wait for the user to click next 
 $('#example-button').click(() => {
@@ -120,6 +125,8 @@ function showQuestion() {
         event.preventDefault();
         startQuestion();
     });
+
+    zoom_count = 0;
 }
 
 function startQuestion() {
@@ -163,7 +170,6 @@ function startQuestion() {
     // start loggin time , reset, wrong count and button clicked status
     trialStartTime = new Date();
     wrong_count = 0;
-    zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
@@ -257,6 +263,7 @@ function logResponse(question_type = '') {
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
         zoomLevel: zoom_level,
+        zoomCount: zoom_count,
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis
