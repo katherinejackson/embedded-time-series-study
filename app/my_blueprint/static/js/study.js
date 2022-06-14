@@ -34,10 +34,8 @@ var selectedItems = [];
 var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
-// store zoom level
-var zoom_level = 100;
-// store zoom actions
-var zoom_count = 0;
+// store zoom levels
+var zoom_level = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
 // Record the question type from Carl's criteria
@@ -60,8 +58,7 @@ document.addEventListener('wheel', function(event) {
 
 window.addEventListener('resize', () => {
     const browserZoomLevel = window.devicePixelRatio;
-    zoom_level = Math.round(browserZoomLevel * 100)/100
-    zoom_count += 1
+    zoom_level.push(Math.round(browserZoomLevel * 100)/100)
   })
 
 intializeChart();
@@ -106,7 +103,7 @@ function showQuestion() {
         startQuestion();
     });
 
-    zoom_count = 0;
+    zoom_level = [];
 }
 
 function startQuestion() {
@@ -194,10 +191,6 @@ function startQuestion() {
         hovered_items.push(value);
     }
 
-    window.onZoom = (value) => {
-        zoom_level = value;
-    }
-
     if (question.type == 'click') {
         window.itemClicked = (value) => {
             // prevent form from submitting
@@ -245,8 +238,7 @@ function logResponse(question_type = '') {
         selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
-        zoomLevel: zoom_level,
-        zoomCount: zoom_count,
+        zoomLevel: zoom_level.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis
