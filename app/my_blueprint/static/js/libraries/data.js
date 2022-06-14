@@ -139,9 +139,9 @@ var studyQuestions = {
     'intro-MAP': [
         {
             "type": "multichoice",
-            "label": "Is this a map?",
-            "choices": ["Yes", "No"],
-            "answer": "Yes",
+            "label": "What was the approximate average temperature for Whitehorse in February 2020?",
+            "choices": ["-25", "-15", "0", "+10"],
+            "answer": '-15',
             "highlightOptions": ["Whitehorse"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
@@ -151,9 +151,9 @@ var studyQuestions = {
     'intro-SCATTER': [
         {
             "type": "multichoice",
-            "label": "Is this a scatter plot?",
-            "choices": ["Yes", "No"],
-            "answer": "Yes",
+            "label": "What was the approximate average daily case rate for France in December 2021?",
+            "choices": ["10K", "75K", "150K", "400K", "450K"],
+            "answer": '75K',
             "highlightOptions": ["France"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
@@ -163,10 +163,10 @@ var studyQuestions = {
     'intro-MIGRATION_GRAPH': [
         {
             "type": "multichoice",
-            "label": "Is this a chart?",
-            "choices": ["Yes", "No"],
-            "answer": "Yes",
-            "highlightOptions": ["Bulgaria>Turkey"],
+            "label": "What was the approximate immigration level for Romania to Germany in 1996, in millions?",
+            "choices": ["1.0M", "1.9M", "2.6M", "3.1M"],
+            "answer": '2.6M',
+            "highlightOptions": ["Romania>Germany"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
             "comparison_basis": "None"
