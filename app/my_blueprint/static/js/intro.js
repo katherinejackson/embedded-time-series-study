@@ -41,7 +41,7 @@ var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
 // store zoom level
-var zoom_level = 0;
+var zoom_level = [];
 var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
@@ -58,7 +58,6 @@ $(document).keydown(function(event) {
             event.preventDefault();
     }
     else if (event.which == '27' || event.which == '122' ) {
-        console.log("hit")
         esc_key_count += 1
         //event.preventDefault();
     }
@@ -84,7 +83,7 @@ document.addEventListener('wheel', function(event) {
     if (event.ctrlKey == true || event.metaKey==true) {
         event.preventDefault();
     }
-}, {passive: false})
+}, { passive: false });
 
 document.addEventListener('fullscreenchange', event => {
     if (document.fullscreenElement) {
@@ -120,9 +119,10 @@ function deactivateFullscreen() {
     }
 };
 
-
-//DOMMouseScroll
-
+window.addEventListener('resize', () => {
+    const browserZoomLevel = window.devicePixelRatio;
+    zoom_level.push(Math.round(browserZoomLevel * 100) / 100)
+})
 
 // Study intro is shown by default so wait for the user to click next 
 $('#example-button').click(() => {
@@ -182,6 +182,8 @@ function showQuestion() {
         event.preventDefault();
         startQuestion();
     });
+
+    zoom_level = [];
 }
 
 function startQuestion() {
@@ -225,7 +227,6 @@ function startQuestion() {
     // start loggin time , reset, wrong count and button clicked status
     trialStartTime = new Date();
     wrong_count = 0;
-    zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
@@ -276,10 +277,6 @@ function startQuestion() {
     window.itemHovered = (value) => {
         hovered_items.push(value)
         hover_count = hover_count + 1;
-    }
-
-    window.onZoom = (value) => {
-        zoom_level = value;
     }
 
     if (question.type == 'click') {
@@ -335,18 +332,14 @@ function logResponse(question_type = '') {
         selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
-        zoomLevel: zoom_level,
+        zoomLevel: zoom_level.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis,
-        // fullscreenLog: fullscreen_log.join(", "),
         exitFullscreenCount: exit_fullscreen,
         escKeyCount: esc_key_count
     };
 
-    // alert('The example question is now complete. You will now start the practice round');
-    // // go to next phase on the study
-    // window.location.href = "/redirect_next_page";
 
     $.post("#", trialResult).then(function () {
         // reset

@@ -35,7 +35,7 @@ var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
 // store zoom level
-var zoom_level = 0;
+var zoom_level = [];
 var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
@@ -114,6 +114,11 @@ function deactivateFullscreen() {
     }
 };
 
+window.addEventListener('resize', () => {
+    const browserZoomLevel = window.devicePixelRatio;
+    zoom_level.push(Math.round(browserZoomLevel * 100)/100)
+  })
+
 intializeChart();
 
 function intializeChart() {
@@ -144,7 +149,7 @@ function showQuestion() {
     $('#question-box').show();
     $('#start-question').show();
 
-    $('#answer-box').hide();
+    $('#answer-box').css({ 'visibility': 'hidden' });
     $('#root').css({ 'visibility': 'hidden' });
 
     // Set the question in the label 
@@ -157,13 +162,15 @@ function showQuestion() {
         event.preventDefault();
         startQuestion();
     });
+
+    zoom_level = [];
 }
 
 function startQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
 
-    $('#answer-box').show();
+    $('#answer-box').css({ 'visibility': 'visible' });
     $('#root').css({ 'visibility': 'visible' });
     $('#start-question').hide();
     $('#question-submit').show();
@@ -202,7 +209,6 @@ function startQuestion() {
     // start loggin time , reset, wrong count and button clicked status
     trialStartTime = new Date();
     wrong_count = 0;
-    zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
@@ -253,10 +259,6 @@ function startQuestion() {
     window.itemHovered = (value) => {
         hover_count = hover_count + 1;
         hovered_items.push(value);
-    }
-
-    window.onZoom = (value) => {
-        zoom_level = value;
     }
 
     if (question.type == 'click') {
@@ -312,8 +314,7 @@ function logResponse(question_type = '') {
         selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
-        zoomLevel: zoom_level,
-        // fullscreenLog: fullscreen_log.join(", "),
+        zoomLevel: zoom_level.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis,

@@ -23,8 +23,6 @@ window.options = {
     practice: true,
 };
 
-
-
 // Create a question set based on the condition 
 var question_map = studyQuestions['practice-' + condition_set_value];
 
@@ -39,7 +37,7 @@ var hover_count = 0;
 // Items that were hovered on
 var hovered_items = [];
 // store zoom level
-var zoom_level = 0;
+var zoom_level = [];
 var fullscreen_log = [];
 // Button click status - If button is already clicked dont do anything wait for the logging response from server
 var button_clicked = false;
@@ -94,6 +92,12 @@ document.addEventListener('wheel', function(event) {
         event.preventDefault();
     }
 }, {passive: false})
+
+window.addEventListener('resize', () => {
+    const browserZoomLevel = window.devicePixelRatio;
+    zoom_level.push(Math.round(browserZoomLevel * 100)/100)
+    console.log(zoom_level)
+  })
 
 //DOMMouseScroll
 
@@ -277,11 +281,6 @@ function getShapeDescription(view, originalGlyph) {
     else if (glyph.includes("color")) missingDataColour = "grey"
     else if (glyph.includes("yaxis")) missingDataColour = "blue"
 
-    // let method = ''
-    // if (colourEncodings.includes(glyph)) method = 'colour'
-    // else if (distanceEncodings.includes(glyph)) method = ''
-    // else if (distanceAndColorEncodings.includes(glyph)) method = ''
-
     let string = ''
     if (glyph.includes('row')) {
         string = `The chart shows a series of vertically positioned ${shape}s. `
@@ -290,30 +289,10 @@ function getShapeDescription(view, originalGlyph) {
         string = `The chart shows a series of ${shape}s extending outward from the centre. `
     }
 
-    //string += `Each ${shape} shows the ${data} for one ${timePeriod}, using ${encodings[glyph]}. `
     string += `The ${encodings[glyph]} shows the ${data} for one ${timePeriod}. `
 
     if (glyph.includes('spiral')) string += `The progression of the ${time}s begins at the centre and then reads like a clock with ${start} beginning at the top and the ${time}s progressing clockwise. `
 
-
-
-    // let string = ''
-    // if (view === 'MIGRATION_GRAPH') {
-    //     string = `Every ${shape} represents a different year ranging from 1980 to 2020, and the ${data} that year is represented by the ${encodings[glyph]}.`
-    //     if (glyph.includes('spiral')) {
-    //         string += ' The progression of years reads like a clock, with 1980 beginning at the top and the year progressing clockwise.'
-    //     }
-    // }
-    // else {
-    //     string = `Every ${shape} represents a different day in the year, and the ${data} that day is represented by the ${encodings[glyph]}.`
-    //     if (glyph.includes('spiral')) {
-    //         string += ' The year reads like a clock, with January beginning at the top and the year progressing clockwise.'
-    //     }
-    // }
-
-    // if (glyph.includes('row') || glyph === 'spiral_color') {
-    //     string += `Missing data is represented using a ${missingDataColour} ${shape}. `
-    // }
 
     if (glyph.includes('row')) {
         string += `Each chart has light grey guide lines to show the positions of the interval values. `
@@ -330,10 +309,7 @@ function getShapeDescription(view, originalGlyph) {
 }
 
 function getLegendDescription(view, originalGlyph) {
-    //const data = view === 'MAP' ? 'temperature range of the city' : 'range in number of new COVID cases documented that day in the specified country'
     const glyph = originalGlyph.split("_").slice(0, 2).join("_")
-
-    // const point = glyph === 'spiral_color' || glyph === 'row_color' ? 'line' : 'dot'
 
     let point;
     if (glyph.includes("yaxis")) point = "dot"
@@ -367,13 +343,6 @@ function getLegendDescription(view, originalGlyph) {
 
     if (view === 'SCATTER') string += `Note that this visualization uses a log scale to show a wider range of values.`
 
-    // if (view === 'MIGRATION_GRAPH') {
-    //     string = `The legend shows which parts of the shape correspond to which year, and the ${data}.`
-    // }
-    // else {
-    //     string = `The legend shows which parts of the shape correspond to which months, and the ${data}.`
-    // }
-
     return string
 }
 
@@ -385,7 +354,7 @@ function showQuestion() {
     $('#question-box').show();
     $('#start-question').show();
 
-    $('#answer-box').hide();
+    $('#answer-box').css({ 'visibility': 'hidden' });
     $('#root').css({ 'visibility': 'hidden' });
 
     // Set the question in the label 
@@ -397,13 +366,15 @@ function showQuestion() {
         event.preventDefault();
         startQuestion();
     });
+
+    zoom_level = [];
 }
 
 function startQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
 
-    $('#answer-box').show();
+    $('#answer-box').css({ 'visibility': 'visible' });
     $('#root').css({ 'visibility': 'visible' });
     $('#start-question').hide();
     $('#question-submit').show();
@@ -439,7 +410,6 @@ function startQuestion() {
     // start loggin time , reset, wrong count and button clicked status
     trialStartTime = new Date();
     wrong_count = 0;
-    zoom_level = 0;
     hover_count = 0;
     hovered_items = [];
     selectedItems = [];
@@ -493,10 +463,6 @@ function startQuestion() {
         hover_count = hover_count + 1;
     }
 
-    window.onZoom = (value) => {
-        zoom_level = value;
-    }
-
     if (question.type == 'click') {
         window.itemClicked = (value) => {
             // prevent form from submitting
@@ -528,9 +494,6 @@ function startQuestion() {
     else {
         window.itemClicked = () => { };
     }
-
-
-
 }
 
 
@@ -554,7 +517,7 @@ function logResponse(question_type = '') {
         selectItems: selectedItems.join(", "),
         hoverCount: hover_count,
         hoverItems: hovered_items.join(", "),
-        zoomLevel: zoom_level,
+        zoomLevel: zoom_level.join(", "),
         perceptualTask: perceptual_task,
         decisionTask: decision_task,
         comparisonBasis: comparison_basis,
