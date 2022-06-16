@@ -51,9 +51,9 @@ var study_mode_map = {
 // **********************************************************************************************************
 
 var data_intro = {
-    'MAP': 'The temperature data of different cities is represented on the map.  Hover to view the name of the city.',
-    'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). Hover to view the name of the country.',
-    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. Hover to view the migration data.'
+    'MAP': 'The temperature data of different cities is represented on the map. The cities which are mentioned in the question with be indicated using a green circle. Hover to view the name of the city.',
+    'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). The countries which are mentioned in the question with be indicated using a green circle. Hover to view the name of the country.',
+    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. The cities which are mentioned in the question with be indicated using a green circle. Hover to view the migration data.'
 };
 
 var shape_description = {

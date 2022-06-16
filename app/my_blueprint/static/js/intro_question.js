@@ -21,7 +21,7 @@ window.options = {
     shape: study_mode_map[study_mode].shape,
     encoding: study_mode_map[study_mode].encoding,
     size: study_mode_map[study_mode].size,
-    practice: true,
+    practice: false,
 };
 
 
