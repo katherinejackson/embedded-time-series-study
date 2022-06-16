@@ -46,26 +46,22 @@ var decision_task = "";
 var comparison_basis = "";
 
 // prevent changing zoom level with keys or the mouse wheel
-$(document).keydown(function(event) {
-    if ((event.ctrlKey==true || event.metaKey ==true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
-            event.preventDefault();
-         }
-    });
-    
-document.addEventListener('wheel', function(event) {
-    if (event.ctrlKey == true || event.metaKey==true) {
+$(document).keydown(function (event) {
+    if ((event.ctrlKey == true || event.metaKey == true) && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109' || event.which == '187' || event.which == '189')) {
         event.preventDefault();
     }
-}, {passive: false})
+});
+
+document.addEventListener('wheel', function (event) {
+    if (event.ctrlKey == true || event.metaKey == true) {
+        event.preventDefault();
+    }
+}, { passive: false })
 
 window.addEventListener('resize', () => {
     const browserZoomLevel = window.devicePixelRatio;
-    zoom_level.push(Math.round(browserZoomLevel * 100)/100)
-    console.log(zoom_level)
-  })
-
-//DOMMouseScroll
-
+    zoom_level.push(Math.round(browserZoomLevel * 100) / 100)
+})
 
 // Study intro is shown by default so wait for the user to click next 
 $('#begin-button').click(() => {
@@ -446,7 +442,7 @@ function logResponse(question_type = '') {
             showQuestion();
         }
         else {
-            alert('The practice round is now complete. You will now start the study round');
+            alert('The practice round is now complete. You will now start the introduction question.');
             // go to next phase on the study
             window.location.href = "/redirect_next_page";
         }

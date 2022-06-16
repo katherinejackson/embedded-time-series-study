@@ -17,37 +17,29 @@
 <body>
     <span id="cond" style="color:white"> {{ session['condition'] }} </span>
     <span id="participant" style="color:white"> {{ session['participantID'] }} </span>
-    <span id="block" style="color:white">1</span>
+    <span id="block" style="color:white">2</span>
 
     <div class="text-center my-5">
         <div id="study-intro" class="text-left">
-            <p>In this study there are three parts. In each part you will be shown a visualization of a time series
-                dataset and asked to answer questions related to it.</p>
-            <p>For each part there will be a practice round at the beginning for you to familiarize yourself with the
-                visualization, then a practice question to familiarize yourself with the dataset. </p>
-            <p>This is the first part, click the button below to begin.</p>
-            <p class="text-center mt-4"> <button class="btn btn-primary next" id="begin-button">Begin</button></p>
+            <p>In this study, you will be shown visualizations of three different time series datasets, and you will be asked to answer questions related to each visualization.</p>
+            <p>Click the button below to view an example of the type of question you will be asked.</p>
+            <p class="text-center mt-4"> <button class="btn btn-primary next" id="example-button">View example question</button></p>
         </div>
 
-        <div style="visibility:hidden" id="shape-description">
-            <p id="visualization-description"></p>
-            <img id="example-image" width="150px" alt="Pin example"></img>
-            <p id="example-description"></p>
-            <img style="width:500px" id="legend-image" src=""></img>
-            <p id="legend-description"></p>
-            <p class="text-center mt-4"> <button class="btn btn-primary next" id="start-practice">Start Practice
-                    Round</button></p>
-        </div>
 
         <div style="visibility:hidden" id="chart-container" class="text-left">
             <p id='description'> Please wait for the visualization to load...</p>
             <form style="display:none" id='question-box' class="text-left">
-                <label id='question-label'></label>
+                <div class="form-group">
+                    <label id='question-label'></label>
+                </div>
                 <p id='start-question' class="text-center mt-2"> <button class="btn btn-primary">Start</button></p>
-                <div id="answer-box" class="d-flex align-items-center" style="visibility:hidden">
-                    <div id='choice-box'>
+                <div id="answer-box" style="display:none">
+                    <div id='choice-box' class="form-group">
                     </div>
-                    <button id='question-submit' style="display:none" class="btn btn-primary next ml-4">Submit</button>
+                    <p class="text-center mt-2"> 
+                        <button id='question-submit' style="display:none" class="btn btn-primary next">Submit</button>
+                    </p>
                 </div>
             </form>
             <p id='prompt'></p>
@@ -57,8 +49,8 @@
 
 
     </div>
-    <script src="{{ url_for('my_blueprint.static', filename='js/practice.js') }}"></script>
+    <script src="{{ url_for('my_blueprint.static', filename='js/intro.js') }}"></script>
     <script src="{{ url_for('my_blueprint.static', filename='timemap/js/timemap.js') }}"></script>
 </body>
 
-{% endblock %}
+{% endblock %} 

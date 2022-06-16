@@ -28,7 +28,7 @@ window.options = {
 
 // Create a question set based on the condition 
 // var question_map = studyQuestions['practice-' + condition_set_value];
-var question_map = studyQuestions['intro-MAP'];
+var question_map = studyQuestions['intro-question-' + condition_set_value];
 
 // Set the Question Iterator to zero
 var question_index = 0;
@@ -73,22 +73,18 @@ $('#example-button').click(() => {
     $('#study-intro').hide();
     $('#shape-description').hide();
     intializeChart();
-    // showQuestion();
-    // showShapeDescription();
 });
 
-// // Study intro is shown by default so wait for the user to click next 
-// $('#start-practice').click(() => {
-//     // Hide study intro and then based on the user condition either show the chord intro or the sankey intro 
-//     $('#shape-description').hide();
-//     intializeChart();
-// });
+$('#fullscreen').click(() => {
+    $('#study-intro').css({ 'visibility': 'visible' });
+    $('#fullscreen-info').hide();
+});
 
 function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html('Shown below is an example of a visualization that you will see. There are multiple small charts that display data over time. The charts that are mentioned in the question will be highlighted with a green border. You can hover over a chart to increase its size and view its label.');
-    $('#prompt').html('Click the button below to complete the example question.')
+    $('#description').html('Please take as long as you would like to examine the data before you complete the question');
+    $('#prompt').html('Click the button below to start the example question.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
     // hide the chart intro and then start showing the questions 
@@ -110,7 +106,7 @@ function showQuestion() {
     $('#question-box').show();
     $('#start-question').show();
 
-    $('#answer-box').hide();
+    $('#answer-box').css({ 'visibility': 'hidden' });
     $('#root').css({ 'visibility': 'hidden' });
 
     // Set the question in the label 
@@ -130,7 +126,7 @@ function startQuestion() {
     // Based on the chartType of the user condition get the question set 
     let question = question_map[question_index];
 
-    $('#answer-box').show();
+    $('#answer-box').css({ 'visibility': 'visible' });
     $('#root').css({ 'visibility': 'visible' });
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#start-question').hide();
@@ -273,7 +269,7 @@ function logResponse(question_type = '') {
             showQuestion();
         }
         else {
-            alert('The example question is now complete. You will now start the practice round');
+            alert('The example question is now complete. You will now start the study round.');
             // go to next phase on the study
             window.location.href = "/redirect_next_page";
         }

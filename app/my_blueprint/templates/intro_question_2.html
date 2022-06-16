@@ -17,14 +17,13 @@
 <body>
     <span id="cond" style="color:white"> {{ session['condition'] }} </span>
     <span id="participant" style="color:white"> {{ session['participantID'] }} </span>
-    <span id="block" style="color:white">1</span>
+    <span id="block" style="color:white">2</span>
 
     <div class="text-center my-5">
         <div id="study-intro" class="text-left">
             <p>In this study, you will be shown visualizations of three different time series datasets, and you will be asked to answer questions related to each visualization.</p>
             <p>Click the button below to view an example of the type of question you will be asked.</p>
             <p class="text-center mt-4"> <button class="btn btn-primary next" id="example-button">View example question</button></p>
-            <!-- <div id='root'></div> -->
         </div>
 
 
@@ -54,4 +53,4 @@
     <script src="{{ url_for('my_blueprint.static', filename='timemap/js/timemap.js') }}"></script>
 </body>
 
-{% endblock %}
+{% endblock %} 
