@@ -12,9 +12,7 @@ var study_mode = study_options[sel]
 console.log("study mode (practice): ", study_mode)
 
 // Then get the corresponding map based on the condition
-//var condition_set_value = condition_map[1][2];
-// var condition_set_value = condition_map[condition][+block - 1];
-var condition_set_value = condition_map[1][+block - 1];
+var condition_set_value = condition_map[condition][+block - 1];
 // Populate the study chart conditions
 window.options = {
     view: condition_set_value,
@@ -23,8 +21,6 @@ window.options = {
     size: study_mode_map[study_mode].size,
     practice: false,
 };
-
-
 
 // Create a question set based on the condition 
 // var question_map = studyQuestions['practice-' + condition_set_value];

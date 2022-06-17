@@ -232,10 +232,10 @@ var studyQuestions = {
     'intro-question-MAP': [
         {
             "type": "multichoice",
-            "label": "What was the approximate average temperature for Whitehorse in February 2020?",
+            "label": "What was the approximate average temperature for Naknek in February 2021?",
             "choices": ["-25", "-15", "0", "+10"],
-            "answer": '-15',
-            "highlightOptions": ["Whitehorse"],
+            "answer": '-25',
+            "highlightOptions": ["Naknek"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
             "comparison_basis": "None"
@@ -244,22 +244,22 @@ var studyQuestions = {
     'intro-question-SCATTER': [
         {
             "type": "multichoice",
-            "label": "What was the approximate average daily case rate for France in December 2021?",
-            "choices": ["10K", "75K", "150K", "400K", "450K"],
-            "answer": '75K',
-            "highlightOptions": ["France"],
+            "label": "What was the approximate average daily case rate for South Korea in December 2021?",
+            "choices": ["1K", "5K", "10K", "50K", "100K"],
+            "answer": '5K',
+            "highlightOptions": ["South Korea"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
             "comparison_basis": "None"
 	    },
     ],
-    'intro-question-MIGRATION-GRAPH': [
+    'intro-question-MIGRATION_GRAPH': [
         {
             "type": "multichoice",
-            "label": "What was the approximate immigration level for Romania to Germany in 1996, in millions?",
-            "choices": ["1.0M", "1.9M", "2.6M", "3.1M"],
-            "answer": '2.6M',
-            "highlightOptions": ["Romania>Germany"],
+            "label": "What was the approximate immigration level for Philippines to Canada in 1996, in millions?",
+            "choices": ["500", "1K", "50K", "1M"],
+            "answer": '50K',
+            "highlightOptions": ["Philippines>Canada"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "None",
             "comparison_basis": "None"
