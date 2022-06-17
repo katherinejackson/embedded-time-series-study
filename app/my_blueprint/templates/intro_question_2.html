@@ -21,8 +21,8 @@
 
     <div class="text-center my-5">
         <div id="study-intro" class="text-left">
-            <p>In this study, you will be shown visualizations of three different time series datasets, and you will be asked to answer questions related to each visualization.</p>
-            <p>Click the button below to view an example of the type of question you will be asked.</p>
+            <p>You will now be shown the dataset with which you will complete the study questions. Please take as long as you
+                would like to examine the data now, then answer the example question. You will be able to view the data while answering the study questions.</p>
             <p class="text-center mt-4"> <button class="btn btn-primary next" id="example-button">View example question</button></p>
         </div>
 
@@ -34,12 +34,10 @@
                     <label id='question-label'></label>
                 </div>
                 <p id='start-question' class="text-center mt-2"> <button class="btn btn-primary">Start</button></p>
-                <div id="answer-box" style="display:none">
-                    <div id='choice-box' class="form-group">
+                <div id="answer-box" class="d-flex align-items-center" style="visibility:hidden">
+                    <div id='choice-box'>
                     </div>
-                    <p class="text-center mt-2"> 
-                        <button id='question-submit' style="display:none" class="btn btn-primary next">Submit</button>
-                    </p>
+                    <button id='question-submit' style="display:none" class="btn btn-primary next ml-4">Submit</button>
                 </div>
             </form>
             <p id='prompt'></p>
