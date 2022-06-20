@@ -82,7 +82,7 @@ $('#start-practice').click(() => {
 function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
-    $('#description').html(data_intro[condition_set_value]);
+    $('#description').html(data_intro[condition_set_value] + '\n\nYou will now be asked 3 practice questions that you have to answer using the visualization. Please try to answer them as quickly and accurately as possible.');
     $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
@@ -278,6 +278,7 @@ function showQuestion() {
     $('#question-box').show();
     $('#start-question').show();
 
+    $('#description').css({ 'display': 'none' });
     $('#answer-box').css({ 'visibility': 'hidden' });
     $('#root').css({ 'visibility': 'hidden' });
 
