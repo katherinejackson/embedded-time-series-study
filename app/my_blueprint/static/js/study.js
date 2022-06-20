@@ -77,6 +77,7 @@ function intializeChart() {
         $('#chart-container button.next').hide();
         $('#prompt').hide();
         $('#explanation').hide();
+        $('#description').hide();
         showQuestion();
     });
 }
