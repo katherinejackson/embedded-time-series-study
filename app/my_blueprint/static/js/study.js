@@ -67,7 +67,7 @@ function intializeChart() {
     // make the chart visible
     $('#chart-container').css({ 'visibility': 'visible' });
     $('#explanation').html('You will now begin the study round. You will be asked 8 questions.');
-    $('#description').html('Please try to answer the questions as quickly and accurately as possible.');
+    $('#description').html('Please try to answer the questions as' + '<strong> quickly </strong>' + 'and' + ' <strong>accurately</strong>' + ' as possible.');
     $('#prompt').html('Click the button below to start.')
     // Study intro is shown by default so wait for the user to click next 
     // When the next button is clicked after reading the chart intro 
