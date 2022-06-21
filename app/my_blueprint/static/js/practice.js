@@ -283,7 +283,7 @@ function showQuestion() {
     $('#root').css({ 'visibility': 'hidden' });
 
     // Set the question in the label 
-    $('#question-label').text('Question: ' + question.label);
+    $('#question-label').text('Practice Question: ' + question.label);
     // Get the choices for the question 
 
     $('#start-question').unbind('click').click((event) => {
