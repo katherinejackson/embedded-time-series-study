@@ -51,9 +51,9 @@ var study_mode_map = {
 // **********************************************************************************************************
 
 var data_intro = {
-    'MAP': 'The temperature data of different cities is represented on the map. The cities which are mentioned in the question with be indicated using a green outline. Hover to view the name of the city.',
-    'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). The countries which are mentioned in the question with be indicated using a green outline. Hover to view the name of the country.',
-    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. The countries which are mentioned in the question with be indicated using a green outline. Hover to view the migration data.'
+    'MAP': 'The temperature data of different cities is represented on the map. The cities which are mentioned in the question will be indicated using a green outline. Hover over the city to view the city\'s name and enlarge the visualization.',
+    'SCATTER': 'The scatterplot displays daily COVID case information for different countries using pins positioned on the scatterplot. Each pin on the scatterplot is positioned according to its corresponding country\'s Human Development Index (x-axis) and its population in millions (y-axis). The countries which are mentioned in the question will be indicated using a green outline. Hover over the country to view the country\'s name and enlarge the visualization.',
+    'MIGRATION_GRAPH': 'The global migration data of people is represented on the graph. The countries which are mentioned in the question will be indicated using a green outline. Hover over the country to enlarge the visualization.'
 };
 
 var shape_description = {
@@ -170,7 +170,7 @@ var studyQuestions = {
     'practice-SCATTER': [
 	{
             "type": "multichoice",
-            "label": "What was the approximate average daily case rate for France in December 2021?",
+            "label": "What was the approximate average reported daily case rate for France in December 2021?",
             "choices": ["10K", "75K", "150K", "400K", "450K"],
             "answer": '75K',
             "highlightOptions": ["France"],
@@ -180,7 +180,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Which country (Italy or United Kingdom) had a higher Covid rate in July 2021?",
+            "label": "Which country (Italy or United Kingdom) had a higher reported Covid rate in July 2021?",
             "choices": ["Italy", "United Kingdom"],
             "answer": 'United Kingdom',
             "highlightOptions": ["Italy", "United Kingdom"],
@@ -190,7 +190,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Was Germany's Covid rate higher in March 2020 or March 2021?",
+            "label": "Was Germany's reported Covid rate higher in March 2020 or March 2021?",
             "choices": ["March 2020", "March 2021"],
             "answer": 'March 2021',
             "highlightOptions": ["Germany"],
@@ -244,7 +244,7 @@ var studyQuestions = {
     'intro-question-SCATTER': [
         {
             "type": "multichoice",
-            "label": "What was the approximate average daily case rate for South Korea in December 2021?",
+            "label": "What was the approximate average reported daily case rate for South Korea in December 2021?",
             "choices": ["1K", "5K", "10K", "50K", "100K"],
             "answer": '5K',
             "highlightOptions": ["South Korea"],
@@ -318,10 +318,10 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Rank cities Bethel, Nome, and Healy from warmest to coldest for August 2021",
+            "label": "Rank cities Bethel, Nome, and Healy from coldest to warmest for August 2021",
             "choices": ["Bethel, Nome, Healy", "Healy, Nome, Bethel", "Nome, Bethel, Healy",
 			"Bethel, Healy, Nome"],
-            "answer": 'Healy, Nome, Bethel',
+            "answer": 'Bethel, Nome, Healy',
             "highlightOptions": ["Healy", "Nome", "Bethel"],
             "perceptual_task": "RetrieveValue",
             "decision_task": "Sort",
@@ -350,7 +350,7 @@ var studyQuestions = {
     'study-SCATTER': [
 	{
             "type": "multichoice",
-            "label": "In India, in what year did the months August-September have more Covid cases: 2020 or 2021?",
+            "label": "In India, in what year did the months August-September have more reported Covid cases: 2020 or 2021?",
             "choices": ["2020", "2021"],
             "answer": '2020',
             "highlightOptions": ["India"],
@@ -360,7 +360,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "What was the approximate average Covid case rate for Uzbekistan in April 2020?",
+            "label": "What was the approximate average reported Covid case rate for Uzbekistan in April 2020?",
             "choices": ["5", "50", "500"],
             "answer": '50',
             "highlightOptions": ["Uzbekistan"],
@@ -370,7 +370,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Which country (India, the United States, or Yemen) had the most consistent case rate September-December 2021?",
+            "label": "Which country (India, the United States, or Yemen) had the most consistent reported case rate September-December 2021?",
             "choices": ["United States", "Yemen", "India"],
             "answer": 'India',
             "highlightOptions": ["United States", "Yemen", "India"],
@@ -380,7 +380,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Which country (Philippines, Yemen, or Nepal) had more cases in June-August of 2021?",
+            "label": "Which country (Philippines, Yemen, or Nepal) had more reported cases in June-August of 2021?",
             "choices": ["Philippines", "Yemen", "Nepal"],
             "answer": 'Philippines',
             "highlightOptions": ["Philippines", "Yemen", "Nepal"],
@@ -390,7 +390,7 @@ var studyQuestions = {
 	},
         {
             "type": "multichoice",
-            "label": "Which of the following countries had a lower overall number of new Covid-19 cases in December 2021?",
+            "label": "Which of the following countries had a lower overall number of new reported ovid-19 cases in December 2021?",
             "choices": ["Pakistan", "Syria", "Vietnam"],
             "answer": 'Syria',
             "highlightOptions": ["Pakistan", "Syria", "Vietnam"],
@@ -400,7 +400,7 @@ var studyQuestions = {
         },
 	{
             "type": "multichoice",
-            "label": "What was the approximate minimum case rate in 2021 for Azerbaijan?",
+            "label": "What was the approximate minimum reported case rate in 2021 for Azerbaijan?",
             "choices": ["10", "100", "1000"],
             "answer": '10',
             "highlightOptions": ["Azerbaijan"],
@@ -410,7 +410,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "Rank countries Syria, India, and Vietnam in terms of average case rate, from lowest to highest, for July 2021",
+            "label": "Rank countries Syria, India, and Vietnam in terms of average reported case rate, from lowest to highest, for July 2021",
             "choices": ["India, Syria, Vietnam", "Vietnam, Syria, India", "Syria, Vietnam, India"],
             "answer": 'Syria, Vietnam, India',
             "highlightOptions": ["Vietnam", "Syria", "India"],
@@ -420,7 +420,7 @@ var studyQuestions = {
 	},
 	{
             "type": "multichoice",
-            "label": "What range of case rates were seen in Cambodia in 2021?",
+            "label": "What range of reported case rates were seen in Cambodia in 2021?",
             "choices": ["1 to 10K", "10K to 100K", "100 to 100K", "1 to 1M"],
             "answer": '1 to 10K',
             "highlightOptions": ["Cambodia"],
