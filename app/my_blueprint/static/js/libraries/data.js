@@ -26,15 +26,15 @@
 // };
 
 var study_mode_map = {
-    'row_yaxis_large': { 'shape': 2, 'encoding': 1, 'size': 'large' },
-    'row_yaxis_medium': { 'shape': 2, 'encoding': 1, 'size': 'medium' },
-    'row_color_medium': { 'shape': 2, 'encoding': 2, 'size': 'medium' },
+    // 'row_yaxis_large': { 'shape': 2, 'encoding': 1, 'size': 'large' },
+    // 'row_yaxis_medium': { 'shape': 2, 'encoding': 1, 'size': 'medium' },
+    // 'row_color_medium': { 'shape': 2, 'encoding': 2, 'size': 'medium' },
 
-    'spiral_color_yaxis_large': { 'shape': 1, 'encoding': 3, 'size': 'large' },
-    'spiral_yaxis_small': { 'shape': 1, 'encoding': 1, 'size': 'small' },
-    'spiral_color_small': { 'shape': 1, 'encoding': 2, 'size': 'small' },
+    // 'spiral_color_yaxis_large': { 'shape': 1, 'encoding': 3, 'size': 'large' },
+    // 'spiral_yaxis_small': { 'shape': 1, 'encoding': 1, 'size': 'small' },
+    // 'spiral_color_small': { 'shape': 1, 'encoding': 2, 'size': 'small' },
     'spiral_color_medium': { 'shape': 1, 'encoding': 2, 'size': 'medium' },
-    'spiral_color_large': { 'shape': 1, 'encoding': 2, 'size': 'large' },
+    // 'spiral_color_large': { 'shape': 1, 'encoding': 2, 'size': 'large' },
 };
 
 // **********************************************************************************************************
